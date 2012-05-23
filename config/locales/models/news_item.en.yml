@@ -1,0 +1,16 @@
+---
+en:
+  active_record:
+    models:
+      news_item: News item
+    attributes:
+      news_item:
+        news_cate: News cate
+        title: Title
+        body: Body
+        external_url: External url
+        image_url: Image url
+    errors:
+      news_item: !!null 
+  helpers:
+    news_item: !!null 

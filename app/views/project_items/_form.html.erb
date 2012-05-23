@@ -1,0 +1,89 @@
+<%= form_for(@project_item) do |f| %>
+  <% if @project_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_item.errors.count, "error") %> prohibited this project_item from being saved:</h2>
+
+      <ul>
+      <% @project_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_cate %><br />
+    <%= f.text_field :project_cate %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br />
+    <%= f.text_field :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :site_url %><br />
+    <%= f.text_field :site_url %>
+  </div>
+  <div class="field">
+    <%= f.label :sort_id %><br />
+    <%= f.number_field :sort_id %>
+  </div>
+  <div class="field">
+    <%= f.label :is_verfied %><br />
+    <%= f.text_field :is_verfied %>
+  </div>
+  <div class="field">
+    <%= f.label :is_forager %><br />
+    <%= f.text_field :is_forager %>
+  </div>
+  <div class="field">
+    <%= f.label :forager_url %><br />
+    <%= f.text_field :forager_url %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

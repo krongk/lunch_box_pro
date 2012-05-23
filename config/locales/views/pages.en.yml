@@ -1,0 +1,20 @@
+---
+en:
+  pages:
+    index:
+      title: Pages
+    show:
+      title: Page
+    edit:
+      title: Editing Page
+    new:
+      title: New Page
+  flash:
+    pages:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

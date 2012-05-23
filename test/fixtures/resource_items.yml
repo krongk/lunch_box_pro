@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  resource_type: MyString
+  resource_cate: 
+  resource_name: MyString
+  resource_path: MyString
+  resource_note: MyString
+
+two:
+  resource_type: MyString
+  resource_cate: 
+  resource_name: MyString
+  resource_path: MyString
+  resource_note: MyString

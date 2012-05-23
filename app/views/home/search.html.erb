@@ -1,0 +1,38 @@
+<% title "#{params[:q]} - 来自百度数据采集--成都红宝石信息技术" %>
+<% meta_keywords [params[:q], "成都红宝石信息技术"].join(' - ') %>
+<% meta_description [params[:q], "成都网站建设，网站开发，网站设计，软件开发，企业信息化，电子商务，互联网创业，找成都红宝石信息技术"].join(' - ') %>
+
+ <h3> 搜索<%=params[:q]%>的相关内容：</h3>
+ <hr/>
+
+<% if @result[:record_arr].empty? %>
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp; 没有找到相关内容!</h3>
+<% else %>
+  <% @result[:record_arr].each_with_index do |r, index| %>
+    <div class="search_item" id="search_item_<%=index%>">
+      <h3 class="titbg" ><%= link_to truncate_content(r.title, 60), r.url, :target => '_blank'%> [<span style="color:#999; font-size:12px;">更新日期：<%= r.updated_date %></span>]</h3>
+      <%= (r.summary).html_safe %>
+    </div>
+  <% end %>
+
+  <div id="paginate">
+    <%= link_to "第一页", "/search?t=#{@result[:source]}&q=#{params[:q]}&page=1" %>
+    <% (2..10).each do |pn| %>
+      <% if pn == @page %>
+        <span><%= pn %></span>
+      <% else %>
+        <%= link_to pn, "/search?t=#{@result[:source]}&q=#{params[:q]}&page=#{pn}" %>
+      <% end %>
+    <% end %>
+    <%= link_to "下一页", "/search?t=#{@result[:source]}&q=#{params[:q]}&page=#{ params[:page].to_i > 10 ? (params[:page].to_i + 1) : 11}" %>
+  </div>
+
+  <% unless  @result[:ext_key_arr].empty? %>
+    <h3>相关话题</h3>
+    <ul>
+      <% @result[:ext_key_arr].each do |ext_key| %>
+        <li><%= link_to ext_key.title, "/search?t=#{ext_key.source}&q=#{ext_key.title}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

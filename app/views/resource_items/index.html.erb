@@ -1,0 +1,31 @@
+<h1>Listing resource_items</h1>
+
+<table>
+  <tr>
+    <th>Resource type</th>
+    <th>Resource cate</th>
+    <th>Resource name</th>
+    <th>Resource path</th>
+    <th>Resource note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @resource_items.each do |resource_item| %>
+  <tr>
+    <td><%= resource_item.resource_type %></td>
+    <td><%= resource_item.resource_cate %></td>
+    <td><%= resource_item.resource_name %></td>
+    <td><%= resource_item.resource_path %></td>
+    <td><%= resource_item.resource_note %></td>
+    <td><%= link_to 'Show', resource_item %></td>
+    <td><%= link_to 'Edit', edit_resource_item_path(resource_item) %></td>
+    <td><%= link_to 'Destroy', resource_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Resource item', new_resource_item_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  parent_id: 1
+  position: 1
+  path: MyString
+  meta_keywords: MyString
+  meta_description: MyString
+  link_url: MyString
+  menu_match: MyString
+  show_in_menu: 1
+  deletable: 1
+
+two:
+  title: MyString
+  body: MyText
+  parent_id: 1
+  position: 1
+  path: MyString
+  meta_keywords: MyString
+  meta_description: MyString
+  link_url: MyString
+  menu_match: MyString
+  show_in_menu: 1
+  deletable: 1

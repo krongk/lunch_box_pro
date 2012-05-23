@@ -1,0 +1,16 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      news_item: 新闻
+    attributes:
+      news_item:
+        news_cate: 新闻分类
+        title: 标题
+        body: 内容
+        external_path: 扩展链接地址
+        image_path: 图片链接地址
+    errors:
+      news_item: !!null 
+  helpers:
+    news_item: !!null 

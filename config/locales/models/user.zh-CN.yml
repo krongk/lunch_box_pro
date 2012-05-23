@@ -1,0 +1,13 @@
+#encoding: utf-8
+
+zh-CN:
+  activerecord:
+    models:
+      user: 会员
+    attributes:
+      user:
+        email: 邮件地址
+    errors:
+      news_cate: '失败'
+  helpers:
+    news_cate: '帮助'

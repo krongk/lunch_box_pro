@@ -1,0 +1,21 @@
+// Active Admin CSS Styles
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// To customize the Active Admin interfaces, add your
+// styles here:
+
+.admin_content{
+    border: 1px #ccc solid;
+    padding: 10px;
+    background:#fff; 
+    white-space:normal;
+    word-break:break-all;
+    overflow:auto;
+    width: 95%;
+}
+.admin_title{
+    border-bottom: 2px #ccc solid;
+    padding: 10px;
+    background:#fff; 
+}

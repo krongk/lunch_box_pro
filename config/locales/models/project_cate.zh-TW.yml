@@ -1,0 +1,12 @@
+---
+zh-TW:
+  active_record:
+    models:
+      project_cate: Project cate
+    attributes:
+      project_cate:
+        name: Name
+    errors:
+      project_cate: !!null 
+  helpers:
+    project_cate: !!null 

@@ -1,0 +1,23 @@
+<h1>Listing product_cates</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product_cates.each do |product_cate| %>
+  <tr>
+    <td><%= product_cate.name %></td>
+    <td><%= link_to 'Show', product_cate %></td>
+    <td><%= link_to 'Edit', edit_product_cate_path(product_cate) %></td>
+    <td><%= link_to 'Destroy', product_cate, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product cate', new_product_cate_path %>

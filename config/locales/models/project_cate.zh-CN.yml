@@ -1,0 +1,12 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      project_cate: IT项目分类
+    attributes:
+      project_cate:
+        name: 名称
+    errors:
+      project_cate: !!null 
+  helpers:
+    project_cate: !!null 

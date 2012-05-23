@@ -1,0 +1,24 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      page: 网页
+    attributes:
+      page:
+        title: 标题
+        body: 内容
+        parent_id: 父级
+        position: 位置
+        path_name: 路径
+        meta_keywords: Meta 关键词
+        meta_description: Meta 描述
+        menu_match: 路径正则
+        show_in_menu: 是否在菜单中显示
+        deletable: 可否删除
+        id: 编号
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      page: !!null 
+  helpers:
+    page: !!null 

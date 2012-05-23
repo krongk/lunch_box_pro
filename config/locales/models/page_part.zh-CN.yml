@@ -1,0 +1,14 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      page_part: 网页片段
+    attributes:
+      page_part:
+        page: 网页
+        part: 片段
+        position: 位置
+    errors:
+      page_part: !!null 
+  helpers:
+    page_part: !!null 

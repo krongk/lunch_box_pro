@@ -1,0 +1,18 @@
+<% title ["项目案例", "成都红宝石网络，您身边的企业信息化解决专家"].join(' - ') %>
+<% meta_keywords ["项目案例", "企业信息化咨询，成都红宝石信息技术"].join(' - ') %>
+<% meta_description ["项目案例", "成都红宝石信息技术，我们只关注高品质信息服务！联系电话：15928661802"].join(' - ') %>
+
+
+<h2>项目案例</h2>
+
+<ul class="projects">
+<% @product_items.each do |item| %>
+    <li><%=link_to image_tag(item.image_path, :width => '140px'), product_item_path(item) %>
+        <h4><%= link_to item.title, product_item_path(item) %></h4>
+        <%= truncate_content(item.description, 120) %>
+    </li>
+<% end %>
+</ul>
+
+<hr/>
+<%= will_paginate @product_items, :next_label => "下一页", :prev_label => "上一页" %>

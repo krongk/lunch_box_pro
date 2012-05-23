@@ -1,0 +1,32 @@
+<% title [@news_item.title, "成都红宝石企业建站"].join('-') %>
+<% meta_keywords [@news_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
+<% meta_description [@news_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
+
+
+<div class="news_main">
+  <div style="margin:4px;">首页 > <a href="/news_cates">互联网观察</a> > <%=link_to @news_item.news_cate.name, news_cate_path(@news_item.news_cate_id)%></div>
+
+  <div class="titlerb">
+    <h1><%= @news_item.title %></h1>
+  </div>
+  <div class="news_content">
+    <% unless @news_item.image_path.blank? %>
+     <div class="news_img"><%= image_tag(@news_item.image_path) %></div>
+    <% end %>
+    &nbsp;&nbsp;&nbsp;&nbsp;<%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @news_item.body.blank?%>
+    <div class="bshare">
+      <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren" href="javascript:void(0);"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=14aef883-fe5e-4c43-b8f6-cbf83629892b&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+    </div>
+
+    <!--相关新闻-->
+    <hr/>
+    <div class="related">
+     <h3>相关信息</h3>
+     <ul>
+       <% NewsItem.recent_related(@news_item.id).each do |item|%>
+         <li><%= link_to item.title, news_item_path(item.id)%></li>
+       <% end %>
+     </ul>
+    </div>
+  </div>
+</div>

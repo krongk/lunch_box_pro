@@ -1,0 +1,20 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      product_item: 项目案例
+    attributes:
+      product_item:
+        id: 编号
+        product_cate: 案例分类
+        title: 名称
+        description: 描述
+        price: 价格
+        image_path: 图片地址
+        is_visible: 是否显示
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      product_item: !!null 
+  helpers:
+    product_item: !!null 

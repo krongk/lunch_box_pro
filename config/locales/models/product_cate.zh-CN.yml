@@ -1,0 +1,15 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      product_cate: 案例分类
+    attributes:
+      product_cate:
+        name: 名称
+        id: 编号
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      product_cate: !!null 
+  helpers:
+    product_cate: !!null 

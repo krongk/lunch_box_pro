@@ -1,0 +1,16 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      part: 网页片段
+    attributes:
+      part:
+        title: 标题
+        body: 内容
+        id: 编号
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      part: !!null 
+  helpers:
+    part: !!null 

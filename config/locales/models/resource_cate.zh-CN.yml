@@ -1,0 +1,12 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      resource_cate: 资源分类
+    attributes:
+      resource_cate:
+        name: 名称
+    errors:
+      resource_cate: !!null 
+  helpers:
+    resource_cate: !!null 

@@ -1,0 +1,204 @@
+##项目投融资来源：
+  http://company.chinaventure.com.cn/list/
+##解决方案来源：
+  http://project.ccidnet.com/cases/page/template/searchCases.do?method=searchList
+  
+    
+##What Rails on Web
+  Rails on Web is a integration rails app which provide you to create a company site at a very short time.
+  You only need to do the following steps:
+    - Took over the design from designer
+    - Organize site map to the configuration file (config/site_map.yml)
+    - Rake the app
+    - Deploy on server
+
+    - Rake the app
+      - db:create
+      - db:migrate
+      - db seeds
+      - controller config
+      - routs config
+      
+to do list:
+1. modify Gemfile
+
+2. add table
+rails g scaffold site name:string value:string
+rails g scaffold page title:string body:text parent_id:integer position:integer path:string meta_keywords:string meta_description:string link_url:string menu_match:string show_in_menu:integer deletable:integer 
+rails g scaffold part title:string body:text
+rails g scaffold page_part page:references part:references position:integer 
+> modify to add default value
+
+3. add devise
+bundle exec rails g devise:install
+      xuejiang@lsbj-debian:~/test/rails_on_web$ bundle exec rails g devise:install
+            create  config/initializers/devise.rb
+            create  config/locales/devise.en.yml
+      
+      ===============================================================================
+      
+      Some setup you must do manually if you haven't yet:
+      
+        1. Setup default url options for your specific environment. Here is an
+           example of development environment:
+      
+             config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+      
+           This is a required Rails configuration. In production it must be the
+           actual host of your application
+      
+        2. Ensure you have defined root_url to *something* in your config/routes.rb.
+           For example:
+      
+             root :to => "home#index"
+      
+        3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+           For example:
+      
+             <p class="notice"><%= notice %></p>
+             <p class="alert"><%= alert %></p>
+      
+        4. If you are deploying Rails 3.1 on Heroku, you may want to set:
+      
+             config.assets.initialize_on_precompile = false
+      
+           On config/application.rb forcing your application to not access the DB
+           or load models when precompiling your assets.
+      
+      ===============================================================================
+
+bundle exec rails generate devise User
+
+4. rake db:migrate
+  if course access denied by MySQL, pls change 'localhost' to '192.168.1.128'
+  
+5. add active_admin
+bundle exec rails generate active_admin:install
+ > see active_admin github 
+
+6. add index controller
+rails g controller home index help site_map
+> edit routes root
+
+7. add yaml css framwork
+  added
+8. design rake 
+   a. insert into table
+   b. add routes.
+   c. congroller generate site_map
+
+9. register ActiveAdmin
+  >rails g active_admin:resource site
+  >rails g active_admin:resource page
+  >rails g active_admin:resource part
+  >rails g active_admin:resource page_part
+  >rails g active_admin:resource news_cate
+  >rails g active_admin:resource news_item
+  >rails g active_admin:resource product_cate
+  >rails g active_admin:resource product_item
+  >rails g active_admin:resource resource_cate
+  >rails g active_admin:resource resource_item
+  rails g active_admin:resource contact
+  rails g active_admin:resource project_cate
+  rails g active_admin:resource project_item
+
+10. integrate WYSWYG editor to ActiveAdmin
+   1. add Gemfile
+      gem 'tinymce-rails', '3.4.7'
+   2. on application.js
+      //= require tinymce
+   3. on view page
+     <script type="text/javascript">
+      tinyMCE.init({
+        mode: 'textareas',
+        theme: 'advanced'
+      });
+     </script>
+   4. Integrate on ActiveAdmin
+     a. create js file: active_admin_tinymce.js
+          $(document).ready(function() {
+            load_editors();
+          });
+
+          function load_editors(){
+            tinyMCE.init({
+              mode: 'textareas',
+              theme: 'simple'
+              //theme: 'advanced'
+            });
+          }
+      b. on config/initializer/active_admin.rb
+           config.register_javascript 'tinymce.js'
+           config.register_javascript 'active_admin_tinymce.js'
+    5. add zh-cn langs
+      download zh-cn langs zip from: http://www.tinymce.com/i18n/index.php?ctrl=lang&act=download&pr_id=1
+      a. extract the zip file and replace the folder to tinymce-rails gem folder:
+         C:\RailsInstaller\Ruby1.9.2\lib\ruby\gems\1.9.1\gems\tinymce-rails-3.4.7\assets\precompiled\tinymce
+      b. Modify the config option [language: "en"] to [language: "zh-cn"] on where your initialize. e.g.
+        <script type="text/javascript">
+          tinyMCE.init({
+            mode: 'textareas',
+            language : "zh-cn",
+            theme: 'advanced'
+          });
+        </script>
+
+11. add I18n
+   gem 'rails-i18n', '0.1.8'
+   gem 'i18n_yaml_generator', '0.0.1'
+    #optmize: need to modify gem to only generate 'en' and 'zh-CN' yaml file
+    #  C:\RailsInstaller\Ruby1.9.2\lib\ruby\gems/../i18n_yaml_generator/lib/generators/i18n_yaml/model/model_generator.rb
+    #   I18n.available_locales.each do |locale|
+    #     next unless ['en', 'zh-CN'].include?(locale.to_s)
+
+    失败经验总结在：http://hi.baidu.com/kenrome/blog/item/5619de2a54caab30d52af1f5.html?timeStamp=1322406716612　
+    ＝> i18n_yaml_generator 的bug: YML文件中的'active_record：' 应该改为 'activerecord：'
+
+12. add News/Blog (only and news)
+  rails g scaffold news_cate name:string
+  rails g scaffold news_item news_cate:references title:string body:text external_url:string image_url:string
+
+13. add product(cate and item)
+  rails g scaffold product_cate name:string
+  rails g scaffold product_item product_cate:references name:string description:text price:decimal image_url:string is_visible:boolean
+
+
+rails g scaffold project_item project_cate:references tags:string status:string title:string summary:string content:text name:string phone:string email:tring company:string city:string address:string site_url:string sort_id:integer is_verfied:string is_forager:string forager_url:string note:string
+14. add resource management
+  rails g scaffold resource_cate name:string
+  rails g scaffold resource_item resource_type:string resource_cate:references resource_name:string resource_path:string resource_note:string
+
+  The structure of path:
+  |-resource_type
+    |-resource_cate
+      |-resource_item
+14.1. add comment
+
+15. 
+ - 省市区联动数据库
+ - 我要洗衣、网上预约表单设计
+ - shop表设计
+   C:\Sites\rails_on_web>rails g scaffold shop name:string region:references city:references district:references short_address:string full_address:string tel_phone:string mobile_phone:string fax:string email:string qq.integer bus_list:string description:string
+ - member表设计
+   rails g scaffold member email:string password:string activation_code:string activated_at:time 
+ 
+ 16. IP to Location
+   1. #http://www.ip2locationapi.com/geoip-location-api/index.php
+      User name: inruby
+      API Key:220248ff44f096b92220ff728f7385224598276a
+      mail: master@inruby.com
+   ==> 安装gem失败，二是搜索成都，没有精确结果
+   2. http://www.maxmind.com/app/lookup_city
+   ==> 对比后，发现不方便使用
+   3. git://github.com/chrisyour/geo_location.git
+   =＝> 就这个了！
+     http://www.hostip.info/ => 免费
+     http://www.maxmind.com/app/city =>这个需要付费
+17. Add 'admin' model to devise
+   => no need
+   aready have 'user' and 'admin_user'
+
+18. CSS 图片处理
+  
+
+   <% if params[:action] == "en" %><ul><li><a href='/'>Home</a></li><li><a href='/en/english:about_us'>About Us</a></li><li><a href='/en/english:consumer'>Consumer</a></li><li><a href='/en/english:contact_us'>Contact Us</a></li><li><a href='/en/english:franchise'>Franchise</a></li><li><a href='/en/english:stories'>Stories</a></li></ul><% else %><ul><li><a href='/'>首页</a></li><li><a href='/news_cates/'>新闻资讯</a></li><li><a href='/pages/about'>关于欧美龙</a></li><li><a href='/pages/join'>加盟政策</a></li><li><a href='/pages/ensure'>保障体系</a></li><li><a href='/pages/stores'>全国加盟店分布</a></li><li><a href='/pages/product'>产品中心</a></li><li><a href='/pages/customer'>我要洗衣</a></li><li><a href='/pages/english'>English</a></li></ul><% end %>

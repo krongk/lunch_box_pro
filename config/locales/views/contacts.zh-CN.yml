@@ -1,0 +1,20 @@
+---
+zh-CN:
+  contacts:
+    index:
+      title: Contacts
+    show:
+      title: Contact
+    edit:
+      title: Editing Contact
+    new:
+      title: New Contact
+  flash:
+    contacts:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

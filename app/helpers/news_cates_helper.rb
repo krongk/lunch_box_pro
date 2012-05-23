@@ -1,0 +1,2 @@
+module NewsCatesHelper
+end

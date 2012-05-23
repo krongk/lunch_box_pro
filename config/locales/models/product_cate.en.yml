@@ -1,0 +1,12 @@
+---
+en:
+  active_record:
+    models:
+      product_cate: Product cate
+    attributes:
+      product_cate:
+        name: Name
+    errors:
+      product_cate: !!null 
+  helpers:
+    product_cate: !!null 

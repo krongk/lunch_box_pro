@@ -1,0 +1,8 @@
+<% title [@page.title, "成都红宝石网络，您身边的企业信息化解决专家"].join(' - ') %>
+<% meta_keywords [@page.meta_keywords, "企业信息化咨询，成都红宝石企业网络策划"].join(' - ') %>
+<% meta_description [@page.meta_description, "成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
+
+
+<div id="page">
+  <%= @page.body.html_safe unless @page.body.blank?%>
+</div>

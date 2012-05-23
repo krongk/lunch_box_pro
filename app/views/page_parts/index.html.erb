@@ -1,0 +1,27 @@
+<h1>Listing page_parts</h1>
+
+<table>
+  <tr>
+    <th>Page</th>
+    <th>Part</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @page_parts.each do |page_part| %>
+  <tr>
+    <td><%= page_part.page %></td>
+    <td><%= page_part.part %></td>
+    <td><%= page_part.position %></td>
+    <td><%= link_to 'Show', page_part %></td>
+    <td><%= link_to 'Edit', edit_page_part_path(page_part) %></td>
+    <td><%= link_to 'Destroy', page_part, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page part', new_page_part_path %>

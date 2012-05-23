@@ -1,0 +1,11 @@
+---
+en:
+  active_record:
+    models:
+      region: Region
+    attributes:
+      region: {}
+    errors:
+      region: !!null 
+  helpers:
+    region: !!null 

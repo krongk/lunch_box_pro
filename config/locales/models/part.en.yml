@@ -1,0 +1,13 @@
+---
+en:
+  active_record:
+    models:
+      part: Part
+    attributes:
+      part:
+        title: Title
+        body: Body
+    errors:
+      part: !!null 
+  helpers:
+    part: !!null 

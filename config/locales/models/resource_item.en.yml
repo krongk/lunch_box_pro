@@ -1,0 +1,16 @@
+---
+en:
+  active_record:
+    models:
+      resource_item: Resource item
+    attributes:
+      resource_item:
+        resource_type: Resource type
+        resource_cate: Resource cate
+        resource_name: Resource name
+        resource_path: Resource path
+        resource_note: Resource note
+    errors:
+      resource_item: !!null 
+  helpers:
+    resource_item: !!null 

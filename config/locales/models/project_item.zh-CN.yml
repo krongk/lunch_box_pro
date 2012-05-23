@@ -1,0 +1,29 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      project_item: IT项目
+    attributes:
+      project_item:
+        project_cate: 项目分类
+        tags: 标签云
+        status: 项目状态
+        title: 标题
+        summary: 摘要
+        content: 内容
+        name: 姓名
+        phone: 电话
+        email: 邮件
+        company: 公司
+        city: 城市
+        address: 地址
+        site_url: 网址
+        sort_id: 排序
+        is_verfied: 是否审核
+        is_forager: 是否采集
+        forager_url: 采集地址
+        note: 备注
+    errors:
+      project_item: !!null 
+  helpers:
+    project_item: !!null 

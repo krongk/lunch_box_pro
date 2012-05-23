@@ -1,0 +1,20 @@
+---
+en:
+  resource_cates:
+    index:
+      title: Resource cates
+    show:
+      title: Resource cate
+    edit:
+      title: Editing Resource cate
+    new:
+      title: New Resource cate
+  flash:
+    resource_cates:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

@@ -1,0 +1,14 @@
+---
+en:
+  active_record:
+    models:
+      page_part: Page part
+    attributes:
+      page_part:
+        page: Page
+        part: Part
+        position: Position
+    errors:
+      page_part: !!null 
+  helpers:
+    page_part: !!null 

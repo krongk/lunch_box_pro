@@ -1,0 +1,11 @@
+---
+en:
+  active_record:
+    models:
+      district: District
+    attributes:
+      district: {}
+    errors:
+      district: !!null 
+  helpers:
+    district: !!null 

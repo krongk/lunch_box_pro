@@ -1,0 +1,16 @@
+<% title ["互联网观察", "成都红宝石网络，您身边的企业信息化解决专家"].join(' - ') %>
+<% meta_keywords ["企业信息化咨询，成都红宝石企业网络策划"].join(' - ') %>
+<% meta_description ["成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
+
+<div class="list">
+  <ul>
+    <% @news_items.each_with_index do |item, index| %>
+      <li>
+        <h3 class="titbg" ><%=link_to item.title, news_item_path(item)%></h3>
+        <p><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200)%>
+        <strong><%=link_to '[阅读详情]↓', news_item_path(item), :target => "_blank"%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= will_paginate @news_items, :next_label => "下一页", :prev_label => "上一页" %>
+</div>

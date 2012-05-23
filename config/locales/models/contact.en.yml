@@ -1,0 +1,24 @@
+---
+en:
+  active_record:
+    models:
+      contact: Contact
+    attributes:
+      contact:
+        name: Name
+        phone: Phone
+        email: Email
+        qq: Qq
+        company: Company
+        address: Address
+        title: Title
+        message: Message
+        cate: Cate
+        note: Note
+        is_verfied: Is verfied
+        verfied_by: Verfied by
+        is_deleted: Is deleted
+    errors:
+      contact: !!null 
+  helpers:
+    contact: !!null 

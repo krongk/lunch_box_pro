@@ -1,0 +1,84 @@
+site:
+  site_name: 成都红宝石网络
+  site_domain: www.inruby.com
+  site_email: master@inruby.com
+  site_phone: 15928661802
+  admin_email: admin@inruby.com
+  admin_confirm_email: inruby@gmail.com
+meta:
+  keywords: 互联网咨询团队
+  description: 红宝石企业建站、红宝石互联网咨询专家、红宝石互联网应用开发
+menu:
+    home:
+      title: 首页
+      menu_match: home
+    about:
+      title: 关于我们
+      menu_match: about
+    service:
+      title: 服务项目
+    case:
+      title: 成功案例
+      menu_match: case
+    team:
+      title: 服务团队
+      menu_match: team
+    contact:
+      title: 联系我们
+      menu_match: contact
+    advantage:
+      title: 服务优势
+      menu_match: advantage
+    friend_link:
+      title: 友情链接
+      menu_match: friend_link
+    copyright:
+      title: 免责声明
+      menu_match: copyright
+    help:
+      title: 帮助中心
+      menu_match: help
+    career:
+      title: 人才招聘
+      menu_match: career
+    # customer:
+    #   title: 我要洗衣
+    #   menu:
+    #     store_search:
+    #       title: 分店查询
+    #       menu_match: 'store:search'
+    #     store_news:
+    #       title: 最新活动
+    #       menu_match: 'store:news'
+    #     product_knowledge:
+    #       title: 日化产品使用常识
+    #       menu_match: 'customer:product_knowledge'
+    #     laundry_knowledge:
+    #       title: 洗衣常识
+    #       menu_match: 'customer:laundry_knowledge'
+    #     online_order:
+    #       title: 在线洗衣预约
+    #       enu_match: 'customer:online_order'
+    # english:
+    #   title: English
+    #   menu:
+    #     about_us: 
+    #       title: 'About Us'
+    #       menu_match: 'english:about_us'
+    #       show_in_menu: 1
+    #     franchise:
+    #       title: 'Franchise'
+    #       menu_match: 'english:franchise'
+    #       show_in_menu: 1
+    #     consumer:
+    #       title: 'Consumer'
+    #       menu_match: 'english:consumer'
+    #       show_in_menu: 1
+    #     stories:
+    #       title: 'Stories'
+    #       menu_match: 'english:stories'
+    #       show_in_menu: 1
+    #     contact_us:
+    #       title: 'Contact Us'
+    #       menu_match: 'english:contact_us'
+    #       show_in_menu: 1

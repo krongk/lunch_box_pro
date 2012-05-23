@@ -1,0 +1,13 @@
+#encoding: utf-8
+
+zh-CN:
+  activerecord:
+    models:
+      news_cate: 新闻分类
+    attributes:
+      news_cate:
+        name: 名称
+    errors:
+      news_cate: '失败'
+  helpers:
+    news_cate: '帮助'

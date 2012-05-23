@@ -1,0 +1,25 @@
+<h1>Listing parts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parts.each do |part| %>
+  <tr>
+    <td><%= part.title %></td>
+    <td><%= part.body %></td>
+    <td><%= link_to 'Show', part %></td>
+    <td><%= link_to 'Edit', edit_part_path(part) %></td>
+    <td><%= link_to 'Destroy', part, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Part', new_part_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Page:</b>
+  <%= @page_part.page %>
+</p>
+
+<p>
+  <b>Part:</b>
+  <%= @page_part.part %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @page_part.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_part_path(@page_part) %> |
+<%= link_to 'Back', page_parts_path %>

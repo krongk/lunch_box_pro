@@ -1,0 +1,29 @@
+---
+en:
+  active_record:
+    models:
+      project_item: Project item
+    attributes:
+      project_item:
+        project_cate: Project cate
+        tags: Tags
+        status: Status
+        title: Title
+        summary: Summary
+        content: Content
+        name: Name
+        phone: Phone
+        email: Email
+        company: Company
+        city: City
+        address: Address
+        site_url: Site url
+        sort_id: Sort
+        is_verfied: Is verfied
+        is_forager: Is forager
+        forager_url: Forager url
+        note: Note
+    errors:
+      project_item: !!null 
+  helpers:
+    project_item: !!null 

@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+ <div class="note"><%=flash[:notice]%></div>
+<% end %>
+
+<form action="/search" class="xform">
+  <div class="type-text">
+    <input name="q" id="q" type="text" value = "" size="24" class="type-input" style="width:160px;"/>
+    <input type="submit" value="搜一下" class="type-button"/>
+  </div>
+</form>

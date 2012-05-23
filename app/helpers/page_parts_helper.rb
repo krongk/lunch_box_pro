@@ -1,0 +1,2 @@
+module PagePartsHelper
+end

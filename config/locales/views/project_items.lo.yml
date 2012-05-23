@@ -1,0 +1,20 @@
+---
+lo:
+  project_items:
+    index:
+      title: Project items
+    show:
+      title: Project item
+    edit:
+      title: Editing Project item
+    new:
+      title: New Project item
+  flash:
+    project_items:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

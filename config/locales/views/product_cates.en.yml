@@ -1,0 +1,20 @@
+---
+en:
+  product_cates:
+    index:
+      title: Product cates
+    show:
+      title: Product cate
+    edit:
+      title: Editing Product cate
+    new:
+      title: New Product cate
+  flash:
+    product_cates:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

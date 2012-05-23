@@ -1,0 +1,27 @@
+#encoding: utf-8
+#rember to change active_record: to activerecord:
+zh-CN:
+  activerecord:
+    models:
+      contact: 联系我们
+    attributes:
+      contact:
+        name: 姓名
+        phone: 电话
+        email: 邮件
+        qq: QQ
+        company: 公司
+        address: 地址
+        title: 标题
+        message: 信息
+        cate: 分类
+        note: 备注
+        is_verfied: 是否审核
+        verfied_by: 审核人
+        is_deleted: 是否注销
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      contact: !!null 
+  helpers:
+    contact: !!null 

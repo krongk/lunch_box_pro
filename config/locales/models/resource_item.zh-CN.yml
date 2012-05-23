@@ -1,0 +1,19 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      resource_item: 资源
+    attributes:
+      resource_item:
+        resource_type: 资源类型
+        resource_cate: 资源分类
+        resource_name: 名称
+        resource_path: 路径
+        resource_note: 备注
+        id: 编号
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      resource_item: !!null 
+  helpers:
+    resource_item: !!null 

@@ -1,0 +1,20 @@
+---
+zh-CN:
+  news_items:
+    index:
+      title: News items
+    show:
+      title: News item
+    edit:
+      title: Editing News item
+    new:
+      title: New News item
+  flash:
+    news_items:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

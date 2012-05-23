@@ -1,0 +1,12 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      city: 城市
+    attributes:
+      city:
+        name: 名称
+    errors:
+      city: !!null 
+  helpers:
+    city: !!null 

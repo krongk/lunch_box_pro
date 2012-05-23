@@ -1,0 +1,22 @@
+---
+en:
+  active_record:
+    models:
+      page: Page
+    attributes:
+      page:
+        title: Title
+        body: Body
+        parent_id: Parent
+        position: Position
+        path: Path
+        meta_keywords: Meta keywords
+        meta_description: Meta description
+        link_url: Link url
+        menu_match: Menu match
+        show_in_menu: Show in menu
+        deletable: Deletable
+    errors:
+      page: !!null 
+  helpers:
+    page: !!null 

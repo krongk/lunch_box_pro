@@ -1,0 +1,20 @@
+---
+gl-ES:
+  project_cates:
+    index:
+      title: Project cates
+    show:
+      title: Project cate
+    edit:
+      title: Editing Project cate
+    new:
+      title: New Project cate
+  flash:
+    project_cates:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

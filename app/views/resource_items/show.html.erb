@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Resource type:</b>
+  <%= @resource_item.resource_type %>
+</p>
+
+<p>
+  <b>Resource cate:</b>
+  <%= @resource_item.resource_cate %>
+</p>
+
+<p>
+  <b>Resource name:</b>
+  <%= @resource_item.resource_name %>
+</p>
+
+<p>
+  <b>Resource path:</b>
+  <%= @resource_item.resource_path %>
+</p>
+
+<p>
+  <b>Resource note:</b>
+  <%= @resource_item.resource_note %>
+</p>
+
+
+<%= link_to 'Edit', edit_resource_item_path(@resource_item) %> |
+<%= link_to 'Back', resource_items_path %>

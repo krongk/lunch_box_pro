@@ -1,0 +1,12 @@
+---
+en:
+  active_record:
+    models:
+      news_cate: News cate
+    attributes:
+      news_cate:
+        name: Name
+    errors:
+      news_cate: !!null 
+  helpers:
+    news_cate: !!null 

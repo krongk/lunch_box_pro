@@ -1,0 +1,11 @@
+#encoding: utf-8
+
+zh-CN:
+  activerecord:
+    models:
+      site: '网站设置'
+    attributes:
+      site:
+        name: '名称'
+        value: '值'
+        id: '编号'

@@ -1,0 +1,25 @@
+<% title ["互联网创业， 项目投融资", "成都红宝石网络，您身边的企业信息化解决专家"].join(' - ') %>
+<% meta_keywords ["企业信息化咨询，成都红宝石企业网络策划"].join(' - ') %>
+<% meta_description ["成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
+
+<% content_for :aside do %>
+  <br/>
+  <%= project_tags %>
+<% end %>
+
+<div class="list">
+  <% tit = @project_cate ? @project_cate.name : (params[:tag] ? params[:tag] : "项目案例&解决方案资源库") %>
+  <h2><%= link_to tit, "/search?q=#{tit}"%></h2>
+  <hr/>
+  <br/>
+  <ul>
+    <% @project_items.each_with_index do |item, index| %>
+      <li>
+        <h3 class="titbg" ><%=link_to item.title, project_item_path(item)%></h3>
+        <p><%=  strip_tags(item.content).to_s.gsub(/[ ]+|\s+|\t+|\n+|&[#0-9a-z]+;/, '').truncate(200)%>
+        <strong><%=link_to '[阅读详情]↓', project_item_path(item)%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= will_paginate @project_items, :next_label => "下一页", :prev_label => "上一页" %>
+</div>

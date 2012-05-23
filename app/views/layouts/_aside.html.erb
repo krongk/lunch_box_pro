@@ -1,0 +1,26 @@
+<div class="indent">
+  <h3>信息分类</h3>
+  <ul class="list1">
+    <% NewsCate.recent(10).each do |item| %>
+      <li><%=link_to item.name, news_cate_path(item), :title => item.name %></li>
+    <% end %>
+    <% ProjectCate.all.each do |item| %>
+      <li><%=link_to item.name, project_cate_path(item), :title => item.name %></li>
+    <% end %>
+  </ul>
+</div>
+<!-- .box -->
+<div class="box">
+  <h3>会员登录</h3>
+  <form action="/admin" id="login-form">
+    <fieldset>
+      <div class="field"><label for="text">登录名（Username）:</label><input type="text" class="text" name="text"/></div>
+      <div class="field"><label for="text">密码（Password）:</label><input type="password" class="password" name="text"/></div>
+      <div class="wrapper">
+        <input type="submit" value="登 录" class="submit fleft" />
+        <div class="fright"><input type="checkbox" name="checkbox" id="checkbox" /><label for="checkbox">记住状态</label></div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<!-- /.box -->

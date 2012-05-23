@@ -1,0 +1,48 @@
+<% title [@project_item.title, "成都红宝石企业建站"].join('-') %>
+<% meta_keywords [@project_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
+<% meta_description [@project_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
+
+<% content_for :aside do %>
+  <br/>
+  <%= project_tags %>
+<% end %>
+
+<div class="news_main">
+  <div style="margin:4px;">首页 > <a href="/project_cates">项目资源库</a> > <%=link_to @project_item.project_cate.name, project_cate_path(@project_item.project_cate_id)%></div>
+
+  <div class="titlerb">
+    <h1><%= @project_item.title %></h1>
+  </div>
+  <div class="news_content">
+  <%=show_project_item(:column => "项目标签", :value => @project_item.tags, :link => "/project_items?tag=#{@project_item.tags}")%>
+  <%=show_project_item(:column => "分类", :value => @project_item.project_cate.name, :link => "/project_cates/#{@project_item.project_cate.id}")%>
+  <%=show_project_item(:column => "项目状态", :value =>@project_item.status) %>
+  <%=show_project_item(:column => "联系人", :value =>@project_item.name) %>
+  <%=show_project_item(:column => "联系电话", :value =>@project_item.phone) %>
+  <%=show_project_item(:column => "电子邮件", :value =>@project_item.email) %>
+  <%=show_project_item(:column => "公司名", :value =>@project_item.company) %>
+  <%=show_project_item(:column => "所在城市", :value =>@project_item.city) %>
+  <%=show_project_item(:column => "联系地址", :value =>@project_item.address) %>
+  <%=show_project_item(:column => "网站地址", :value =>@project_item.site_url) %>
+
+
+    <div class="news_summary">
+      <%=simple_format @project_item.summary.to_s.gsub(/^<br\/>|<p>/, '') unless @project_item.summary.blank?%>
+    </div><hr/>
+    &nbsp;&nbsp;&nbsp;&nbsp;<%=simple_format @project_item.content.to_s.gsub(/^<br\/>|<p>/, '') unless @project_item.content.blank?%>
+   
+    <div class="bshare">
+      <div class="bshare-custom">将该篇分享到：<a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren" href="javascript:void(0);"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=14aef883-fe5e-4c43-b8f6-cbf83629892b&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+    </div>
+    <!--相关新闻-->
+    <hr/>
+    <div class="related">
+     <h3>相关信息</h3>
+     <ul>
+       <% ProjectItem.recent_related(@project_item.tags.blank? ? @project_item.title : @project_item.tags.split(',').first).each do |item|%>
+         <li><%= link_to item.title, project_item_path(item.id)%></li>
+       <% end %>
+     </ul>
+    </div>
+  </div>
+</div>

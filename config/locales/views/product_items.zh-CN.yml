@@ -1,0 +1,20 @@
+---
+zh-CN:
+  product_items:
+    index:
+      title: Product items
+    show:
+      title: Product item
+    edit:
+      title: Editing Product item
+    new:
+      title: New Product item
+  flash:
+    product_items:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

@@ -1,0 +1,11 @@
+---
+en:
+  active_record:
+    models:
+      city: City
+    attributes:
+      city: {}
+    errors:
+      city: !!null 
+  helpers:
+    city: !!null 

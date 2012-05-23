@@ -1,0 +1,11 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      district: 地区
+    attributes:
+      district: {}
+    errors:
+      district: !!null 
+  helpers:
+    district: !!null 

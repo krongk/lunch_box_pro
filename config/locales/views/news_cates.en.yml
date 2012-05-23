@@ -1,0 +1,20 @@
+---
+en:
+  news_cates:
+    index:
+      title: News cates
+    show:
+      title: News cate
+    edit:
+      title: Editing News cate
+    new:
+      title: New News cate
+  flash:
+    news_cates:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

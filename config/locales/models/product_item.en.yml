@@ -1,0 +1,17 @@
+---
+en:
+  active_record:
+    models:
+      product_item: Product item
+    attributes:
+      product_item:
+        product_cate: Product cate
+        name: Name
+        description: Description
+        price: Price
+        image_url: Image url
+        is_visible: Is visible
+    errors:
+      product_item: !!null 
+  helpers:
+    product_item: !!null 

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_cate: 
+  tags: MyString
+  status: MyString
+  title: MyString
+  summary: MyString
+  content: MyText
+  name: MyString
+  phone: MyString
+  email: 
+  company: MyString
+  city: MyString
+  address: MyString
+  site_url: MyString
+  sort_id: 1
+  is_verfied: MyString
+  is_forager: MyString
+  forager_url: MyString
+  note: MyString
+
+two:
+  project_cate: 
+  tags: MyString
+  status: MyString
+  title: MyString
+  summary: MyString
+  content: MyText
+  name: MyString
+  phone: MyString
+  email: 
+  company: MyString
+  city: MyString
+  address: MyString
+  site_url: MyString
+  sort_id: 1
+  is_verfied: MyString
+  is_forager: MyString
+  forager_url: MyString
+  note: MyString

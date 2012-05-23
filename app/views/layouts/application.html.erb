@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="zh-cn" />
+  <meta name="robots" content="all" />
+  <meta name="author" content="inruby" />
+  <meta name="Copyright" content="Inruby Lcd, All Rights Reserved." />
+  <title><%= yield(:title) %> </title>
+  <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
+  <meta name="description" content="<%= yield(:meta_description)%>" />
+    
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 7]>
+    <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+</head> 
+ 
+<body id="page1">
+  <%=render :partial => "layouts/header" %>
+  <div id="content">
+    <div class="container">
+      <div class="wrapper">
+        <div class="aside">
+           <%=render :partial => "layouts/aside" %>
+           <%= yield :aside %>
+        </div>
+        <div class="mainContent">
+          <%=yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+ <%=render :partial => "layouts/footer" %>
+</body>
+</html>

@@ -1,0 +1,12 @@
+---
+en:
+  active_record:
+    models:
+      resource_cate: Resource cate
+    attributes:
+      resource_cate:
+        name: Name
+    errors:
+      resource_cate: !!null 
+  helpers:
+    resource_cate: !!null 

@@ -1,0 +1,75 @@
+<%#encoding: utf-8 %>
+<script>
+    $(document).ready(function(){
+      $("#new_contact").validate();
+    });
+</script>
+
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "姓名：" %><br />
+    <%= f.text_field :name, :class => 'required' %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, "电话：" %><br />
+    <%= f.text_field :phone, :class => 'required number'%>
+  </div>
+  <div class="field">
+    <%= f.label :email, "电子邮件：" %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :qq %><br />
+    <%= f.text_field :qq %>
+  </div>
+<!--   <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "地址：" %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "标题：" %><br />
+    <%= f.text_field :title %>
+  </div> -->
+  <div class="field">
+    <%= f.label :message, "内容：" %><br />
+    <%= f.text_area :message, :cols => 80, :value => '请详细描述您的需求' %>
+  </div>
+<!--   <div class="field">
+    <%= f.label :cate %><br />
+    <%= f.text_field :cate %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :is_verfied %><br />
+    <%= f.check_box :is_verfied %>
+  </div>
+  <div class="field">
+    <%= f.label :verfied_by %><br />
+    <%= f.text_field :verfied_by %>
+  </div>
+  <div class="field">
+    <%= f.label :is_deleted %><br />
+    <%= f.check_box :is_deleted %>
+  </div> -->
+   
+  <%= f.submit "   提  交    ", :class => "button" %>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  news_cate: 
+  title: MyString
+  body: MyText
+  external_url: MyString
+  image_url: MyString
+
+two:
+  news_cate: 
+  title: MyString
+  body: MyText
+  external_url: MyString
+  image_url: MyString

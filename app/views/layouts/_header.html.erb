@@ -1,0 +1,48 @@
+<!-- header -->
+<div id="header">
+  <div class="container">
+<!-- .logo -->
+    <div class="logo">
+      <a href="/"><img src="/assets/logo.gif"/></a>
+    </div>
+<!-- /.logo -->
+    <form action="/search" id="search-form">
+      <fieldset>
+        <input type="text" class="text" name="q" id="q"/><input type="submit" value="搜索" class="submit" />
+      </fieldset>
+    </form>
+<!-- .nav -->
+    <ul class="nav">
+      <li><a <%= current_class 'home index'%> href="/" title="home"><span>首页</span></a></li>
+      <li><a <%= current_class 'about'%> href="/about" title="about"><span>关于我们</span></a></li>
+      <li><a <%= current_class 'product'%> href="/product_items" title="project"><span>项目案例</span></a></li>
+      <li><a <%= current_class 'contact'%> href="/contact" title="contact"><span>联系我们</span></a></li>
+      <li><a <%= current_class 'sitemap'%> href="/sitemap" title="home"><span>网站地图</span></a></li>
+    </ul>
+<!-- /.nav -->
+<!-- .extra-box -->
+    <div class="extra-box">
+      <div class="inner">
+        <h2>成都红宝石信息<span>您身边的信息化解决专家</span></h2>
+        <ul>
+          <li><a href="/news_items/1">中小企业网站建设</a></li>
+          <li><a href="/news_items/10">多媒体设计制作</a></li>
+          <li><a href="/news_items/16">互联网,品牌策划</a></li>
+          <li><a href="/news_cates/3">企业信息化方案策划</a></li>
+          <li><a href="/pages/data">网络数据采集、云计算方案</a></li>
+          <li><a href="/pages/software">软件外包、定制开发</a></li>
+          <li><a href="/pages/E-commerce">电子商务</a></li>
+        </ul>
+        <div class="wrapper"><a href="/pages/service_more" class="link1"><em><b>更多服务</b></em></a></div>
+      </div>
+    </div>
+<!-- /.extra-box -->
+<!-- .intro-text -->
+    <div class="intro-text">
+      <h1>红宝石<span style="padding:12px;">在所有宝石中</span><em>最为珍贵</em></h1>
+      <p>红色永远是美的使者，红宝石更是将祝愿送予他人的最佳向导。由于红宝石弥漫着一股强烈的生气和浓艳的色彩，以前的人们认为它是不死鸟的化身，对其产生了热烈的幻想。</p>
+      <div class="wrapper"><a href="/pages/our_story" class="button"> 关于我们的故事 </a></div>
+    </div>
+<!-- /.intro-text -->
+  </div>
+</div>

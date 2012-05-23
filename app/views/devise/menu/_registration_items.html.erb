@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <%= link_to('修改账户', edit_user_registration_path) %>
+<% else %>
+  <%= link_to('加盟商注册申请', new_user_registration_path)  %>
+<% end %>
