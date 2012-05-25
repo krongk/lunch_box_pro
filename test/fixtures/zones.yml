@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  alias: MyString
+  addr: MyString
+  latitude: MyString
+  longitude: MyString
+  range: 9.99
+
+two:
+  name: MyString
+  alias: MyString
+  addr: MyString
+  latitude: MyString
+  longitude: MyString
+  range: 9.99

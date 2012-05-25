@@ -1,0 +1,71 @@
+<h1>Listing shops</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Avg</th>
+    <th>Biz time</th>
+    <th>Note</th>
+    <th>Rate</th>
+    <th>Score</th>
+    <th>Score kouwei</th>
+    <th>Score sudu</th>
+    <th>Score fuwu</th>
+    <th>Photo url</th>
+    <th>Tags</th>
+    <th>Secret</th>
+    <th>Has out food</th>
+    <th>Has out people</th>
+    <th>Is new added</th>
+    <th>Is hot</th>
+    <th>Hot unitl</th>
+    <th>Is discount</th>
+    <th>Discount value</th>
+    <th>Updated by</th>
+    <th>Is contacted</th>
+    <th>Is dealed</th>
+    <th>Original source</th>
+    <th>Original url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shops.each do |shop| %>
+  <tr>
+    <td><%= shop.name %></td>
+    <td><%= shop.description %></td>
+    <td><%= shop.avg %></td>
+    <td><%= shop.biz_time %></td>
+    <td><%= shop.note %></td>
+    <td><%= shop.rate %></td>
+    <td><%= shop.score %></td>
+    <td><%= shop.score_kouwei %></td>
+    <td><%= shop.score_sudu %></td>
+    <td><%= shop.score_fuwu %></td>
+    <td><%= shop.photo_url %></td>
+    <td><%= shop.tags %></td>
+    <td><%= shop.secret %></td>
+    <td><%= shop.has_out_food %></td>
+    <td><%= shop.has_out_people %></td>
+    <td><%= shop.is_new_added %></td>
+    <td><%= shop.is_hot %></td>
+    <td><%= shop.hot_unitl %></td>
+    <td><%= shop.is_discount %></td>
+    <td><%= shop.discount_value %></td>
+    <td><%= shop.updated_by %></td>
+    <td><%= shop.is_contacted %></td>
+    <td><%= shop.is_dealed %></td>
+    <td><%= shop.original_source %></td>
+    <td><%= shop.original_url %></td>
+    <td><%= link_to 'Show', shop %></td>
+    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+    <td><%= link_to 'Destroy', shop, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop', new_shop_path %>

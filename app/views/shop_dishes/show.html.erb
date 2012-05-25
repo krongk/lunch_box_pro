@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @shop_dish.shop %>
+</p>
+
+<p>
+  <b>Dish:</b>
+  <%= @shop_dish.dish %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @shop_dish.price %>
+</p>
+
+<p>
+  <b>Is discount:</b>
+  <%= @shop_dish.is_discount %>
+</p>
+
+<p>
+  <b>Discount value:</b>
+  <%= @shop_dish.discount_value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @shop_dish.description %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @shop_dish.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_dish_path(@shop_dish) %> |
+<%= link_to 'Back', shop_dishes_path %>

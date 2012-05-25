@@ -1,0 +1,35 @@
+<h1>Listing shop_dishes</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Dish</th>
+    <th>Price</th>
+    <th>Is discount</th>
+    <th>Discount value</th>
+    <th>Description</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_dishes.each do |shop_dish| %>
+  <tr>
+    <td><%= shop_dish.shop %></td>
+    <td><%= shop_dish.dish %></td>
+    <td><%= shop_dish.price %></td>
+    <td><%= shop_dish.is_discount %></td>
+    <td><%= shop_dish.discount_value %></td>
+    <td><%= shop_dish.description %></td>
+    <td><%= shop_dish.note %></td>
+    <td><%= link_to 'Show', shop_dish %></td>
+    <td><%= link_to 'Edit', edit_shop_dish_path(shop_dish) %></td>
+    <td><%= link_to 'Destroy', shop_dish, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop dish', new_shop_dish_path %>

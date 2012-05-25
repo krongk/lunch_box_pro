@@ -1,0 +1,16 @@
+---
+en:
+  active_record:
+    models:
+      dish: Dish
+    attributes:
+      dish:
+        dish_cate: Dish cate
+        name: Name
+        alilas: Alilas
+        photo_url: Photo url
+        description: Description
+    errors:
+      dish: !!null 
+  helpers:
+    dish: !!null 

@@ -1,0 +1,21 @@
+---
+en:
+  active_record:
+    models:
+      shop_address: Shop address
+    attributes:
+      shop_address:
+        shop: Shop
+        zone: Zone
+        region: Region
+        city: City
+        district: District
+        addr: Addr
+        zip: Zip
+        latitude: Latitude
+        longitude: Longitude
+        is_geocoded: Is geocoded
+    errors:
+      shop_address: !!null 
+  helpers:
+    shop_address: !!null 

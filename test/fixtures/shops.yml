@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  avg: MyString
+  biz_time: MyString
+  note: MyString
+  rate: 1.5
+  score: 1.5
+  score_kouwei: 1.5
+  score_sudu: 1.5
+  score_fuwu: 1.5
+  photo_url: MyString
+  tags: MyString
+  secret: MyString
+  has_out_food: false
+  has_out_people: false
+  is_new_added: false
+  is_hot: false
+  hot_unitl: 2012-05-23
+  is_discount: false
+  discount_value: 1.5
+  updated_by: 1
+  is_contacted: false
+  is_dealed: false
+  original_source: MyString
+  original_url: MyString
+
+two:
+  name: MyString
+  description: MyText
+  avg: MyString
+  biz_time: MyString
+  note: MyString
+  rate: 1.5
+  score: 1.5
+  score_kouwei: 1.5
+  score_sudu: 1.5
+  score_fuwu: 1.5
+  photo_url: MyString
+  tags: MyString
+  secret: MyString
+  has_out_food: false
+  has_out_people: false
+  is_new_added: false
+  is_hot: false
+  hot_unitl: 2012-05-23
+  is_discount: false
+  discount_value: 1.5
+  updated_by: 1
+  is_contacted: false
+  is_dealed: false
+  original_source: MyString
+  original_url: MyString

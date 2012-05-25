@@ -1,0 +1,41 @@
+<h1>Listing shop_addresses</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Zone</th>
+    <th>Region</th>
+    <th>City</th>
+    <th>District</th>
+    <th>Addr</th>
+    <th>Zip</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Is geocoded</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_addresses.each do |shop_address| %>
+  <tr>
+    <td><%= shop_address.shop %></td>
+    <td><%= shop_address.zone %></td>
+    <td><%= shop_address.region %></td>
+    <td><%= shop_address.city %></td>
+    <td><%= shop_address.district %></td>
+    <td><%= shop_address.addr %></td>
+    <td><%= shop_address.zip %></td>
+    <td><%= shop_address.latitude %></td>
+    <td><%= shop_address.longitude %></td>
+    <td><%= shop_address.is_geocoded %></td>
+    <td><%= link_to 'Show', shop_address %></td>
+    <td><%= link_to 'Edit', edit_shop_address_path(shop_address) %></td>
+    <td><%= link_to 'Destroy', shop_address, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop address', new_shop_address_path %>

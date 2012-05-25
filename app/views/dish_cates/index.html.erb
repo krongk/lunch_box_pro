@@ -1,0 +1,25 @@
+<h1>Listing dish_cates</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dish_cates.each do |dish_cate| %>
+  <tr>
+    <td><%= dish_cate.name %></td>
+    <td><%= dish_cate.description %></td>
+    <td><%= link_to 'Show', dish_cate %></td>
+    <td><%= link_to 'Edit', edit_dish_cate_path(dish_cate) %></td>
+    <td><%= link_to 'Destroy', dish_cate, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dish cate', new_dish_cate_path %>

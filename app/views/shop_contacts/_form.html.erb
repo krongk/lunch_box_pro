@@ -1,0 +1,57 @@
+<%= form_for(@shop_contact) do |f| %>
+  <% if @shop_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop_contact.errors.count, "error") %> prohibited this shop_contact from being saved:</h2>
+
+      <ul>
+      <% @shop_contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.text_field :shop %>
+  </div>
+  <div class="field">
+    <%= f.label :contacter_name %><br />
+    <%= f.text_field :contacter_name %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_phone %><br />
+    <%= f.text_field :tel_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone %><br />
+    <%= f.text_field :mobile_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :qq %><br />
+    <%= f.text_field :qq %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :other %><br />
+    <%= f.text_field :other %>
+  </div>
+  <div class="field">
+    <%= f.label :jiaotong %><br />
+    <%= f.text_field :jiaotong %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :weibo %><br />
+    <%= f.text_field :weibo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

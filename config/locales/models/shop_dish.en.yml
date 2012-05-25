@@ -1,0 +1,18 @@
+---
+en:
+  active_record:
+    models:
+      shop_dish: Shop dish
+    attributes:
+      shop_dish:
+        shop: Shop
+        dish: Dish
+        price: Price
+        is_discount: Is discount
+        discount_value: Discount value
+        description: Description
+        note: Note
+    errors:
+      shop_dish: !!null 
+  helpers:
+    shop_dish: !!null 

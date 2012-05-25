@@ -1,0 +1,20 @@
+---
+fr:
+  shop_contacts:
+    index:
+      title: Shop contacts
+    show:
+      title: Shop contact
+    edit:
+      title: Editing Shop contact
+    new:
+      title: New Shop contact
+  flash:
+    shop_contacts:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

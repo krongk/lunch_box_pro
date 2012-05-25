@@ -1,0 +1,13 @@
+---
+zh-CN:
+  active_record:
+    models:
+      dish_cate: Dish cate
+    attributes:
+      dish_cate:
+        name: Name
+        description: Description
+    errors:
+      dish_cate: !!null 
+  helpers:
+    dish_cate: !!null 

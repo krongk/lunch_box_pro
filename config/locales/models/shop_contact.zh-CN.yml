@@ -1,0 +1,21 @@
+---
+zh-CN:
+  active_record:
+    models:
+      shop_contact: Shop contact
+    attributes:
+      shop_contact:
+        shop: Shop
+        contacter_name: Contacter name
+        tel_phone: Tel phone
+        mobile_phone: Mobile phone
+        qq: Qq
+        email: Email
+        other: Other
+        jiaotong: Jiaotong
+        website: Website
+        weibo: Weibo
+    errors:
+      shop_contact: !!null 
+  helpers:
+    shop_contact: !!null 

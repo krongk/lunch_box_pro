@@ -1,0 +1,120 @@
+<%= form_for(@shop) do |f| %>
+  <% if @shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+      <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :avg %><br />
+    <%= f.text_field :avg %>
+  </div>
+  <div class="field">
+    <%= f.label :biz_time %><br />
+    <%= f.text_field :biz_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rate %><br />
+    <%= f.text_field :rate %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :score_kouwei %><br />
+    <%= f.text_field :score_kouwei %>
+  </div>
+  <div class="field">
+    <%= f.label :score_sudu %><br />
+    <%= f.text_field :score_sudu %>
+  </div>
+  <div class="field">
+    <%= f.label :score_fuwu %><br />
+    <%= f.text_field :score_fuwu %>
+  </div>
+  <div class="field">
+    <%= f.label :photo_url %><br />
+    <%= f.text_field :photo_url %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :secret %><br />
+    <%= f.text_field :secret %>
+  </div>
+  <div class="field">
+    <%= f.label :has_out_food %><br />
+    <%= f.check_box :has_out_food %>
+  </div>
+  <div class="field">
+    <%= f.label :has_out_people %><br />
+    <%= f.check_box :has_out_people %>
+  </div>
+  <div class="field">
+    <%= f.label :is_new_added %><br />
+    <%= f.check_box :is_new_added %>
+  </div>
+  <div class="field">
+    <%= f.label :is_hot %><br />
+    <%= f.check_box :is_hot %>
+  </div>
+  <div class="field">
+    <%= f.label :hot_unitl %><br />
+    <%= f.date_select :hot_unitl %>
+  </div>
+  <div class="field">
+    <%= f.label :is_discount %><br />
+    <%= f.check_box :is_discount %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_value %><br />
+    <%= f.text_field :discount_value %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br />
+    <%= f.number_field :updated_by %>
+  </div>
+  <div class="field">
+    <%= f.label :is_contacted %><br />
+    <%= f.check_box :is_contacted %>
+  </div>
+  <div class="field">
+    <%= f.label :is_dealed %><br />
+    <%= f.check_box :is_dealed %>
+  </div>
+  <div class="field">
+    <%= f.label :original_source %><br />
+    <%= f.text_field :original_source %>
+  </div>
+  <div class="field">
+    <%= f.label :original_url %><br />
+    <%= f.text_field :original_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_field :address_tokens, data: {load: @shop.shop_address} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

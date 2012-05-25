@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @shop_address.shop %>
+</p>
+
+<p>
+  <b>Zone:</b>
+  <%= @shop_address.zone %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @shop_address.region %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @shop_address.city %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @shop_address.district %>
+</p>
+
+<p>
+  <b>Addr:</b>
+  <%= @shop_address.addr %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @shop_address.zip %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @shop_address.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @shop_address.longitude %>
+</p>
+
+<p>
+  <b>Is geocoded:</b>
+  <%= @shop_address.is_geocoded %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_address_path(@shop_address) %> |
+<%= link_to 'Back', shop_addresses_path %>

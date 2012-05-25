@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @zone.name %>
+</p>
+
+<p>
+  <b>Alias:</b>
+  <%= @zone.alias %>
+</p>
+
+<p>
+  <b>Addr:</b>
+  <%= @zone.addr %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @zone.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @zone.longitude %>
+</p>
+
+<p>
+  <b>Range:</b>
+  <%= @zone.range %>
+</p>
+
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

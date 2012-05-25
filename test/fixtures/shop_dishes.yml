@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shop: 
+  dish: 
+  price: MyString
+  is_discount: false
+  discount_value: 1.5
+  description: MyText
+  note: MyString
+
+two:
+  shop: 
+  dish: 
+  price: MyString
+  is_discount: false
+  discount_value: 1.5
+  description: MyText
+  note: MyString

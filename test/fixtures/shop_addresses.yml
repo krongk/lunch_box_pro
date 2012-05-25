@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shop: 
+  zone: 
+  region: 
+  city: 
+  district: 
+  addr: MyString
+  zip: MyString
+  latitude: MyString
+  longitude: MyString
+  is_geocoded: false
+
+two:
+  shop: 
+  zone: 
+  region: 
+  city: 
+  district: 
+  addr: MyString
+  zip: MyString
+  latitude: MyString
+  longitude: MyString
+  is_geocoded: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309081451) do
+ActiveRecord::Schema.define(:version => 20120523055839) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -72,6 +72,25 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
     t.datetime "updated_at"
   end
 
+  create_table "dish_cates", :force => true do |t|
+    t.string   "name",        :limit => 64
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dishes", :force => true do |t|
+    t.integer  "dish_cate_id"
+    t.string   "name",         :limit => 128
+    t.string   "alilas",       :limit => 128
+    t.string   "photo_url",    :limit => 64
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dishes", ["dish_cate_id"], :name => "index_dishes_on_dish_cate_id"
+
   create_table "districts", :force => true do |t|
     t.string  "name"
     t.string  "en_name"
@@ -81,7 +100,6 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
   add_index "districts", ["city_id"], :name => "index_districts_on_city_id"
 
   create_table "news_cates", :force => true do |t|
-    t.string "cate", :limit => 64, :default => "news", :null => false
     t.string "name"
   end
 
@@ -98,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
   end
 
   add_index "news_items", ["news_cate_id"], :name => "index_news_items_on_news_cate_id"
+  add_index "news_items", ["title"], :name => "index_news_items_on_title"
 
   create_table "page_parts", :force => true do |t|
     t.integer "page_id"
@@ -174,8 +193,8 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
     t.string   "address"
     t.string   "site_url"
     t.integer  "sort_id",         :default => 10000
-    t.string   "is_verfied",      :default => "n"
-    t.string   "is_forager",      :default => "n"
+    t.boolean  "is_verfied",      :default => false
+    t.boolean  "is_forager",      :default => false
     t.string   "forager_url"
     t.string   "note"
     t.datetime "created_at"
@@ -184,30 +203,6 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
 
   add_index "project_items", ["project_cate_id"], :name => "index_project_items_on_project_cate_id"
   add_index "project_items", ["title"], :name => "index_project_items_on_title"
-
-  create_table "projects", :force => true do |t|
-    t.string   "cate",       :default => "数据采集"
-    t.string   "status",     :default => "项目推广"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "email"
-    t.string   "company"
-    t.string   "city"
-    t.string   "address"
-    t.string   "title"
-    t.text     "content"
-    t.string   "site_url"
-    t.boolean  "is_verfied", :default => false
-    t.boolean  "is_forager", :default => false
-    t.string   "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "projects", ["cate"], :name => "index_projects_on_cate"
-  add_index "projects", ["is_forager"], :name => "index_projects_on_is_forager"
-  add_index "projects", ["is_verfied"], :name => "index_projects_on_is_verfied"
-  add_index "projects", ["status"], :name => "index_projects_on_status"
 
   create_table "regions", :force => true do |t|
     t.string "name"
@@ -230,6 +225,99 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
 
   add_index "resource_items", ["resource_cate_id"], :name => "index_resource_items_on_resource_cate_id"
   add_index "resource_items", ["resource_type"], :name => "index_resource_items_on_resource_type"
+
+  create_table "shop_addresses", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "zone_id"
+    t.integer  "region_id"
+    t.integer  "city_id"
+    t.integer  "district_id"
+    t.string   "addr",        :limit => 64
+    t.string   "zip",         :limit => 16
+    t.string   "latitude",    :limit => 16
+    t.string   "longitude",   :limit => 16
+    t.boolean  "is_geocoded",               :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shop_addresses", ["city_id"], :name => "index_shop_addresses_on_city_id"
+  add_index "shop_addresses", ["district_id"], :name => "index_shop_addresses_on_district_id"
+  add_index "shop_addresses", ["region_id"], :name => "index_shop_addresses_on_region_id"
+  add_index "shop_addresses", ["shop_id"], :name => "index_shop_addresses_on_shop_id"
+  add_index "shop_addresses", ["zone_id"], :name => "index_shop_addresses_on_zone_id"
+
+  create_table "shop_contacts", :force => true do |t|
+    t.integer  "shop_id"
+    t.string   "contacter_name", :limit => 32
+    t.string   "tel_phone",      :limit => 16
+    t.string   "mobile_phone",   :limit => 16
+    t.string   "qq",             :limit => 16
+    t.string   "email",          :limit => 16
+    t.string   "other",          :limit => 512
+    t.string   "jiaotong",       :limit => 128
+    t.string   "website",        :limit => 32
+    t.string   "weibo",          :limit => 32
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shop_contacts", ["shop_id"], :name => "index_shop_contacts_on_shop_id"
+
+  create_table "shop_dishes", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "dish_id"
+    t.string   "price",          :limit => 16
+    t.boolean  "is_discount"
+    t.float    "discount_value"
+    t.text     "description"
+    t.string   "note",           :limit => 512
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shop_dishes", ["dish_id"], :name => "index_shop_dishes_on_dish_id"
+  add_index "shop_dishes", ["shop_id"], :name => "index_shop_dishes_on_shop_id"
+
+  create_table "shops", :force => true do |t|
+    t.string   "name",            :limit => 128
+    t.text     "description"
+    t.string   "avg",             :limit => 64
+    t.string   "biz_time",        :limit => 64
+    t.string   "note"
+    t.float    "rate"
+    t.float    "score"
+    t.float    "score_kouwei"
+    t.float    "score_sudu"
+    t.float    "score_fuwu"
+    t.string   "photo_url",       :limit => 128
+    t.string   "shop_cate",       :limit => 128
+    t.string   "tags"
+    t.string   "secret",          :limit => 32
+    t.boolean  "has_out_food",                   :default => false
+    t.boolean  "has_out_people",                 :default => false
+    t.boolean  "is_new_added",                   :default => false
+    t.boolean  "is_hot",                         :default => false
+    t.date     "hot_unitl"
+    t.boolean  "is_discount",                    :default => false
+    t.float    "discount_value"
+    t.integer  "updated_by",                     :default => 0
+    t.boolean  "is_contacted",                   :default => false
+    t.boolean  "is_dealed",                      :default => false
+    t.string   "original_source", :limit => 32
+    t.string   "original_url",    :limit => 128
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shops", ["has_out_food"], :name => "index_shops_on_has_out_food"
+  add_index "shops", ["has_out_people"], :name => "index_shops_on_has_out_people"
+  add_index "shops", ["is_contacted"], :name => "index_shops_on_is_contacted"
+  add_index "shops", ["is_dealed"], :name => "index_shops_on_is_dealed"
+  add_index "shops", ["is_discount"], :name => "index_shops_on_is_discount"
+  add_index "shops", ["is_hot"], :name => "index_shops_on_is_hot"
+  add_index "shops", ["is_new_added"], :name => "index_shops_on_is_new_added"
+  add_index "shops", ["name"], :name => "index_shops_on_name"
 
   create_table "sites", :force => true do |t|
     t.string "name"
@@ -263,5 +351,16 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+  create_table "zones", :force => true do |t|
+    t.string   "name",       :limit => 64
+    t.string   "alias",      :limit => 64
+    t.string   "addr",       :limit => 128
+    t.string   "latitude",   :limit => 16
+    t.string   "longitude",  :limit => 16
+    t.decimal  "range",                     :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

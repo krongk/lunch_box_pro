@@ -6,5 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tinymce
-//= require_tree .
+//= require jquery.tokeninput
+//= require shops
+// require tinymce
+// require_tree .
+
+

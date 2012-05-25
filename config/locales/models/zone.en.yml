@@ -1,0 +1,17 @@
+---
+en:
+  active_record:
+    models:
+      zone: Zone
+    attributes:
+      zone:
+        name: Name
+        alias: Alias
+        addr: Addr
+        latitude: Latitude
+        longitude: Longitude
+        range: Range
+    errors:
+      zone: !!null 
+  helpers:
+    zone: !!null 

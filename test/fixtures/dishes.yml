@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dish_cate: 
+  name: MyString
+  alilas: MyString
+  photo_url: MyString
+  description: MyText
+
+two:
+  dish_cate: 
+  name: MyString
+  alilas: MyString
+  photo_url: MyString
+  description: MyText

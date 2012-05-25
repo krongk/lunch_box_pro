@@ -1,0 +1,33 @@
+<h1>Listing zones</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Alias</th>
+    <th>Addr</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Range</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @zones.each do |zone| %>
+  <tr>
+    <td><%= zone.name %></td>
+    <td><%= zone.alias %></td>
+    <td><%= zone.addr %></td>
+    <td><%= zone.latitude %></td>
+    <td><%= zone.longitude %></td>
+    <td><%= zone.range %></td>
+    <td><%= link_to 'Show', zone %></td>
+    <td><%= link_to 'Edit', edit_zone_path(zone) %></td>
+    <td><%= link_to 'Destroy', zone, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Zone', new_zone_path %>

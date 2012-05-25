@@ -1,0 +1,20 @@
+---
+zh-CN:
+  shops:
+    index:
+      title: Shops
+    show:
+      title: Shop
+    edit:
+      title: Editing Shop
+    new:
+      title: New Shop
+  flash:
+    shops:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

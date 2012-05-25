@@ -1,0 +1,41 @@
+<h1>Listing shop_contacts</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Contacter name</th>
+    <th>Tel phone</th>
+    <th>Mobile phone</th>
+    <th>Qq</th>
+    <th>Email</th>
+    <th>Other</th>
+    <th>Jiaotong</th>
+    <th>Website</th>
+    <th>Weibo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_contacts.each do |shop_contact| %>
+  <tr>
+    <td><%= shop_contact.shop %></td>
+    <td><%= shop_contact.contacter_name %></td>
+    <td><%= shop_contact.tel_phone %></td>
+    <td><%= shop_contact.mobile_phone %></td>
+    <td><%= shop_contact.qq %></td>
+    <td><%= shop_contact.email %></td>
+    <td><%= shop_contact.other %></td>
+    <td><%= shop_contact.jiaotong %></td>
+    <td><%= shop_contact.website %></td>
+    <td><%= shop_contact.weibo %></td>
+    <td><%= link_to 'Show', shop_contact %></td>
+    <td><%= link_to 'Edit', edit_shop_contact_path(shop_contact) %></td>
+    <td><%= link_to 'Destroy', shop_contact, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop contact', new_shop_contact_path %>

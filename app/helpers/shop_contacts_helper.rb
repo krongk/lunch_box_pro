@@ -1,0 +1,2 @@
+module ShopContactsHelper
+end

@@ -1,0 +1,36 @@
+---
+zh-CN:
+  active_record:
+    models:
+      shop: Shop
+    attributes:
+      shop:
+        name: Name
+        description: Description
+        avg: Avg
+        biz_time: Biz time
+        note: Note
+        rate: Rate
+        score: Score
+        score_kouwei: Score kouwei
+        score_sudu: Score sudu
+        score_fuwu: Score fuwu
+        photo_url: Photo url
+        tags: Tags
+        secret: Secret
+        has_out_food: Has out food
+        has_out_people: Has out people
+        is_new_added: Is new added
+        is_hot: Is hot
+        hot_unitl: Hot unitl
+        is_discount: Is discount
+        discount_value: Discount value
+        updated_by: Updated by
+        is_contacted: Is contacted
+        is_dealed: Is dealed
+        original_source: Original source
+        original_url: Original url
+    errors:
+      shop: !!null 
+  helpers:
+    shop: !!null 
