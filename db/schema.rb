@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523055839) do
+ActiveRecord::Schema.define(:version => 20120529093311) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -27,6 +27,28 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "city_id"
+    t.integer  "district_id"
+    t.integer  "zone_id"
+    t.string   "addr",         :limit => 64
+    t.string   "full_addr"
+    t.float    "latitude",     :limit => 9
+    t.float    "longitude",    :limit => 9
+    t.string   "is_new_added", :limit => 50, :default => "-"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["city_id", "addr"], :name => "unq__city_addr", :unique => true
+  add_index "addresses", ["city_id"], :name => "index_addresses_on_city_id"
+  add_index "addresses", ["district_id"], :name => "index_addresses_on_district_id"
+  add_index "addresses", ["full_addr"], :name => "unq__full_addr", :unique => true
+  add_index "addresses", ["latitude", "longitude"], :name => "unq__latitude_longitude", :unique => true
+  add_index "addresses", ["region_id"], :name => "index_addresses_on_region_id"
+  add_index "addresses", ["zone_id"], :name => "index_addresses_on_zone_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -83,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
     t.integer  "dish_cate_id"
     t.string   "name",         :limit => 128
     t.string   "alilas",       :limit => 128
-    t.string   "photo_url",    :limit => 64
+    t.string   "photo_url"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -98,6 +120,15 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
   end
 
   add_index "districts", ["city_id"], :name => "index_districts_on_city_id"
+
+  create_table "ip_addresses", :force => true do |t|
+    t.integer  "address_id"
+    t.string   "ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ip_addresses", ["address_id"], :name => "index_ip_addresses_on_address_id"
 
   create_table "news_cates", :force => true do |t|
     t.string "name"
@@ -232,11 +263,14 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
     t.integer  "region_id"
     t.integer  "city_id"
     t.integer  "district_id"
-    t.string   "addr",        :limit => 64
-    t.string   "zip",         :limit => 16
-    t.string   "latitude",    :limit => 16
-    t.string   "longitude",   :limit => 16
-    t.boolean  "is_geocoded",               :default => false
+    t.string   "addr",         :limit => 64
+    t.string   "full_addr"
+    t.string   "zip",          :limit => 16
+    t.decimal  "latitude",                   :precision => 9, :scale => 6
+    t.decimal  "longitude",                  :precision => 9, :scale => 6
+    t.string   "is_geocoded",  :limit => 50,                               :default => "n"
+    t.string   "is_formatted", :limit => 50,                               :default => "n"
+    t.string   "is_copied",    :limit => 50,                               :default => "n"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -250,12 +284,12 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
   create_table "shop_contacts", :force => true do |t|
     t.integer  "shop_id"
     t.string   "contacter_name", :limit => 32
-    t.string   "tel_phone",      :limit => 16
-    t.string   "mobile_phone",   :limit => 16
-    t.string   "qq",             :limit => 16
-    t.string   "email",          :limit => 16
+    t.string   "tel_phone",      :limit => 128
+    t.string   "mobile_phone",   :limit => 128
+    t.string   "qq",             :limit => 64
+    t.string   "email",          :limit => 64
     t.string   "other",          :limit => 512
-    t.string   "jiaotong",       :limit => 128
+    t.string   "jiaotong",       :limit => 512
     t.string   "website",        :limit => 32
     t.string   "weibo",          :limit => 32
     t.datetime "created_at"
@@ -268,7 +302,8 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
     t.integer  "shop_id"
     t.integer  "dish_id"
     t.string   "price",          :limit => 16
-    t.boolean  "is_discount"
+    t.boolean  "is_hot",                        :default => false
+    t.boolean  "is_discount",                   :default => false
     t.float    "discount_value"
     t.text     "description"
     t.string   "note",           :limit => 512
@@ -283,14 +318,15 @@ ActiveRecord::Schema.define(:version => 20120523055839) do
     t.string   "name",            :limit => 128
     t.text     "description"
     t.string   "avg",             :limit => 64
-    t.string   "biz_time",        :limit => 64
-    t.string   "note"
+    t.string   "biz_time"
+    t.string   "shihe",           :limit => 512
+    t.string   "sheshi"
     t.float    "rate"
     t.float    "score"
     t.float    "score_kouwei"
     t.float    "score_sudu"
     t.float    "score_fuwu"
-    t.string   "photo_url",       :limit => 128
+    t.string   "photo_url"
     t.string   "shop_cate",       :limit => 128
     t.string   "tags"
     t.string   "secret",          :limit => 32

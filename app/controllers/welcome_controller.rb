@@ -5,7 +5,11 @@ class WelcomeController < ApplicationController
   end
 
   def index
-    render :text => params
+    if cookies[:addr]
+      render :text => cookies[:addr]
+    else
+      redirect_to new_address_path
+    end
   end
 
   def help

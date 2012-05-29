@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      address: Address
+    attributes:
+      address:
+        region: Region
+        city: City
+        district: District
+        zone: Zone
+        addr: Addr
+        full_addr: Full addr
+        latitude: Latitude
+        longitude: Longitude
+    errors:
+      address: !!null 
+  helpers:
+    address: !!null 

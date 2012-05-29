@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  region: 
+  city: 
+  district: 
+  zone: 
+  addr: MyString
+  full_addr: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  region: 
+  city: 
+  district: 
+  zone: 
+  addr: MyString
+  full_addr: MyString
+  latitude: 1.5
+  longitude: 1.5

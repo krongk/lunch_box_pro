@@ -1,0 +1,13 @@
+---
+zh-CN:
+  active_record:
+    models:
+      ip_address: Ip address
+    attributes:
+      ip_address:
+        address: Address
+        ip: Ip
+    errors:
+      ip_address: !!null 
+  helpers:
+    ip_address: !!null 

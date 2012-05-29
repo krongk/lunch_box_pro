@@ -49,3 +49,6 @@ gem 'nokogiri'
 
 #===
 gem 'chinese_pinyin'
+
+#geocoder
+gem 'geocoder'
