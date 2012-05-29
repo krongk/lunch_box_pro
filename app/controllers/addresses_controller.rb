@@ -27,7 +27,7 @@ class AddressesController < ApplicationController
 
     #3.set cookie
     cookies.delete :addr
-    cookies[:addr] = "#{a.addr}[#{a.latitude},#{a.longitude}]"
+    cookies[:addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
 
     #4.store IP-address
     if request.remote_ip
@@ -41,6 +41,7 @@ class AddressesController < ApplicationController
     redirect_to '/'
   end
 
+  #render json used for auto-complete
   def index
     @addresses = Address.order(:addr).where("addr like ?", "%#{params[:term]}%").limit(10)
     render json: @addresses.map(&:addr)

@@ -6,8 +6,9 @@ jQuery ->
     theme: 'facebook'
     prePopulate: $('#shop_address_tokens').data('load')
     propertyToSearch: "addr"
+    tokenValue: "full_addr"
     hintText: "输入部分地址也行"
     noResultsText: "没找到匹配的位置"
     searchingText: "开找啦..."
-    preventDuplicates: true
+    preventDuplicates: false
     tokenLimit: 1

@@ -1,2 +1,17 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+<h3><%= @location  %>[<%= @point  %>]</h3>
+<%= @shop_addresses.size %>
+<ul>
+<% for shop_address in @shop_addresses %>
+  <% shop = shop_address.shop %>
+  <% shop_dishes = shop.shop_dishes %>
+  <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
+    <span style="color:green;"> <%= shop_address.distance.round(2) %> miles</span>)
+    <ul>
+      <% shop_dishes.each do |shop_dish| %>
+        <li><%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
