@@ -13,14 +13,14 @@ class AddressesController < ApplicationController
     # 匹配简体  
     q = params[:address][:addr]
     if q.blank? || q !~ /[\u4E00-\u9FFF]{3,}/
-      flash[:notice] = "请输入正确的地址"
+      flash[:error] = "请输入正确的地址"
       redirect_to new_address_path
       return
     end
     #2. geocoder 地址
     a = Address.get(q)
     unless a
-      flash[:notice] = "您输入的地址无效，找不到与您地址匹配的任何信息"
+      flash[:error] = "您输入的地址无效，找不到与您地址匹配的任何信息"
       redirect_to new_address_path
       return
     end
@@ -38,16 +38,24 @@ class AddressesController < ApplicationController
       rescue
       end
     end
+    flash[:notice] = "欢迎来到成都订餐网，尽情享受您的订餐之旅吧！"
     redirect_to '/'
   end
 
   #render json used for auto-complete
   def index
-    @@addr_has ||= RailsOnWeb::Application.config.address_token
-    @@addr_has = @@addr_has.select{|k, v| v =~ /#{params[:term]}/i}
-    @addresses = @@addr_has.keys[0..30]
-    render json: @addresses
-    #@addresses = Address.order(:addr).where("en_addr like ? OR addr like ?", "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
-    # render json: @addresses.map(&:addr)
+    # puts "addr_has object::::::"
+    # puts @@addr_hash
+
+    # @@addr_has ||= RailsOnWeb::Application.config.address_token
+    # @@addr_has = @@addr_has.select{|k, v| v =~ /#{params[:term]}/i}
+    # @addresses = @@addr_has.keys[0..30]
+    # render json: @addresses
+
+    # @addresses = Address.address_hash.select{|k, v| v =~ /#{params[:term]}/i}.keys[0..10]
+    # render json: @addresses
+
+    @addresses = Address.where("en_addr like ? OR addr like ?", "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
+    render json: @addresses.map(&:addr)
   end
 end

@@ -8,7 +8,7 @@
   <% shop = shop_address.shop %>
   <% shop_dishes = shop.shop_dishes %>
   <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
-    <span style="color:green;"> <%= shop_address.distance.round(2) %> miles</span>)
+    <span style="color:green;"> <%= shop_address.distance.round(2) %> 公里</span>)
     <ul>
       <% shop_dishes.each do |shop_dish| %>
         <li><%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>

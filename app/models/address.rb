@@ -10,11 +10,15 @@ class Address < ActiveRecord::Base
 
   #定义地址检索索引，加速auto-complete
   def self.address_hash
-    @@addr_hash ||= {}
-    self.all.each  do |a|
-      @@addr_hash[a.addr] = "#{a.en_addr.to_s.gsub(/ /, '')} #{a.en_addr} #{a.full_addr}"
+    puts ".....................init hash.............."
+    $addr_hash ||= {}
+    if $addr_hash.empty?
+      self.all.each  do |a|
+        $addr_hash[a.addr] = "#{a.en_addr.to_s.gsub(/ /, '')} #{a.en_addr} #{a.full_addr}"
+      end
     end
-    @@addr_hash
+    puts "................done......................"
+    $addr_hash
   end
   #通过搜索参数获取地址的point, 通过point就可以得到所有附件餐厅
   def self.get(addr)

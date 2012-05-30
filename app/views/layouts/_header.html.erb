@@ -1,20 +1,14 @@
-<!-- header -->
 <div id="header">
-  <div class="container">
-<!-- .logo -->
-    <div class="logo">
-      <a href="/"><img src="/assets/logo.gif"/></a>
-    </div>
-<!-- /.logo -->
-    
-    <form action="/search" id="search-form">
-      <fieldset>
-        你现在所在的位置：<%=cookies[:addr] %>, <%=link_to '更换', new_address_path %>
-      </fieldset>
-    </form>
-<!-- .nav -->
+  <h1 id="site_title"><a href="http://localhost:3000/">Happy.cd</a></h1>
+  
+  <ul class="tabbed_navigation" id="tabs">
+   
+    <li id=""><%=link_to "(#{cookies[:location].truncate(20)})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
+    <li id=""><a href="http://localhost:3000/admin">使用帮助</a></li>
+  </ul>
 
-<!-- /.nav -->
-
-  </div>
+  <p id="utility_nav">
+    <a href="http://localhost:3000/admin/" data-method="get">登录</a>
+    <a href="http://localhost:3000/admin/logout" data-method="get">注册</a>
+  </p>
 </div>

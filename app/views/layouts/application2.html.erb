@@ -11,24 +11,26 @@
   <meta name="description" content="<%= yield(:meta_description)%>" />
     
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag  "jquery","jquery-ui", "addresses" %>
+  <%= javascript_include_tag "jquery", "jquery-ui", "addresses" %>
+
   <%= csrf_meta_tags %>
   <!--[if lt IE 7]>
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
-
-   
 </head> 
  
-<body id="page1">
-  <%=render :partial => "layouts/header" %>
-  <div id="content">
-    <div class="container">
-      <div class="wrapper">
-          <%=yield %>
-      </div>
-    </div>
+<body class="index admin_contacts logged_in" screen_capture_injected="true">
+
+<div id="header">
+  <h1 id="site_title"><a href="http://localhost:3000/">可口可餐</a></h1>
+</div>
+
+<div id="wrapper">
+  <div id="active_admin_content" class="with_sidebar">
+    <%=render :partial => "layouts/flashes" %>
+    <%= yield %>
   </div>
- <%#render :partial => "layouts/footer" %>
+  <%=render :partial => "layouts/footer" %>
+</div>
 </body>
 </html>

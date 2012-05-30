@@ -6,5 +6,7 @@
  * 
  *= require_self
  *= require token-input-facebook
+ *= require active_admin
+ *= require active_admin_form
  *= require_tree .
 */

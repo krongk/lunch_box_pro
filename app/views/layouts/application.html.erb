@@ -20,22 +20,24 @@
    
 </head> 
  
-<body id="page1">
+<body class="index admin_contacts logged_in" screen_capture_injected="true">
+<div id="wrapper">
   <%=render :partial => "layouts/header" %>
-  <div id="content">
-    <div class="container">
-      <div class="menu">f</div>
-      <div class="wrapper">
-        <div class="aside">
-           <%=render :partial => "layouts/aside" %>
-           <%= yield :aside %>
-        </div>
-        <div class="mainContent">
-          <%=yield %>
-        </div>
+  <%=render :partial => "layouts/flashes" %>
+  <%=render :partial => "layouts/title_bar" %>
+
+  <div id="active_admin_content" class="with_sidebar">
+    <div id="main_content_wrapper">
+      <div id="main_content">
+        <%= yield %>
       </div>
     </div>
+    <div id="sidebar">
+      <%=render :partial => "layouts/sidebar" %>
+    </div>
   </div>
- <%=render :partial => "layouts/footer" %>
+
+  <%=render :partial => "layouts/footer" %>
+</div>
 </body>
 </html>

@@ -3,4 +3,6 @@
 jQuery ->
   $('#address_addr').autocomplete
     source: $('#address_addr').data('autocomplete-source')
-    delay: 0
+    minLength: 2
+    autoFocus: true
+    delay: 300

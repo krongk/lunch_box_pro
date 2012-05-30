@@ -7,8 +7,8 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require jquery.tokeninput
-//= require shops
+// require jquery.tokeninput
+// require shops
 //= require tinymce
 //= require_tree .
 

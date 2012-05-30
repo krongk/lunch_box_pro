@@ -23,6 +23,8 @@ class WelcomeController < ApplicationController
     if cookies[:addr]
       addr_arr = cookies[:addr].split('|')
       @location = addr_arr.shift
+      #get location
+      cookies[:location] = @location
       @point = addr_arr.shift.split(',')
       @shop_addresses = ShopAddress.near(@point, 1).limit(20)
       @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5

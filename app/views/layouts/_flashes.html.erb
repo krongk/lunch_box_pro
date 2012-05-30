@@ -1,0 +1,12 @@
+<%# See AJAX tutors: http://bjhess.com/blog/fading-flash-message/ %>
+<div class="flashes">
+	<% if flash[:error] or flash[:notice] %>
+		<div id="notice" class="flash flash_<%= flash[:error] ? 'error' : 'notice'%>">
+		  <%= flash[:error] || flash[:notice] %>
+		</div>
+
+		<script type="text/javascript">
+		  setTimeout("new Effect.Fade('$notice');", 15000)
+		</script>
+	<% end %>
+</div>

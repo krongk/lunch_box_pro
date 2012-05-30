@@ -5,17 +5,22 @@
 // To customize the Active Admin interfaces, add your
 // styles here:
 
-.admin_content{
-    border: 1px #ccc solid;
-    padding: 10px;
-    background:#fff; 
-    white-space:normal;
-    word-break:break-all;
-    overflow:auto;
-    width: 95%;
+#wrapper {
+  width: 960px;
+  margin: 0 auto;
+  /*height for footer*/
+  height: 600px;
 }
-.admin_title{
-    border-bottom: 2px #ccc solid;
-    padding: 10px;
-    background:#fff; 
+
+#header #utility_nav {
+  position: relative;
+  float:right;
+  color: #aaa;
+  right: 0px;
+  top: 0px;
 }
+
+#active_admin_content {
+  padding: 20px 0px;
+}
+

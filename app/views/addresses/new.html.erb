@@ -1,10 +1,10 @@
-<%= flash[:notice] %>
-
-<%  @address ||= Address.new %>
-<%= form_for(@address) do |f| %>
-  <div class="search_tips">*请输入您所在的位置， 如：科华北路62号力宝大厦</div>
-  <%= f.text_field :addr, data: {autocomplete_source: addresses_path} %>
-  <%= f.submit '找外卖' %>
-<% end %>
-
-<div style="background-color: #ddccee; height: 400px;margin: 50px 0;">&nbsp;图片展示： 关于成都订餐网</div>
+<div id="title_bar" height="400px">
+  <%  @address ||= Address.new %>
+  <%= form_for(@address, :html =>{:class => "formtastic"}) do |f| %>
+	  <div class="flash flash_notice">*请输入您所在的位置， 如：科华北路62号力宝大厦</div>
+	  <fieldset class="buttons">
+	    <%= f.text_field :addr, data: {autocomplete_source: addresses_path} %>
+	    <%= f.submit '找外卖' %>
+	  </fieldset>
+  <% end %>
+</div>

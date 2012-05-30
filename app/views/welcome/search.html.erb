@@ -24,14 +24,9 @@
       <% end %>
 
       <div class="field">
-        <%= f.text_field :address_tokens, data: {load: @shop.shop_address} %><br/><br/>
-      </div>
-      <div class="submit">
-        <%= f.submit '找外卖' %>
+        <%= f.text_field :address_tokens, data: {load: @shop.shop_address} %>
       </div>
     <% end %>
  </div>
-
- <%=render :file => 'welcome/baidu_map_point_picker.html' %>
 </body>
 </html>
