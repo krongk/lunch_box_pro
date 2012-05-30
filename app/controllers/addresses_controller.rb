@@ -43,7 +43,11 @@ class AddressesController < ApplicationController
 
   #render json used for auto-complete
   def index
-    @addresses = Address.order(:addr).where("addr like ?", "%#{params[:term]}%").limit(10)
-    render json: @addresses.map(&:addr)
+    @@addr_has ||= RailsOnWeb::Application.config.address_token
+    @@addr_has = @@addr_has.select{|k, v| v =~ /#{params[:term]}/i}
+    @addresses = @@addr_has.keys[0..30]
+    render json: @addresses
+    #@addresses = Address.order(:addr).where("en_addr like ? OR addr like ?", "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
+    # render json: @addresses.map(&:addr)
   end
 end

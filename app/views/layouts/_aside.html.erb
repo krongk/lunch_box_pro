@@ -1,26 +1,29 @@
-<div class="indent">
-  <h3>信息分类</h3>
-  <ul class="list1">
-    <% NewsCate.recent(10).each do |item| %>
-      <li><%=link_to item.name, news_cate_path(item), :title => item.name %></li>
-    <% end %>
-    <% ProjectCate.all.each do |item| %>
-      <li><%=link_to item.name, project_cate_path(item), :title => item.name %></li>
-    <% end %>
-  </ul>
-</div>
+
 <!-- .box -->
 <div class="box">
-  <h3>会员登录</h3>
+  <h3>美食搜索</h3>
   <form action="/admin" id="login-form">
     <fieldset>
-      <div class="field"><label for="text">登录名（Username）:</label><input type="text" class="text" name="text"/></div>
-      <div class="field"><label for="text">密码（Password）:</label><input type="password" class="password" name="text"/></div>
-      <div class="wrapper">
-        <input type="submit" value="登 录" class="submit fleft" />
-        <div class="fright"><input type="checkbox" name="checkbox" id="checkbox" /><label for="checkbox">记住状态</label></div>
-      </div>
+      <div class="field"><input type="text" class="text" name="text" value ="今天想吃什么外卖？"/></div>
     </fieldset>
   </form>
-</div>
+
+
+  <div id="cart_outer" class="noncollapsible noorder" style="width: 299px; ">
+    <h3>订餐篮子</h3>
+      <ul class="cart" id="cart_unique"><li class="restaurant " id="cart_restaurant1431"><div class="meta vcard"><span class="name">鑫红碗(建外SOHO店)</span><span class="tel"></span></div><ul class="dishes"><li id="cart_item489652" class="dish rev134743"><span class="name">红油百叶</span><span class="price">12</span><span class="cart_count" id="cart_count489652">1</span><a class="delete" href="javascript:void(0)"></a></li><li id="cart_item489654" class="dish rev134743"><span class="name">香辣鸡丝</span><span class="price">10</span><span class="cart_count" id="cart_count489654">1</span><a class="delete" href="javascript:void(0)"></a></li><li id="cart_item489656" class="dish rev134743"><span class="name">凉拌金针菇</span><span class="price">8</span><span class="cart_count" id="cart_count489656">1</span><a class="delete" href="javascript:void(0)"></a></li><li id="cart_item489658" class="dish rev134743"><span class="name">五香豆腐丝</span><span class="price">6</span><span class="cart_count" id="cart_count489658">1</span><a class="delete" href="javascript:void(0)"></a></li></ul></li></ul>
+
+      <div id="order_controls">
+        <a id="cart_clear" class="btn" href="javascript:void(0)" rel="nofollow">清空</a>
+        <a id="cart_submit" class="btn" href="/orders/create" rel="nofollow">创建订单</a>
+        <a id="cart_view" class="btn" href="/orders" rel="nofollow">查看订单</a>
+      </div>
+  </div>
+</div>      
 <!-- /.box -->
+
+<div class="sidebar_section panel" id="filters_sidebar_section">
+            <h3>所有条件</h3>
+            <div class="panel_contents"><form accept-charset="UTF-8" action="/admin/product_cates" class="filter_form" id="q_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div><div class="filter_form_field filter_string"><label for="q_name_contains">查找名称</label>
+<input id="q_name_contains" name="q[name_contains]" size="30" type="text"></div><div class="buttons"><input name="commit" type="submit" value="过滤"><a href="#" class="clear_filters_btn">清除条件</a><input id="order" name="order" type="hidden" value="id_desc"><input id="scope" name="scope" type="hidden"></div></form></div>
+          </div>

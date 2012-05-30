@@ -8,6 +8,15 @@ class Address < ActiveRecord::Base
   geocoded_by :full_addr
   after_validation :geocode
 
+  #定义地址检索索引，加速auto-complete
+  def self.address_hash
+    @@addr_hash ||= {}
+    self.all.each  do |a|
+      @@addr_hash[a.addr] = "#{a.en_addr.to_s.gsub(/ /, '')} #{a.en_addr} #{a.full_addr}"
+    end
+    @@addr_hash
+  end
+  #通过搜索参数获取地址的point, 通过point就可以得到所有附件餐厅
   def self.get(addr)
 
     a = find_by_addr(addr)
@@ -23,8 +32,6 @@ class Address < ActiveRecord::Base
       
       unless point.nil?
         a = self.where(["latitude like ? AND longitude like ?", "#{point[0].to_s[0..6]}%", "#{point[1].to_s[0..7]}%"]).try(:first)
-        puts '----------------------------'
-        puts a
         unless a
           a = create!(
             :addr => addr,

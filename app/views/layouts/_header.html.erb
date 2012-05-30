@@ -8,9 +8,8 @@
 <!-- /.logo -->
     
     <form action="/search" id="search-form">
-      <fieldset><br/><br/>
+      <fieldset>
         你现在所在的位置：<%=cookies[:addr] %>, <%=link_to '更换', new_address_path %>
-        <input type="text" class="text" name="q" id="q"/><input type="submit" value="搜索" class="submit" />
       </fieldset>
     </form>
 <!-- .nav -->

@@ -1,6 +1,8 @@
+<div style="background-color: #ffcc00;">
+  <h3><%= @location  %></h3>
+  在您附近找到<b><%= @shop_addresses.size %></b>家餐厅，<b>233</b>道美食！
+</div>
 
-<h3><%= @location  %>[<%= @point  %>]</h3>
-<%= @shop_addresses.size %>
 <ul>
 <% for shop_address in @shop_addresses %>
   <% shop = shop_address.shop %>

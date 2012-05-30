@@ -1,127 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @shop.name %>
-</p>
+<div id="shop_show">
+  <h2> <%= @shop.name %> </h2>
+  <div class="biz">
+    <%= @shop.show_biz_time %>
+    <%= @shop.show_avg %>
 
-<p>
-  <b>Description:</b>
-  <%= @shop.description %>
-</p>
+    <%= @shop.show_has_out_food %>
+    <%= @shop.show_is_hot %>
+    <%= @shop.show_discount %>
+  </div>
+  <div class="rate">
+    <%= @shop.rate %>
+    
+    <%= @shop.show_score %>
 
-<p>
-  <b>Avg:</b>
-  <%= @shop.avg %>
-</p>
+    <%= @shop.show_score_kouwei %>
+ 
+    <%= @shop.show_score_sudu %>
+ 
+    <%= @shop.show_score_fuwu %>
+  </div>
 
-<p>
-  <b>Biz time:</b>
-  <%= @shop.biz_time %>
-</p>
+  <div class="desc">
+    <%= @shop.show_photo_url.html_safe %>
+    <p><%= @shop.description %></p>
+    <%= @shop.show_shihe %>
+    <%= @shop.show_sheshi.html_safe %>
+    <%= @shop.show_tags %>
+  </div>
+</div>
 
-
-
-<p>
-  <b>Rate:</b>
-  <%= @shop.rate %>
-</p>
-
-<p>
-  <b>Score:</b>
-  <%= @shop.score %>
-</p>
-
-<p>
-  <b>Score kouwei:</b>
-  <%= @shop.score_kouwei %>
-</p>
-
-<p>
-  <b>Score sudu:</b>
-  <%= @shop.score_sudu %>
-</p>
-
-<p>
-  <b>Score fuwu:</b>
-  <%= @shop.score_fuwu %>
-</p>
-
-<p>
-  <b>Photo url:</b>
-  <%= @shop.photo_url %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%= @shop.tags %>
-</p>
-
-<p>
-  <b>Secret:</b>
-  <%= @shop.secret %>
-</p>
-
-<p>
-  <b>Has out food:</b>
-  <%= @shop.has_out_food %>
-</p>
-
-<p>
-  <b>Has out people:</b>
-  <%= @shop.has_out_people %>
-</p>
-
-<p>
-  <b>Is new added:</b>
-  <%= @shop.is_new_added %>
-</p>
-
-<p>
-  <b>Is hot:</b>
-  <%= @shop.is_hot %>
-</p>
-
-<p>
-  <b>Hot unitl:</b>
-  <%= @shop.hot_unitl %>
-</p>
-
-<p>
-  <b>Is discount:</b>
-  <%= @shop.is_discount %>
-</p>
-
-<p>
-  <b>Discount value:</b>
-  <%= @shop.discount_value %>
-</p>
-
-<p>
-  <b>Updated by:</b>
-  <%= @shop.updated_by %>
-</p>
-
-<p>
-  <b>Is contacted:</b>
-  <%= @shop.is_contacted %>
-</p>
-
-<p>
-  <b>Is dealed:</b>
-  <%= @shop.is_dealed %>
-</p>
-
-<p>
-  <b>Original source:</b>
-  <%= @shop.original_source %>
-</p>
-
-<p>
-  <b>Original url:</b>
-  <%= @shop.original_url %>
-</p>
-
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<div id="shop_dish_show">
+  <h2>菜谱</h2>
+  <ul>
+    <% @shop.shop_dishes.each do |shop_dish| %>
+      <li>
+        <%= shop_dish.show_dish_name %>
+        <%= shop_dish.show_dish_photo.html_safe %>
+        <%= shop_dish.show_dish_description %>
+        <%= shop_dish.show_dish_price %>
+      </li>
+    <% end %>
+  </ul>
+</div>
