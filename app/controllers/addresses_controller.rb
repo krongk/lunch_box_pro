@@ -26,8 +26,8 @@ class AddressesController < ApplicationController
     end
 
     #3.set cookie
-    cookies.delete :addr
-    cookies[:addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
+    cookies.delete :user_input_addr
+    cookies[:user_input_addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
 
     #4.store IP-address
     if request.remote_ip

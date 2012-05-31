@@ -17,6 +17,7 @@ RailsOnWeb::Application.routes.draw do
   get "welcome/index"
 
   get "welcome/help"
+  get "welcome/map_data"
 
   get "welcome/about"
 

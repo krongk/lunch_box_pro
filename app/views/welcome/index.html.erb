@@ -1,19 +1,25 @@
+
 <div style="background-color: #ffcc00;">
   <h3><%= @location  %></h3>
   在您附近找到<b><%= @shop_addresses.size %></b>家餐厅，<b>233</b>道美食！
 </div>
 
-<ul>
-<% for shop_address in @shop_addresses %>
-  <% shop = shop_address.shop %>
-  <% shop_dishes = shop.shop_dishes %>
-  <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
-    <span style="color:green;"> <%= shop_address.distance.round(2) %> 公里</span>)
-    <ul>
-      <% shop_dishes.each do |shop_dish| %>
-        <li><%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>
-      <% end %>
-    </ul>
-  </li>
+<% unless params[:map].present? %>
+  <ul>
+  <% for shop_address in @shop_addresses %>
+    <% shop = shop_address.shop %>
+    <% shop_dishes = shop.shop_dishes %>
+    <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
+      <span style="color:green;"> <%= shop_address.distance.round(2) %> 公里</span>)
+      <ul>
+        <% shop_dishes.each do |shop_dish| %>
+          <li><%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
 <% end %>
-</ul>
+

@@ -1,5 +1,4 @@
 <!DOCTYPE html> 
-<html> 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="zh-cn" />
@@ -9,15 +8,17 @@
   <title><%= yield(:title) %> </title>
   <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
   <meta name="description" content="<%= yield(:meta_description)%>" />
-    
+  
+  <!--script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBwlID2_M1tLwHYLZn5Xqdw_qFLlOOrMNY&sensor=false"> </script -->
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?libraries=places&sensor=false&language=zh&region=CN"></script>
   <%= csrf_meta_tags %>
+  
   <!--[if lt IE 7]>
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
 
-   
 </head> 
  
 <body class="index admin_contacts logged_in" screen_capture_injected="true">
@@ -39,5 +40,6 @@
 
   <%=render :partial => "layouts/footer" %>
 </div>
+
 </body>
 </html>
