@@ -32,10 +32,12 @@ class WelcomeController < ApplicationController
       @point = addr_arr.shift.split(',')
 
 
-      @shop_addresses = ShopAddress.near(@point, 1).limit(20)
+      @shop_addresses = ShopAddress.near(@point, 0.2).limit(30)
+      @shop_addresses = ShopAddress.near(@point, 0.5) if @shop_addresses.size < 5
+      @shop_addresses = ShopAddress.near(@point, 1) if @shop_addresses.size < 5
       @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5
-      @shop_addresses = ShopAddress.near(@point, 3) if @shop_addresses.size < 5
-
+      @shop_count = @shop_addresses.size
+      @dish_count = @shop_addresses.map{|sd| sd.dish_count}.sum
       #form map data
       session[:shop_address_ids] = @shop_addresses.map(&:id)
       session[:location_point] = @point

@@ -14,7 +14,9 @@ module ApplicationHelper
   def meta_description(meta_description)
   	content_for(:meta_description){ meta_description}
   end
-
+  def next_nav(name, link)
+    content_for(:next_nav){ link_to(name, link)}
+  end
   #
   def current_class(name)
     if params.values.join(' ') =~ /\b#{name}/i
@@ -36,25 +38,6 @@ module ApplicationHelper
     }
   end
   
-  #tags
-  def project_tags
-    $tags ||= []
-    if $tags.blank?
-      ProjectItem.find_each do |item|
-        next if item.tags.blank?
-        item.tags.split(',').map{|t| t.strip}.uniq.each do |t|
-          next if $tags.include?(t)
-          $tags << t
-        end
-      end
-    end
-    html = ["<h3>标签云</h3><div class='tags'>"]
-    $tags.each do |t|
-      html << %{<a href="/project_items/?tag=#{t}" target="_blank" class="size#{rand(5)}"><span class="color#{rand(5)}">#{t}</span></a>}
-    end
-    html << "</div>"
-    html.join.html_safe
-  end
 
   def truncate_content(content, count)
     strip_tags(content).to_s.gsub(/[ ]+|\s+|\t+|\n+/, ' ').truncate(count)

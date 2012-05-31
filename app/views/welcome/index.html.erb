@@ -1,16 +1,35 @@
+<% title "快餐外卖---欢乐餐吧.成都" %>
+<% meta_keywords "外卖,快餐,网上订餐,电话订餐,餐厅,美食,24小时外卖" %>
+<% meta_description "网上订餐洋盘吧~ 想叫外卖了？就上成都欢乐餐吧。1分钟订餐，半小时等待，3000家餐厅，上万道美食，Happy!" %>
 
-<div style="background-color: #ffcc00;">
-  <h3><%= @location  %></h3>
-  在您附近找到<b><%= @shop_addresses.size %></b>家餐厅，<b>233</b>道美食！
-</div>
+<% content_for :title_bar do %>
+  <div id="title_bar">
+    <div id="titlebar_left">
+      <span class="breadcrumb">
+        <a href="/">首页</a>           
+        <span class="breadcrumb_sep">/</span>
+        餐厅列表           
+        <span class="breadcrumb_sep">/</span>
+      </span>
+      <h2 id="page_title">我们为您找到<span style="color:red;"><%=@shop_count%></span>家餐厅，<span style="color:red;"><%=@dish_count%></span>道菜！点击菜单即可下单~</h2>
+    </div>
+
+    <div id="titlebar_right">
+      <div class="action_items">
+        <span class="action_item"><%=yield(:next_nav) %></span>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <% unless params[:map].present? %>
+  <% next_nav("地图展示", "/?map=g") %>
   <ul>
   <% for shop_address in @shop_addresses %>
     <% shop = shop_address.shop %>
     <% shop_dishes = shop.shop_dishes %>
     <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
-      <span style="color:green;"> <%= shop_address.distance.round(2) %> 公里</span>)
+      <span style="color:green;"> <%= shop_address.distance.round(4) * 1000 %> 米</span>)
       <ul>
         <% shop_dishes.each do |shop_dish| %>
           <li><%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>
@@ -20,6 +39,7 @@
   <% end %>
   </ul>
 <% else %>
+  <% next_nav("返回", "/") %>
   <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
 <% end %>
 

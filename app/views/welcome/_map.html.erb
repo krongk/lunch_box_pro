@@ -3,7 +3,7 @@
     //
     var myLatlng = new google.maps.LatLng(<%=session[:location_point][0]%>, <%=session[:location_point][1]%>);
     var myOptions = {
-      zoom: 19,
+      zoom: 16,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
@@ -38,7 +38,7 @@
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        title: 'Uluru (Ayers Rock)'
+        title: '我'
     });
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map,marker);
@@ -47,16 +47,9 @@
 
     //test
     var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(-25.564882,131.644922),
+        position: new google.maps.LatLng(30.60862, 104.082257),
         map: map,
         title: 'test'
-    });
-
-    //test
-    var marker3 = new google.maps.Marker({
-        position: new google.maps.LatLng(-25.574882,131.674922),
-        map: map,
-        title: 'song'
     });
 
      //json
@@ -65,10 +58,10 @@
 
       $.each(data, function(key, val) {
         var val_arr = val.split('|');
-        items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '</a></li>');
+        items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '(' + val_arr[2]+', '+ val_arr[3]+')</a></li>');
 
         new google.maps.Marker({
-          position: new google.maps.LatLng(val_arr[2], val_arr[3]),
+          position: new google.maps.LatLng(parseFloat(val_arr[2]) , parseFloat(val_arr[3])),
           map: map,
           title: val_arr[1]
         });

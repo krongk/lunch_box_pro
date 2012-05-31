@@ -3,7 +3,7 @@
   <%= form_for(@address, :html =>{:class => "formtastic"}) do |f| %>
 	  <div class="flash flash_notice">*请输入您所在的位置， 如：科华北路62号力宝大厦</div>
 	  <fieldset class="buttons">
-	    <%= f.text_field :addr, data: {autocomplete_source: addresses_path} %>
+	    <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => cookies[:location] %>
 	    <%= f.submit '找外卖' %>
 	  </fieldset>
   <% end %>

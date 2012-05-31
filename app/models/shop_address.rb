@@ -5,12 +5,17 @@ class ShopAddress < ActiveRecord::Base
   belongs_to :city
   belongs_to :district
   
-  #start geocoder
+  #---start geocoder
   geocoded_by :full_addr
   #after_validation :geocode, :if => :full_addr_changed?
-  #end geocoder
+  #---end geocoder
 
-  #start tokeninput
+  #---start def attr
+  def dish_count
+    ShopDish.where(:shop_id => shop_id).count
+  end
+  #---end def attr
+  #---start tokeninput
   def self.tokens(query)
     shop_addresses = where("addr like ?", "%#{query}%")
     # if authors.empty?
@@ -25,5 +30,5 @@ class ShopAddress < ActiveRecord::Base
   #   #tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
   #   tokens.split(',')
   # end
-  #end tokeninput
+  #---end tokeninput
 end
