@@ -1,3 +1,14 @@
+<script language = "javascript">
+   jQuery(function() {
+    return $('#address_addr').autocomplete({
+      source: $('#address_addr').data('autocomplete-source'),
+      minLength: 2,
+      autoFocus: true,
+      delay: 300
+    });
+  });
+</script>
+
 <div id="title_bar" height="400px">
   <%  @address ||= Address.new %>
   <%= form_for(@address, :html =>{:class => "formtastic"}) do |f| %>

@@ -1,14 +1,12 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
 jQuery ->
-  $('#shop_address_tokens').tokenInput '/shop_addresses.json'
-    theme: 'facebook'
-    prePopulate: $('#shop_address_tokens').data('load')
-    propertyToSearch: "addr"
-    tokenValue: "full_addr"
-    hintText: "输入部分地址也行"
-    noResultsText: "没找到匹配的位置"
-    searchingText: "开找啦..."
-    preventDuplicates: false
-    tokenLimit: 1
+  if $('.pagination').length
+    $(window).scroll ->
+      url = $('.pagination .next_page').attr('href')
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        $('.pagination').text("Fetching more products...")
+        $.getScript(url)
+    $(window).scroll()

@@ -1,69 +1,44 @@
 <script type="text/javascript">
   function initialize() {
-    //
+    //--create map 
     var myLatlng = new google.maps.LatLng(<%=session[:location_point][0]%>, <%=session[:location_point][1]%>);
     var myOptions = {
-      zoom: 16,
+      zoom: 18,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-    var contentString = '<div id="content">'+
-        '<div id="siteNotice">'+
-        '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-        '<div id="bodyContent">'+
-        '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-        'sandstone rock formation in the southern part of the '+
-        'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-        'south west of the nearest large town, Alice Springs; 450&#160;km '+
-        '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-        'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-        'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-        'Aboriginal people of the area. It has many springs, waterholes, '+
-        'rock caves and ancient paintings. Uluru is listed as a World '+
-        'Heritage Site.</p>'+
-        '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-        'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-        '(last visited June 22, 2009).</p>'+
-        '</div>'+
-        '</div>';
-        
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
+    //----------------------------------------------end
+    //--add info windows
+    //see: http://gmaps-samples-v3.googlecode.com/svn/trunk/single-infowindow/single-infowindow.html
+    var infoWindow = new google.maps.InfoWindow;
+   
+    google.maps.event.addListener(map, 'click', function() {
+      infoWindow.close();
     });
+    //-----------------------------------------------end
 
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: '我'
-    });
-    google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
-    });
-
-
-    //test
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(30.60862, 104.082257),
-        map: map,
-        title: 'test'
-    });
-
-     //json
+     //--json 
     $.getJSON('/welcome/map_data', function(data) {
       var items = [];
 
       $.each(data, function(key, val) {
         var val_arr = val.split('|');
-        items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '(' + val_arr[2]+', '+ val_arr[3]+')</a></li>');
+        items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '</a></li>');
 
-        new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: new google.maps.LatLng(parseFloat(val_arr[2]) , parseFloat(val_arr[3])),
           map: map,
           title: val_arr[1]
+        });
+        //add info windows listener
+        google.maps.event.addListener(marker, 'click', function() {
+          var marker = this;
+          var latLng = marker.getPosition();
+          infoWindow.setContent('<h3>' + val_arr[1] + '<a id="' + val_arr[0] +'" class="happy_shop">加到最爱</a></h3>' +
+              latLng.lat() + ', ' + latLng.lng() + ', ' );
+
+          infoWindow.open(map, marker);
         });
       });
 
@@ -74,7 +49,6 @@
     });
 
   }//end initialize
-
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
