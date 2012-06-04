@@ -1,3 +1,8 @@
+##JQuery:
+#animate.css  => http://daneden.me/animate/
+#move.js  => https://github.com/visionmedia/move.js
+
+
 ##项目投融资来源：
   http://company.chinaventure.com.cn/list/
 ##解决方案来源：

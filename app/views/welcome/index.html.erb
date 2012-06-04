@@ -4,23 +4,7 @@
 
 <% unless params[:map].present? %>
   <% next_nav("地图展示", "/?map=g") %>
-  <div id ='shop_addresses'>
-    <ul>
-    <% @shop_addresses.each_with_index do |shop_address, index| %>
-      <% shop = shop_address.shop %>
-      <% shop_dishes = shop.shop_dishes %>
-      <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
-        <span style="color:green;"> <%= shop_address.distance.round(4) * 1000 %> 米</span>)
-        <ul>
-          <% shop_dishes.each do |shop_dish| %>
-            <li><%=index + 1%>. <%= link_to shop_dish.dish.name, shop_dish.dish %><%= shop_dish.price%></li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-    </ul>
-  </div>
-  <%= will_paginate @shop_addresses %>
+  <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
   
 <% else %>
   <% next_nav("返回", "/") %>
@@ -29,6 +13,7 @@
 
 <% content_for :title_bar do %>
   <div id="notice"><%=image_tag(asset_path("map_liucheng.jpg"), :mouseover => asset_path("map_liucheng.jpg")) if params[:map].present? %><br/></div>
+
   <div id="title_bar">
     <div id="titlebar_left">
       <span class="breadcrumb">
@@ -36,6 +21,7 @@
         <span class="breadcrumb_sep">/</span>
         餐厅列表           
         <span class="breadcrumb_sep">/</span>
+        我的最爱(<span id="favorite_count">0</span>)
       </span>
       <h2 id="page_title">我们为您找到<span style="color:red;"><%=@shop_count%></span>家餐厅，<span style="color:red;"><%=@dish_count%></span>道菜！点击菜单即可下单~</h2>
     </div>

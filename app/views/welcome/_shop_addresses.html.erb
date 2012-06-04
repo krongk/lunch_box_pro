@@ -1,0 +1,22 @@
+<div id ='shop_addresses'>
+    <ul>
+    <% @shop_addresses.each_with_index do |shop_address, index| %>
+      <% shop = shop_address.shop %>
+      <% shop_dishes = shop.shop_dishes %>
+      <li><%= link_to shop.name, shop %> (<%= shop_address.addr  %>
+        <span style="color:green;"> <%= shop_address.distance.round(4) * 1000 %> 米</span>)
+        <ul id="shop_dish_list">
+          <% shop_dishes.each_with_index do |shop_dish, i| %>
+            <li class="dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+            
+            <span id="shop_dish_count_<%= shop_dish.id%>">&nbsp;</span>
+
+            <%= link_to add_cart_path(:shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%><button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit><% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <%= will_paginate @shop_addresses %>

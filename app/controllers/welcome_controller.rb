@@ -8,29 +8,18 @@ class WelcomeController < ApplicationController
   end
 
   def index
-     # <Geocoder::Result::Freegeoip:0x931cde8
-     # @cache_hit=nil,
-     # @data=
-     #  {"ip"=>"127.0.0.1",
-     #   "city"=>"",
-     #   "region_code"=>"",
-     #   "region_name"=>"",
-     #   "metrocode"=>"",
-     #   "zipcode"=>"",
-     #   "latitude"=>"0",
-     #   "longitude"=>"0",
-     #   "country_name"=>"Reserved",
-     #   "country_code"=>"RD"}> 
+    #learn cookies: http://stackoverflow.com/questions/1232174/rails-cookies-set-start-date-and-expire-date
+    #  # Sets a cookie that expires in 1 hour.
+    #    cookies[:login] = { :value => "XJ-122", :expires => 1.hour.from_now }
     #1. check if has cookies
     #cookies[:addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
     if cookies[:user_input_addr]
       addr_arr = cookies[:user_input_addr].split('|')
       @location = addr_arr.shift
-      #get location
-      cookies[:location] = @location
       @point = addr_arr.shift.split(',')
     else
       redirect_to new_address_path
+      return
     end
 
     @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 26)
@@ -42,7 +31,8 @@ class WelcomeController < ApplicationController
     #form map data
     session[:shop_address_ids] = @shop_addresses.map(&:id)
     session[:location_point] = @point
-
+    session[:location] = @location
+    
     respond_to do |format|
       format.html #show.html
       format.js
@@ -51,13 +41,31 @@ class WelcomeController < ApplicationController
   end
 
   def map_data
-    if cookies[:location].present? && session[:location_point].present? && session[:shop_address_ids].present?
+    if session[:location].present? && session[:location_point].present? && session[:shop_address_ids].present?
       @shop_addresses = ShopAddress.find(session[:shop_address_ids])
       render json: @shop_addresses.map{|sa| [sa.shop.id, sa.shop.name, sa.latitude, sa.longitude].join('|')}
     else
       redirect_to '/'
       return
     end
+  end
+
+  def add_cart
+    if session[:location] && params[:shop_dish_id]
+      @shop_dish = ShopDish.find(params[:shop_dish_id])
+      session[:cart] ||= {}
+      if session[:cart][params[:shop_dish_id]]
+        session[:cart][params[:shop_dish_id]][:count] = session[:cart][params[:shop_dish_id]][:count] + 1
+      else
+        session[:cart][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
+      end
+    else
+      redirect_to new_address_path
+      return
+    end
+  end
+  def clear_cart
+    session[:cart] = {}
   end
 
   def help

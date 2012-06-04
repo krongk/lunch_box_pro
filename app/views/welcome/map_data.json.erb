@@ -1,5 +1,5 @@
 [
-    "location" : "<%= cookies[:location] %>|<%=  session[:location_point].join('|') %>",
+    "location" : "<%= session[:location] %>|<%=  session[:location_point].join('|') %>",
     <% @shop_addresses.each do |sd| %>
       "<%=sd.shop.id%>" : "<%=sd.shop.name%>|<%=sd.latitude%>|<%=sd.longitude%>",
     <% end %>

@@ -1,0 +1,11 @@
+//update count span
+$("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("<%= session[:cart][params[:shop_dish_id]][:count] || 1 %>");
+
+//update sidebar cart list
+<%
+  list_arr = ""
+  session[:cart].each do |k, v|
+    list_arr += "<li id='cart_shop_dish_#{k}'>#{v[:name].ljust(10, '一')} #{v[:price] || 10 } x #{v[:count] || 1 }</li>"
+  end
+%>
+$("#cart_list").html("<%= list_arr.html_safe%>")

@@ -3,7 +3,7 @@
   
   <ul class="tabbed_navigation" id="tabs">
    
-    <li id=""><%=link_to "(#{cookies[:location].truncate(20)})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
+    <li id=""><%=link_to "(#{session[:location].truncate(20)})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
     <li id=""><a href="http://localhost:3000/admin">使用帮助</a></li>
   </ul>
 

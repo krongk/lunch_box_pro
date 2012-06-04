@@ -23,6 +23,8 @@ RailsOnWeb::Application.routes.draw do
 
   get "welcome/agreement"
 
+  match "add_cart" => "welcome#add_cart", :as => :add_cart
+  match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
   resources :project_items
 
   resources :project_cates

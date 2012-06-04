@@ -27,7 +27,7 @@
         items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '</a></li>');
 
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(parseFloat(val_arr[2]) , parseFloat(val_arr[3])),
+          position: new google.maps.LatLng(parseFloat(val_arr[2]), parseFloat(val_arr[3])),
           map: map,
           title: val_arr[1]
         });
@@ -35,7 +35,7 @@
         google.maps.event.addListener(marker, 'click', function() {
           var marker = this;
           var latLng = marker.getPosition();
-          infoWindow.setContent('<h3>' + val_arr[1] + '<a id="' + val_arr[0] +'" class="happy_shop">加到最爱</a></h3>' +
+          infoWindow.setContent('<h3>' + val_arr[1] + '</h3><div id="' + val_arr[0] + '" onClick="javascript:add_favorite(this.id);"><a id="' + val_arr[0] +'" class="happy_shop"><img src="/assets/favorite.gif"/>加到最爱</a></div>' +
               latLng.lat() + ', ' + latLng.lng() + ', ' );
 
           infoWindow.open(map, marker);
@@ -55,6 +55,37 @@
   
 </script>
 
-
 <div id="map_canvas" style="width:100%; height:600px"></div>
 
+<script language="javascript">
+  function add_favorite(shop_id){
+    //http://www.w3school.com.cn/jquery/jquery_html.asp
+    var count = $('#favorite_count').html();
+    $('#favorite_count').html(parseInt(count) + 1);
+
+    //http://visionmedia.github.com/move.js/
+    var add_favorite_count = move('#favorite_count')
+      .set('color', 'red')
+      .set('font-weight', '800')
+      .set('font-size', '18px')
+      .duration('2s')
+      .scale(1)
+      .end();
+    setTimeout(function(){
+      move('#favorite_count')
+        .set('color', '#999999')
+        .set('font-weight', '500')
+        .set('font-size', '12px')
+        .duration('2s')
+        .scale(1)
+        .end();
+    }, 1200);
+
+    move(shop_id)
+      .set('background-color', '#888')
+      .duration('2s')
+      .set('opacity', 0)
+      .then(add_favorite_count)
+      .end();
+  }
+</script>

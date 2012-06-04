@@ -1,6 +1,8 @@
-$('#shop_addresses').append('<%= j render(:action => 'index', :shop_addresses => @shop_addresses) %>');
+$('#shop_addresses').append('<%= j render(:partial => 'welcome/shop_addresses', :shop_addresses => @shop_addresses) %>');
 <% if @shop_addresses.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@shop_addresses) %>');
 <% else %>
   $('.pagination').remove();
 <% end %>
+
+<% sleep 2 %>
