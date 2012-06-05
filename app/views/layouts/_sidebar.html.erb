@@ -8,8 +8,9 @@
 </div>
 
 
-<div class="sidebar_section panel" id="cart_sidebar_section">
+<div class="sidebar_section panel red fly" id="cart_sidebar_section">
   <h3>Happy外送菜单</h3>
+  <div id="cart_tips"></div>
   <div class="panel_contents" id="side_bar_content">
     <ul id="cart_list">
     <% if session[:cart] %>
@@ -20,12 +21,14 @@
         <% end %>
       <% end %>
     <% else %>
-        <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
+      <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
     <% end %>
     </ul>
-    <% if session[:cart] %>
-      <%= link_to "清空", clear_cart_path, :remote => true %> &nbsp;&nbsp;&nbsp;
-      <%= link_to "生成订单", 'orders/new' %>
-    <% end %>
+    <div id="cart_list_button_panel">
+      <% if session[:cart] &&  session[:cart].size > 0%>
+        <%= link_to "清空", clear_cart_path, :remote => true %> &nbsp;&nbsp;&nbsp;
+        <%= link_to "生成订单", new_order_path %>
+      <% end %>
+    </div>
   </div>
 </div>

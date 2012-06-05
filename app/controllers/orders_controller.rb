@@ -1,3 +1,4 @@
+#encoding: utf-8
 class OrdersController < InheritedResources::Base
 
   #session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
@@ -36,9 +37,9 @@ class OrdersController < InheritedResources::Base
   end
 
   def update
-    phone = params[:phone]
-    addr = params[:addr]
-    user_note = params[:user_note]
+    phone = params[:order][:phone]
+    addr = params[:order][:addr]
+    user_note = params[:order][:user_note]
     
     session[:order][:order_ids].each do |order_id|
       @order = Order.find(order_id)
@@ -50,6 +51,11 @@ class OrdersController < InheritedResources::Base
 
     respond_to do |format|
       if @order
+        #清空购物车
+        session[:cart] = nil
+        #清空订单
+        session[:order] = nil
+        
         format.html { redirect_to @order, notice: '订单提交成功.' }
         format.json { head :ok }
       else

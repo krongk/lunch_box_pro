@@ -78,6 +78,13 @@ class WelcomeController < ApplicationController
       return
     end
   end
+
+  def delete_cart
+    @shop = Shop.find(params[:shop_id])
+    @shop_dish = ShopDish.find(params[:shop_dish_id])
+    session[:cart][params[:shop_id]].delete(params[:shop_dish_id])
+  end
+
   def clear_cart
     session[:cart] = {}
   end

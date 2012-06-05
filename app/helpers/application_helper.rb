@@ -24,6 +24,19 @@ module ApplicationHelper
     end
     ''
   end
+  ###attr override
+  def has_out_food(shop)
+    shop.has_out_food ? "提供外送服务" : "不提供外送服务"
+  end
+  def is_hot(shop)
+    shop.is_hot && shop.hot_until > Time.now ? "推荐餐厅" : ""
+  end
+  def is_discount(shop)
+    shop.is_discount ? "有优惠" : ""
+  end
+  def rate(shop)
+    "评级：#{shop.rate} : #{shop.score}"
+  end
   #链接菜单导航，如：首页/关于我们
   #input: nav_bar [['首页', '/'], ['关于', '/about']]
   def nav_bar(bar_arr)
