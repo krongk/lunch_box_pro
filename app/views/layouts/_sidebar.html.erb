@@ -7,28 +7,25 @@
   </div>
 </div>
 
-<div class="sidebar_section panel" id="order_sidebar_section">
+
+<div class="sidebar_section panel" id="cart_sidebar_section">
   <h3>Happy外送菜单</h3>
   <div class="panel_contents" id="side_bar_content">
-    <ul id="order_dish_list">
-      <li>请点击左边菜单进行订餐！</li>
+    <ul id="cart_list">
+    <% if session[:cart] %>
+      <% session[:cart].each do |k, v| %>
+        <h3><%= Shop.find(k).name %> </h3>
+        <% v.each do |kk, vv| %>
+          <li id='cart_shop_dish_<%=kk%>'><%= vv[:name].ljust(15, '一')%> <%=vv[:price] || '0.0' %> x <%=vv[:count] || 1 %></li>
+        <% end %>
+      <% end %>
+    <% else %>
+        <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
+    <% end %>
     </ul>
+    <% if session[:cart] %>
+      <%= link_to "清空", clear_cart_path, :remote => true %> &nbsp;&nbsp;&nbsp;
+      <%= link_to "生成订单", 'orders/new' %>
+    <% end %>
   </div>
 </div>
-
-<% if session[:cart] %>
-  <div class="sidebar_section panel" id="cart_sidebar_section">
-    <h3>Happy外送菜单</h3>
-    <div class="panel_contents" id="side_bar_content">
-      <ul id="cart_list">
-      <% session[:cart].each do |k, v| %>
-        <li id='cart_shop_dish_<%=k%>'><%= v[:name].ljust(15, '一')%> <%=v[:price] || 10 %> x <%=v[:count] || 1 %></li>
-      <% end %>
-      </ul>
-      <% if session[:cart] %>
-        <%= link_to "清空", clear_cart_path, :remote => true %> &nbsp;&nbsp;&nbsp;
-        <%= link_to "生成订单", 'orders/new' %>
-      <% end %>
-    </div>
-  </div>
-<% end %>

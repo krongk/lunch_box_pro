@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shop: 
+  user: 
+  total_price: 1.5
+  phone: MyString
+  addr: MyString
+  user_note: MyString
+  status: 1
+  admin_note: MyString
+
+two:
+  shop: 
+  user: 
+  total_price: 1.5
+  phone: MyString
+  addr: MyString
+  user_note: MyString
+  status: 1
+  admin_note: MyString

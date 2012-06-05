@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529093311) do
+ActiveRecord::Schema.define(:version => 20120605064158) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -33,16 +33,22 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
     t.integer  "city_id"
     t.integer  "district_id"
     t.integer  "zone_id"
-    t.string   "addr"
+    t.string   "addr",         :limit => 64
+    t.string   "en_addr"
     t.string   "full_addr"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",     :limit => 9
+    t.float    "longitude",    :limit => 9
+    t.string   "is_processed", :limit => 50, :default => "n"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "addresses", ["city_id", "addr"], :name => "unq__city_addr", :unique => true
   add_index "addresses", ["city_id"], :name => "index_addresses_on_city_id"
   add_index "addresses", ["district_id"], :name => "index_addresses_on_district_id"
+  add_index "addresses", ["en_addr"], :name => "idx__en_addr"
+  add_index "addresses", ["full_addr"], :name => "unq__full_addr", :unique => true
+  add_index "addresses", ["latitude", "longitude"], :name => "unq__latitude_longitude", :unique => true
   add_index "addresses", ["region_id"], :name => "index_addresses_on_region_id"
   add_index "addresses", ["zone_id"], :name => "index_addresses_on_zone_id"
 
@@ -99,15 +105,20 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
 
   create_table "dishes", :force => true do |t|
     t.integer  "dish_cate_id"
-    t.string   "name",         :limit => 128
-    t.string   "alilas",       :limit => 128
+    t.string   "name",              :limit => 128
+    t.string   "formated_name",     :limit => 128
+    t.string   "en_name",           :limit => 128
+    t.string   "alilas",            :limit => 128
     t.string   "photo_url"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "is_photo_formated", :limit => 50,  :default => "n"
   end
 
   add_index "dishes", ["dish_cate_id"], :name => "index_dishes_on_dish_cate_id"
+  add_index "dishes", ["en_name"], :name => "idx__en_name"
+  add_index "dishes", ["name"], :name => "idx__name", :unique => true
 
   create_table "districts", :force => true do |t|
     t.string  "name"
@@ -144,6 +155,35 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
 
   add_index "news_items", ["news_cate_id"], :name => "index_news_items_on_news_cate_id"
   add_index "news_items", ["title"], :name => "index_news_items_on_title"
+
+  create_table "order_details", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "shop_dish_id"
+    t.integer  "amount"
+    t.decimal  "discount",     :precision => 8, :scale => 2
+    t.decimal  "total_price",  :precision => 8, :scale => 2
+    t.string   "admin_note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_details", ["order_id"], :name => "index_order_details_on_order_id"
+  add_index "order_details", ["shop_dish_id"], :name => "index_order_details_on_shop_dish_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "user_id"
+    t.float    "total_price"
+    t.string   "phone"
+    t.string   "addr"
+    t.string   "user_note"
+    t.integer  "status",      :default => 0
+    t.string   "admin_note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["shop_id"], :name => "index_orders_on_shop_id"
 
   create_table "page_parts", :force => true do |t|
     t.integer "page_id"
@@ -266,6 +306,7 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
     t.decimal  "longitude",                  :precision => 9, :scale => 6
     t.string   "is_geocoded",  :limit => 50,                               :default => "n"
     t.string   "is_formatted", :limit => 50,                               :default => "n"
+    t.string   "is_copied",    :limit => 50,                               :default => "n"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -311,6 +352,7 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
 
   create_table "shops", :force => true do |t|
     t.string   "name",            :limit => 128
+    t.string   "en_name"
     t.text     "description"
     t.string   "avg",             :limit => 64
     t.string   "biz_time"
@@ -341,6 +383,7 @@ ActiveRecord::Schema.define(:version => 20120529093311) do
     t.datetime "updated_at"
   end
 
+  add_index "shops", ["en_name"], :name => "idx__en_name"
   add_index "shops", ["has_out_food"], :name => "index_shops_on_has_out_food"
   add_index "shops", ["has_out_people"], :name => "index_shops_on_has_out_people"
   add_index "shops", ["is_contacted"], :name => "index_shops_on_is_contacted"

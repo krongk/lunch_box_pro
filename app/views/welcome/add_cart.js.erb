@@ -1,11 +1,14 @@
 //update count span
-$("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("<%= session[:cart][params[:shop_dish_id]][:count] || 1 %>");
-
+$("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("<%= session[:cart][params[:shop_id]][params[:shop_dish_id]][:count] || 1 %>");
+$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#ddd");
 //update sidebar cart list
 <%
   list_arr = ""
   session[:cart].each do |k, v|
-    list_arr += "<li id='cart_shop_dish_#{k}'>#{v[:name].ljust(10, '一')} #{v[:price] || 10 } x #{v[:count] || 1 }</li>"
+    list_arr += "<h3>#{Shop.find(k).name}</h3>"
+    v.each do |kk, vv|
+      list_arr += "<li id='cart_shop_dish_#{kk}'>#{vv[:name].ljust(10, '一')} #{vv[:price] || '0.0' } x #{vv[:count] || 1 }</li>"
+    end
   end
 %>
-$("#cart_list").html("<%= list_arr.html_safe%>")
+$("#cart_list").html("<%= list_arr.html_safe%>");

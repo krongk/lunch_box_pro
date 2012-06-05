@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      order: Order
+    attributes:
+      order:
+        shop: Shop
+        user: User
+        total_price: Total price
+        phone: Phone
+        addr: Addr
+        user_note: User note
+        status: Status
+        admin_note: Admin note
+    errors:
+      order: !!null 
+  helpers:
+    order: !!null 

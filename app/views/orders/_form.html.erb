@@ -1,0 +1,31 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :phone, "联系电话（手机）, 稍后我们会发一条短信给您" %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :addr, "详细地址, 请尽可能详细填写" %><br />
+    <%= f.text_field :addr %>
+  </div>
+  <div class="field">
+    <%= f.label :user_note, "餐饮要求" %><br />
+    <%= f.text_field :user_note %>
+    <p>如果菜品有大份/小份选择，请在这里注明。添加上您的姓氏和称谓会更便于餐厅联系</p>
+  </div>
+  <div class="actions">
+    <%= f.submit "确定订单，提交" %>
+  </div>
+<% end %>

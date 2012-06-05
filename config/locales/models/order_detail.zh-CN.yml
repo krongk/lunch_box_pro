@@ -1,0 +1,17 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      order_detail: 订单详细
+    attributes:
+      order_detail:
+        order: 订单号
+        shop_dish: 餐厅菜品
+        amount: 数量
+        discount: 折扣
+        total_price: 总价
+        admin_note: 管理备注
+    errors:
+      order_detail: !!null 
+  helpers:
+    order_detail: !!null 

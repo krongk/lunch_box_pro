@@ -1,0 +1,20 @@
+---
+de:
+  order_details:
+    index:
+      title: Order details
+    show:
+      title: Order detail
+    edit:
+      title: Editing Order detail
+    new:
+      title: New Order detail
+  flash:
+    order_details:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

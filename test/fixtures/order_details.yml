@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order: 
+  shop_dish: 
+  amount: 1
+  discount: 9.99
+  total_price: 9.99
+  admin_note: MyString
+
+two:
+  order: 
+  shop_dish: 
+  amount: 1
+  discount: 9.99
+  total_price: 9.99
+  admin_note: MyString

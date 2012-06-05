@@ -1,0 +1,19 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      order: 订单
+    attributes:
+      order:
+        shop: 餐厅
+        user: 用户
+        total_price: 总价
+        phone: 电话
+        addr: 地址
+        user_note: 用户说明
+        status: 订单状态
+        admin_note: 管理备注
+    errors:
+      order: !!null 
+  helpers:
+    order: !!null 

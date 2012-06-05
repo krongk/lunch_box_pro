@@ -1,0 +1,20 @@
+---
+en:
+  orders:
+    index:
+      title: Orders
+    show:
+      title: Order
+    edit:
+      title: Editing Order
+    new:
+      title: New Order
+  flash:
+    orders:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

@@ -1,0 +1,17 @@
+---
+en:
+  active_record:
+    models:
+      order_detail: Order detail
+    attributes:
+      order_detail:
+        order: Order
+        shop_dish: Shop dish
+        amount: Amount
+        discount: Discount
+        total_price: Total price
+        admin_note: Admin note
+    errors:
+      order_detail: !!null 
+  helpers:
+    order_detail: !!null 

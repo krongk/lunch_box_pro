@@ -11,7 +11,7 @@
             
             <span id="shop_dish_count_<%= shop_dish.id%>">&nbsp;</span>
 
-            <%= link_to add_cart_path(:shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%><button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit><% end %>
+            <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%><button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit><% end %>
             </li>
           <% end %>
         </ul>

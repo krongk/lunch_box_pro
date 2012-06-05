@@ -39,7 +39,8 @@ class WelcomeController < ApplicationController
       format.json { render :json => @shop_addresses }
    end
   end
-
+  
+  #use for address auto-complete
   def map_data
     if session[:location].present? && session[:location_point].present? && session[:shop_address_ids].present?
       @shop_addresses = ShopAddress.find(session[:shop_address_ids])
@@ -50,14 +51,27 @@ class WelcomeController < ApplicationController
     end
   end
 
+  # cart = {
+  #   shop:{
+  #     shop_dish:{
+  #       :name
+  #       :price
+  #       :count
+  #     }
+  #   }
+  # }
+  #{"1207"=>{"3088"=>{:name=>"楹昏荆楦″潡", :price=>nil, :count=>1}}}
   def add_cart
     if session[:location] && params[:shop_dish_id]
+      @shop = Shop.find(params[:shop_id])
       @shop_dish = ShopDish.find(params[:shop_dish_id])
       session[:cart] ||= {}
-      if session[:cart][params[:shop_dish_id]]
-        session[:cart][params[:shop_dish_id]][:count] = session[:cart][params[:shop_dish_id]][:count] + 1
+      session[:cart][params[:shop_id]] ||= {}
+
+      if session[:cart][params[:shop_id]][params[:shop_dish_id]]
+        session[:cart][params[:shop_id]][params[:shop_dish_id]][:count] = session[:cart][params[:shop_id]][params[:shop_dish_id]][:count] + 1
       else
-        session[:cart][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
+        session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
       end
     else
       redirect_to new_address_path

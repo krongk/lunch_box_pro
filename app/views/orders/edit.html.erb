@@ -1,0 +1,20 @@
+<h1>订单确认</h1>
+
+<ul>
+<% if session[:cart] %>
+  <% session[:cart].each do |k, v| %>
+    <h3><%= Shop.find(k).name %> </h3>
+    <% v.each do |kk, vv| %>
+      <li id='cart_shop_dish_<%=kk%>'><%= vv[:name].ljust(15, '一')%> <%=vv[:price] || '0.0' %> x <%=vv[:count] || 1 %></li>
+    <% end %>
+  <% end %>
+<% else %>
+    <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
+<% end %>
+</ul>
+
+<%#number_to_currency(amount.abs, :precision => 0, :format => "-%u%n") %>
+<h3>总价： <%= session[:order][:total_price].to_f %> </h3>
+
+<%= render 'form' %>
+
