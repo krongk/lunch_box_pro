@@ -1,6 +1,11 @@
 #encoding: utf-8
 class OrdersController < InheritedResources::Base
-
+  before_filter :load_session, :except => ['new', 'update', 'creat', 'show']
+  def load_session
+    unless session[:order]
+      redirect_to '/'
+    end
+  end
   #session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
   #. create order
   #. create order_detail
@@ -29,6 +34,7 @@ class OrdersController < InheritedResources::Base
         session[:order][:total_price] += order.total_price
         session[:order][:order_ids] << order.id
       end
+      #add user addr
       redirect_to edit_order_path(session[:order][:order_ids].first)
     else
       redirect_to '/'
@@ -40,12 +46,14 @@ class OrdersController < InheritedResources::Base
     phone = params[:order][:phone]
     addr = params[:order][:addr]
     user_note = params[:order][:user_note]
-    
+    require_deliver_time = params[:order][:require_deliver_time]
+
     session[:order][:order_ids].each do |order_id|
       @order = Order.find(order_id)
       @order.phone = phone
       @order.addr = addr
       @order.user_note = user_note
+      @order.require_deliver_time = require_deliver_time
       @order.save!
     end
 

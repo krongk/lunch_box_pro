@@ -87,6 +87,10 @@ class WelcomeController < ApplicationController
 
   def clear_cart
     session[:cart] = {}
+    respond_to do |format|
+      format.html {redirect_to '/'}
+      format.js #{ render json: @pages }
+    end
   end
 
   def help

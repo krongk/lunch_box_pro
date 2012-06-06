@@ -15,6 +15,15 @@
   color: red;
 }
 
+/***override active_admin*******/
+#footer{
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: #CCC;
+  border-bottom-color: #CCC;
+}
 /**ul li for shop dish list**/
 ul{
   margin: 0px;

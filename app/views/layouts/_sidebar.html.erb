@@ -1,25 +1,50 @@
-
-<div class="sidebar_section panel red fly" id="cart_sidebar_section">
-  <h3>Happy菜篮子</h3>
-  <div id="cart_tips"></div>
+<div class="sidebar_section panel" id="help_sidebar_section">
+  <h3>使用帮助</h3>
   <div class="panel_contents" id="side_bar_content">
-    <ul id="cart_list">
-    <% if session[:cart] %>
-      <% session[:cart].each do |k, v| %>
-        <h3><%= Shop.find(k).name %> </h3>
-        <% v.each do |kk, vv| %>
-          <%= get_dish_cart_li(k, kk, vv[:name], vv[:price], vv[:count]) %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
-    <% end %>
-    </ul>
-    <div id="cart_list_button_panel">
-      <% if session[:cart] &&  session[:cart].size > 0%>
-        <%= link_to "清空", clear_cart_path, :remote => true, :class => "button" %> &nbsp;&nbsp;&nbsp;
-        <%= link_to "生成订单", new_order_path, :class => "button" %>
-      <% end %>
-    </div>
+     随碟附送
   </div>
 </div>
+
+<% if need_show_cart %>
+  <script type="text/javascript">
+      $(function() {
+          var offset = $("#cart_sidebar_section").offset();
+          var topPadding = 25;
+          $(window).scroll(function() {
+              if ($(window).scrollTop() > offset.top) {
+                  $("#cart_sidebar_section").stop().animate({
+                      marginTop: $(window).scrollTop() - offset.top + topPadding
+                  });
+              } else {
+                  $("#cart_sidebar_section").stop().animate({
+                      marginTop: 0
+                  });
+              };
+          });
+      });
+  </script>
+  <div class="sidebar_section panel" id="cart_sidebar_section">
+    <h3>Happy菜篮子</h3>
+    <div id="cart_tips"></div>
+    <div class="panel_contents" id="side_bar_content">
+      <ul id="cart_list">
+      <% if session[:cart] %>
+        <% session[:cart].each do |k, v| %>
+          <h3><%= Shop.find(k).name %> </h3>
+          <% v.each do |kk, vv| %>
+            <%= get_dish_cart_li(k, kk, vv[:name], vv[:price], vv[:count]) %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
+      <% end %>
+      </ul>
+      <div id="cart_list_button_panel">
+        <% if session[:cart] &&  session[:cart].size > 0%>
+          <%= link_to "清空", clear_cart_path, :remote => true, :class => "button" %> &nbsp;&nbsp;&nbsp;
+          <%= link_to "生成订单", new_order_path, :class => "button" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

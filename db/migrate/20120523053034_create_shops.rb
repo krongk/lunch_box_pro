@@ -6,6 +6,8 @@ class CreateShops < ActiveRecord::Migration
       t.text :description
       t.string :avg, :limit               => 64
       t.string :biz_time, :limit          => 64
+      t.float :start_price
+      t.float :outer_price
       t.string :shihe, :limit              => 255
       t.string :sheshi, :limit              => 255
       t.float :rate

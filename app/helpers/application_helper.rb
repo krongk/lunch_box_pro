@@ -17,6 +17,15 @@ module ApplicationHelper
   def next_nav(name, link)
     content_for(:next_nav){ link_to(name, link)}
   end
+
+  def need_show_cart
+    ha={
+      'welcome' =>['index'],
+      'shops' => ['index', 'show']
+    }
+    return true if ha.include?(params[:controller]) && ha[params[:controller]].include?(params[:action])
+    false
+  end
   #
   def current_class(name)
     if params.values.join(' ') =~ /\b#{name}/i

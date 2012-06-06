@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :phone
       t.string :addr
       t.string :user_note
+      t.datetime :require_deliver_time
       t.integer :status, :default => 0
       t.string :admin_note
 
