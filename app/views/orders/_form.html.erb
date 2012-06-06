@@ -1,4 +1,10 @@
-<%= form_for(@order) do |f| %>
+<script>
+    $(document).ready(function(){
+      $("#edit_order").validate();
+    });
+</script>
+
+<%= form_for(@order, :html=>{:class=> 'formtastic', :id => 'edit_order'}) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -14,11 +20,11 @@
 
   <div class="field">
     <%= f.label :phone, "联系电话（手机）, 稍后我们会发一条短信给您" %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :class=> 'required number' %>
   </div>
   <div class="field">
     <%= f.label :addr, "详细地址, 请尽可能详细填写" %><br />
-    <%= f.text_field :addr %>
+    <%= f.text_field :addr, :class => 'required' %>
   </div>
   <div class="field">
     <%= f.label :user_note, "餐饮要求" %><br />

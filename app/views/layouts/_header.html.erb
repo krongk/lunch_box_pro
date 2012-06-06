@@ -2,13 +2,12 @@
   <h1 id="site_title"><a href="http://localhost:3000/">Happy.cd</a></h1>
   
   <ul class="tabbed_navigation" id="tabs">
-   
+    <li id=""><%=link_to "首页", "/" %></li>
     <li id=""><%=link_to "(#{session[:location].truncate(20)})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
-    <li id=""><a href="http://localhost:3000/admin">使用帮助</a></li>
+   
   </ul>
 
   <p id="utility_nav">
-    <a href="http://localhost:3000/admin/" data-method="get">登录</a>
-    <a href="http://localhost:3000/admin/logout" data-method="get">注册</a>
+     <a id="help" href="/help">使用帮助</a>
   </p>
 </div>

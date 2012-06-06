@@ -28,7 +28,8 @@ class AddressesController < ApplicationController
     #3.set cookie
     cookies.delete :user_input_addr
     cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
-
+    #reset cart
+    session[:cart] = nil
     #4.store IP-address
     if request.remote_ip
       begin

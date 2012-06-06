@@ -1,3 +1,53 @@
 // Place all the styles related to the shop_dishes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//display shop list
+#shop_addresses li.shop_item{
+  margin: 0 0 20px 0;
+}
+.shop_title_panel{
+    margin: 0 0 10px 0;
+
+    height: 60px;
+    display: block;
+  }
+.shop_addr_panel {
+  margin-left: 75px;
+}  
+.shop_actions_panel{
+    margin-left: 75px;
+}
+
+.shop_logo {
+  padding: 2px;
+  float: left;
+  width: 65px;
+  height: 60px;
+}
+
+.shop_title a{
+  padding: 0 0 10px 0;
+  margin: 0px;
+  font-family: "微软雅黑";
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+//dish list
+.shop_dish_item{
+  margin: 2px 0;
+}
+
+#shop_dish_list li:hover{
+  background-color: #FFF9DF;
+}
+
+#shop_dish_list li a{
+  text-decoration: none;
+}
+
+.shop_dish_count{
+  padding: 2px;
+}

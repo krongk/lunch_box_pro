@@ -35,15 +35,12 @@ class Address < ActiveRecord::Base
       end
       
       unless point.nil?
-        a = self.where(["latitude like ? AND longitude like ?", "#{point[0].to_s[0..6]}%", "#{point[1].to_s[0..7]}%"]).try(:first)
-        unless a
-          a = create!(
-            :addr => addr,
-            :region_id => 23,
-            :city_id => 234,
-            :full_addr => "成都市#{addr}"
-          )
-        end
+        a = create!(
+          :addr => addr,
+          :region_id => 23,
+          :city_id => 234,
+          :full_addr => "成都市#{addr}"
+        )
       end
     end
     a

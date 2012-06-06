@@ -20,16 +20,13 @@ RailsOnWeb::Application.routes.draw do
 
   get "welcome/index"
 
-  get "welcome/help"
   get "welcome/map_data"
-
-  get "welcome/about"
-
-  get "welcome/agreement"
 
   match "add_cart" => "welcome#add_cart", :as => :add_cart
   match "delete_cart" => "welcome#delete_cart", :as => :delete_cart
   match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
+
+  
   resources :project_items
 
   resources :project_cates
@@ -59,6 +56,9 @@ RailsOnWeb::Application.routes.draw do
 
   get "home/index"
   match "about" => "pages#show", :id => 'about'
+  match "help" => "pages#show", :id => 'help'
+  match "join" => "pages#show", :id => 'join'
+  
   match "sitemap" => "pages#show", :id => 'sitemap'
   match "contact" => "contacts#new"
   

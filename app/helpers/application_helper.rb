@@ -37,6 +37,10 @@ module ApplicationHelper
   def rate(shop)
     "评级：#{shop.rate} : #{shop.score}"
   end
+
+  def get_dish_cart_li(shop_id, shop_dish_id, name, price, count)
+    "<li id='cart_shop_dish_#{shop_dish_id}'>#{name.ljust(12, '一')} #{price.to_s || '0.0' } x #{count.to_s || '1' }&nbsp;&nbsp;<a href='/delete_cart?shop_id=#{shop_id}&shop_dish_id=#{shop_dish_id}' data-remote='true' class='button_del'><span style='color:#fff;'>x</span></a></li>".html_safe
+  end
   #链接菜单导航，如：首页/关于我们
   #input: nav_bar [['首页', '/'], ['关于', '/about']]
   def nav_bar(bar_arr)

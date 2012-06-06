@@ -1,5 +1,6 @@
-<h1>订单确认</h1>
+<h2>订单确认</h2>
 
+<div class="panel">
 <ul>
 <% if session[:cart] %>
   <% session[:cart].each do |k, v| %>
@@ -14,7 +15,10 @@
 </ul>
 
 <%#number_to_currency(amount.abs, :precision => 0, :format => "-%u%n") %>
-<h3>总价： <%= session[:order][:total_price].to_f %> </h3>
+<h3>总价：<span class="red"> <%= session[:order][:total_price].to_f %> </span></h3>
 
-<%= render 'form' %>
+<div class="order_form">
+ <%= render 'form' %>
+</div>
 
+</div>

@@ -1,15 +1,6 @@
-<div class="sidebar_section panel" id="help_sidebar_section">
-  <h3>帮助中心</h3>
-  <div class="panel_contents" id="side_bar_content">
-    <ul>
-      <li>本页保存客户前台的留言信息！</li>
-    </ul>
-  </div>
-</div>
-
 
 <div class="sidebar_section panel red fly" id="cart_sidebar_section">
-  <h3>Happy外送菜单</h3>
+  <h3>Happy菜篮子</h3>
   <div id="cart_tips"></div>
   <div class="panel_contents" id="side_bar_content">
     <ul id="cart_list">
@@ -17,7 +8,7 @@
       <% session[:cart].each do |k, v| %>
         <h3><%= Shop.find(k).name %> </h3>
         <% v.each do |kk, vv| %>
-          <li id='cart_shop_dish_<%=kk%>'><%= vv[:name].ljust(15, '一')%> <%=vv[:price] || '0.0' %> x <%=vv[:count] || 1 %></li>
+          <%= get_dish_cart_li(k, kk, vv[:name], vv[:price], vv[:count]) %>
         <% end %>
       <% end %>
     <% else %>
@@ -26,8 +17,8 @@
     </ul>
     <div id="cart_list_button_panel">
       <% if session[:cart] &&  session[:cart].size > 0%>
-        <%= link_to "清空", clear_cart_path, :remote => true %> &nbsp;&nbsp;&nbsp;
-        <%= link_to "生成订单", new_order_path %>
+        <%= link_to "清空", clear_cart_path, :remote => true, :class => "button" %> &nbsp;&nbsp;&nbsp;
+        <%= link_to "生成订单", new_order_path, :class => "button" %>
       <% end %>
     </div>
   </div>

@@ -31,3 +31,46 @@ ul.ui-autocomplete {
   color: red;
   font-weight: 700;
 }
+
+//address form
+//http://localhost:3000/addresses/new
+#head {
+  float: left;
+  width: 100%;
+  position: relative;
+  background-color: #CCC;
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+#head #logo {
+  background-color: #C00;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 36px;
+  color: #FFF;
+  float: left;
+  width: 180px;
+  height: 80px;
+  clear: both;
+  text-align: center;
+  display: block;
+  vertical-align: bottom;
+  margin: 0 auto;
+  padding: 20px;
+}
+#head #addr_form {
+  margin-left: 240px;
+}
+#new_address .tips {
+  margin: 0;
+  padding: 10px 0 0 0;
+  color: #666;
+}
+#address_addr {
+  color: #666;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+#submit {
+  font-size: 20px;
+}
