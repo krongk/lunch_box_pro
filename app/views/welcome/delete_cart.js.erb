@@ -8,7 +8,7 @@ $("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-c
   session[:cart].each do |k, v|
     list_arr += "<h3>#{Shop.find(k).name}</h3>"
     v.each do |kk, vv|
-      list_arr += "<li id='cart_shop_dish_#{kk}'>#{vv[:name].ljust(10, '一')} #{vv[:price] || '0.0' } x #{vv[:count] || 1 }<a href='/welcome/delete_cart?shop_id=#{k}&shop_dish_id=#{kk}' data-remote='true'>x</a></li>"
+      list_arr += get_dish_cart_li(k, kk, vv[:name], vv[:price], vv[:count])
     end
   end
 %>

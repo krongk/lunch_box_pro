@@ -44,9 +44,25 @@ class Shop < ActiveRecord::Base
     end
   end
 
+  def show_start_price
+    "起送价：#{start_price}"
+  end
+
+  def show_outer_price
+    "配送费：#{outer_price}"
+  end
+
   def show_is_hot
     if is_hot
       "推荐"
+    else
+      ""
+    end
+  end
+
+  def show_is_discount
+    if is_discount
+      "有折扣"
     else
       ""
     end
@@ -71,7 +87,7 @@ class Shop < ActiveRecord::Base
     tags.blank? ? "" : tags.split(',').map{|t| "<a href='/tags?#{t}' target='_blank'>#{t}</a>"}.join("，")
   end
   def show_photo_url
-    photo_url.blank? ? "" : %{<span style="float: left: padding: 4px;"><img src="/shop/#{photo_url}" alt="#{name}"/></span>}
+    photo_url.blank? ? "" : %{<span style="float: left: padding: 4px;"><img src="#{photo_url}" alt="#{name}"/></span>}
   end
   def show_shihe
     shihe.blank? ? "" : %{适合：#{shihe}}

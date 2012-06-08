@@ -1,6 +1,6 @@
 //update count span
 $("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("<%= session[:cart][params[:shop_id]][params[:shop_dish_id]][:count] || 1 %>");
-$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#ddd");
+$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#ffcc00");
 
 //update sidebar cart list
 <%
@@ -11,8 +11,6 @@ $("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-c
       list_arr += get_dish_cart_li(k, kk, vv[:name], vv[:price], vv[:count])
     end
   end
-  puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>"
-  puts list_arr
 %>
 $("#cart_list").html("<%= list_arr.html_safe%>");
 

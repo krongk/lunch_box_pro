@@ -5,26 +5,24 @@
   <div class="biz">
     <%= @shop.show_biz_time %>
     <%= @shop.show_avg %>
-
     <%= @shop.show_has_out_food %>
     <%= @shop.show_is_hot %>
     <%= @shop.show_discount %>
   </div>
   <div class="rate">
-    <%= @shop.rate %>
-    
+    评级：<%= @shop.rate %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <%= @shop.show_score %>
-
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <%= @shop.show_score_kouwei %>
- 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <%= @shop.show_score_sudu %>
- 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <%= @shop.show_score_fuwu %>
   </div>
 
   <div class="desc">
-    <%= @shop.show_photo_url.html_safe %>
-    <p><%= @shop.description %></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= @shop.description %></p>
     <%= @shop.show_shihe %>
     <%= @shop.show_sheshi.html_safe %>
     <%= @shop.show_tags %>
@@ -35,12 +33,12 @@
   <h2>菜谱</h2>
   <ul>
     <% @shop.shop_dishes.each do |shop_dish| %>
-      <li>
-        <%= shop_dish.show_dish_name %>
-        <%= shop_dish.show_dish_photo.html_safe %>
-        <%= shop_dish.show_dish_description %>
-        <%= shop_dish.show_dish_price %>
-      </li>
+        <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+         <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
+           <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
+           <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit>
+         <% end %>
+        </li>
     <% end %>
   </ul>
 </div>

@@ -3,6 +3,33 @@
 #move.js  => https://github.com/visionmedia/move.js
 
 
+##################
+更新shop_addresses 的geocode by Google API
+dup_ids = []
+def test
+  ShopAddress.where(:is_formatted => 'n').each_with_index do |a, index|
+    a.is_formatted = 'y'
+    a.save!
+    puts index if index%500 == 0
+    break if index > 1000
+  end
+  return 'done...'
+end
+
+#######
+dup_ids = []
+def testa
+  Address.where("en_combined_addr is null").find_each do |a|
+    a.en_combined_addr = a.en_addr.gsub(/\s+/, '') unless a.en_addr.blank?
+    a.save!
+    print "#{a.id} "
+  end
+  return 'done'
+end
+
+
+
+
 ##项目投融资来源：
   http://company.chinaventure.com.cn/list/
 ##解决方案来源：

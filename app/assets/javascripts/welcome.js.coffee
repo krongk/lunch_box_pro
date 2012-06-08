@@ -7,11 +7,11 @@
 # 解决：在welcome/index.js.erb中，修改为： <%# j render(:partial => 'welcome/shop_addresses', 。。。
 #        新建一个partial:　_shop_addresses.html.erb 用于展示餐厅列表， 当要翻页的时候，只是渲染此页。
 jQuery ->
-  if $('.pagination').length
+  if $('#shop_addresses .pagination').length
     $(window).scroll ->
-      url = $('.pagination .next_page').attr('href')
+      url = $('#shop_addresses .pagination .next_page').attr('href')
       if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-        $('.pagination').html("<p><img src='/assets/loading.gif'/></p>")
+        $('#shop_addresses .pagination').html("<p><img src='/assets/loading.gif'/></p>")
         $.getScript(url)
     $(window).scroll()
 

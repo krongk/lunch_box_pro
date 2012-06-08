@@ -1,40 +1,42 @@
 <div id ='shop_addresses'>
-    <ul>
-    <% @shop_addresses.each_with_index do |shop_address, index| %>
-      <% shop = shop_address.shop %>
-      <% shop_dishes = shop.shop_dishes %>
-      <li class="shop_item">
-        <div class="shop_title_panel">
-          <%=image_tag  shop.photo_url || '/assets/shop_logo.jpg', :class => 'shop_logo' %>
-          <div class="shop_addr_panel">
-            <div class="shop_title"><%=link_to shop.name, shop %></div>
-            <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
-          </div>
-          <div class="shop_actions_panel">
-            <span class="biz_time">营业时间：<%=shop.biz_time%> </span>
-            <span class="biz_time">起送价：<%=shop.start_price%> </span>
-            <span class="biz_time">配送费：<%=shop.outer_price%> </span>
-            <span class="has_out_food"><%= has_out_food(shop) %></span>
-            <span class="is_hot"><%= is_hot(shop) %></span>
-            <span class="is_hot"><%= is_discount(shop) %></span>
-            <span class="rate"><%= rate(shop) %></span>
-          </div>
+  <ul>
+  <% @shop_addresses.each_with_index do |shop_address, index| %>
+    <% shop = shop_address.shop %>
+    <% shop_dishes = shop.shop_dishes %>
+    <li class="shop_item">
+      <div class="shop_title_panel">
+        <%=image_tag  shop.photo_url || '/assets/shop_logo.jpg', :class => 'shop_logo' %>
+        <div class="shop_addr_panel">
+          <div class="shop_title"><%=link_to shop.name, shop %></div>
+          <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
         </div>
-        <div class="shop_dish_panel">
-          <ul id="shop_dish_list">
-            <% shop_dishes.each_with_index do |shop_dish, i| %>
-              <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
- 
-               <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
-                 <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
-                 <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit>
-               <% end %>
-              </li>
-            <% end %>
-          </ul>
+        <div class="shop_actions_panel">
+          <span class="biz_time"><%=shop.show_biz_time%> </span>
+          <span class="biz_time"><%=shop.show_start_price%> </span>
+          <span class="biz_time"><%=shop.show_outer_price%> </span>
+          <span class="has_out_food"><%= shop.show_has_out_food %></span>
+          <span class="is_hot"><%= shop.show_is_hot %></span>
+          <span class="is_hot"><%= shop.show_is_discount %></span>
+          <span class="rate"><%= shop.show_rate %></span>
         </div>
-      </li>
-    <% end %>
-    </ul>
-  </div>
+      </div>
+      <div class="shop_dish_panel">
+        <ul id="shop_dish_list">
+          <% shop_dishes.each_with_index do |shop_dish, i| %>
+            <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+
+             <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
+               <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
+               <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> <span class="shop_dish_price">￥<%= shop_dish.price || 10 %></span></button_edit>
+             <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+
   <%= will_paginate @shop_addresses %>
+</div>
+  

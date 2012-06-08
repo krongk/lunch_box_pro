@@ -38,10 +38,11 @@
 //dish list
 .shop_dish_item{
   margin: 2px 0;
+  padding: 4px 0;
 }
 
 #shop_dish_list li:hover{
-  background-color: #FFF9DF;
+  background-color: #ffcc00;
 }
 
 #shop_dish_list li a{
@@ -49,5 +50,16 @@
 }
 
 .shop_dish_count{
-  padding: 2px;
+  padding: 4px;
+  font-weight: 800;
+  color: red;
+}
+
+.shop_dish_price{
+  font-weight: 800;
+}
+
+//cart list
+#cart_list h3{
+  background-color: #ffcc00;
 }

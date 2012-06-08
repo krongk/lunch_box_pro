@@ -1,63 +1,25 @@
-<h1>Listing shops</h1>
+<h1>餐厅列表</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Avg</th>
-    <th>Biz time</th>
-    <th>Note</th>
-    <th>Rate</th>
-    <th>Score</th>
-    <th>Score kouwei</th>
-    <th>Score sudu</th>
-    <th>Score fuwu</th>
-    <th>Photo url</th>
-    <th>Tags</th>
-    <th>Secret</th>
-    <th>Has out food</th>
-    <th>Has out people</th>
-    <th>Is new added</th>
-    <th>Is hot</th>
-    <th>Hot unitl</th>
-    <th>Is discount</th>
-    <th>Discount value</th>
-    <th>Updated by</th>
-    <th>Is contacted</th>
-    <th>Is dealed</th>
-    <th>Original source</th>
-    <th>Original url</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>名称</th>
+    <th>标签</th>
+    <th>人均</th>
+    <th>营业时间</th>   
+    <th>评级</th>
   </tr>
 
 <% @shops.each do |shop| %>
   <tr>
-    <td><%= shop.name %></td>
-    <td><%= shop.description %></td>
+    <td><b><%= link_to shop.name, shop %></b></td>
+     <td><%= shop.tags %></td>
     <td><%= shop.avg %></td>
     <td><%= shop.biz_time %></td>
-
     <td><%= shop.rate %></td>
-    <td><%= shop.score %></td>
-    <td><%= shop.score_kouwei %></td>
-    <td><%= shop.score_sudu %></td>
-    <td><%= shop.score_fuwu %></td>
-    <td><%= shop.photo_url %></td>
-    <td><%= shop.tags %></td>
-    <td><%= shop.secret %></td>
-    <td><%= shop.has_out_food %></td>
-    <td><%= shop.has_out_people %></td>
-    <td><%= shop.original_source %></td>
-    <td><%= shop.original_url %></td>
-    <td><%= link_to 'Show', shop %></td>
-    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-    <td><%= link_to 'Destroy', shop, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Shop', new_shop_path %>
+<%= will_paginate @shops, :next_label => '下一页', :previous_label => '上一页' %>

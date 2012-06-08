@@ -33,20 +33,7 @@ module ApplicationHelper
     end
     ''
   end
-  ###attr override
-  def has_out_food(shop)
-    shop.has_out_food ? "提供外送服务" : "不提供外送服务"
-  end
-  def is_hot(shop)
-    shop.is_hot && shop.hot_until > Time.now ? "推荐餐厅" : ""
-  end
-  def is_discount(shop)
-    shop.is_discount ? "有优惠" : ""
-  end
-  def rate(shop)
-    "评级：#{shop.rate} : #{shop.score}"
-  end
-
+  
   def get_dish_cart_li(shop_id, shop_dish_id, name, price, count)
     "<li id='cart_shop_dish_#{shop_dish_id}'>#{name.ljust(12, '一')} #{price.to_s || '0.0' } x #{count.to_s || '1' }&nbsp;&nbsp;<a href='/delete_cart?shop_id=#{shop_id}&shop_dish_id=#{shop_dish_id}' data-remote='true' class='button_del'><span style='color:#fff;'>x</span></a></li>".html_safe
   end

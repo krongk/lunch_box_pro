@@ -23,6 +23,17 @@ class WelcomeController < ApplicationController
     end
 
     @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 26)
+    @shop_addresses.each do |sa|
+      begin
+        point = Geocoder.coordinates(sa.full_addr)
+      rescue 
+      end
+      if point
+        sa.latitude = point[0]
+        sa.longitude = point[1]
+        sa.save!
+      end
+    end
     # @shop_addresses = ShopAddress.near(@point, 0.5) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 1) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5
