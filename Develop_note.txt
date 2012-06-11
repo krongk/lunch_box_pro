@@ -8,10 +8,16 @@
 dup_ids = []
 def test
   ShopAddress.where(:is_formatted => 'n').each_with_index do |a, index|
-    a.is_formatted = 'y'
-    a.save!
-    puts index if index%500 == 0
-    break if index > 1000
+    begin
+      a.is_formatted = 'y'
+      a.save!
+      puts index if index%500 == 0
+    rescue => ex
+      if ex.message =~ /.*API error.*/i
+        puts ex.message
+        break
+      end
+    end
   end
   return 'done...'
 end
@@ -27,7 +33,21 @@ def testa
   return 'done'
 end
 
-
+#############
+#copy dir shop photo path to photo_url]
+# http://www.dianping.com/shop/2228632 => dp_528668.jpg
+# 点评的需要做，小秘书的不需要
+def copy_photo
+  Shop.where("original_source ='dianping' AND photo_url is null").find_each do |s|
+    photo_path = "dp_#{s.original_url.sub(/http:\/\/www.dianping.com\/shop\//, '')}.jpg" 
+    if File.exist?(File.join(Rails.root, 'public', 'shop', photo_path))
+      s.photo_url = photo_path
+      s.save!
+      puts "#{s.id}  ----- #{s.photo_url}"
+    end
+  end
+  'done'
+end
 
 
 ##项目投融资来源：
