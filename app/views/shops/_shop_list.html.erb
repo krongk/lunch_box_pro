@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>名称</th>
+    <th>营业时间</th>   
+    <th>是否提供外卖</th>
+     <th>是否签约</th>
+    <th>功能</th>
+  </tr>
+
+<% shops.each do |shop| %>
+  <tr>
+    <td><b><%= link_to shop.name, shop %></b></td>
+     <td><%= shop.biz_time %></td>
+     <td><%= shop.has_out_food %></td>
+     <td><%= shop.is_dealed %></td>
+     <td><%= link_to '修改', edit_shop_path(shop)%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= will_paginate shops, :next_label => '下一页', :previous_label => '上一页' %>

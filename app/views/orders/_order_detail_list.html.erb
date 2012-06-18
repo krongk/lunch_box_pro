@@ -1,0 +1,24 @@
+<%
+  detail_hash  = {}
+  order.order_details.each do |detail|
+    shop_dish = detail.shop_dish
+    shop = shop_dish.shop
+    dish = shop_dish.dish
+    detail_hash[shop.name] ||= {}
+    detail_hash[shop.name][dish.name] =[shop_dish.price, detail.amount, detail.discount, detail.total_price] 
+  end
+%>
+
+<div class="panel">
+<table>
+  <tr><td>菜名</td><td>单价</td><td>数量</td><td>折扣</td><td>总价</td></tr>
+  <% detail_hash.each do |k,v| %>
+    <tr><td colspan="5"><h3><%= k %></h3></td></tr>
+    <% v.each do |kk, vv| %>
+      <tr><td><%= kk %></td>
+       <td><%= vv.join("</td><td>").html_safe %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+</div>

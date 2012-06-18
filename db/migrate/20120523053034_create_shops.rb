@@ -31,7 +31,7 @@ class CreateShops < ActiveRecord::Migration
       t.boolean :is_dealed, :default      => false
       t.string :original_source, :limit   => 32
       t.string :original_url, :limit      => 128
-
+      t.string :note
       t.timestamps
     end
     add_index :shops, :name

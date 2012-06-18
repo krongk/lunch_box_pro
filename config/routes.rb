@@ -4,8 +4,7 @@ RailsOnWeb::Application.routes.draw do
   resources :orders
 
   resources :addresses
-  resources :shop_dishes
-
+  
   resources :shop_contacts
 
   resources :shop_addresses
@@ -15,17 +14,6 @@ RailsOnWeb::Application.routes.draw do
   resources :dish_cates
 
   resources :zones
-
-  get "welcome/search"
-
-  get "welcome/index"
-
-  get "welcome/map_data"
-
-  match "add_cart" => "welcome#add_cart", :as => :add_cart
-  match "delete_cart" => "welcome#delete_cart", :as => :delete_cart
-  match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
-
   
   resources :project_items
 
@@ -35,7 +23,10 @@ RailsOnWeb::Application.routes.draw do
 
   resources :comments
 
-  resources :shops
+  resources :shops do
+    resources :shop_dishes
+    resources :dishes
+  end
 
   resources :resource_items
 
@@ -54,18 +45,25 @@ RailsOnWeb::Application.routes.draw do
   #resources :sites
   resources :pages
 
-  get "home/index"
-  match "about" => "pages#show", :id => 'about'
-  match "help" => "pages#show", :id => 'help'
-  match "join" => "pages#show", :id => 'join'
-  
-  match "sitemap" => "pages#show", :id => 'sitemap'
-  match "contact" => "contacts#new"
-  
-  match "form" => "home#form"
-  match "search" => "home#search"
+  get "welcome/search"
+  get "welcome/index"
+  get "welcome/map_data"
+  match "add_cart" => "welcome#add_cart", :as => :add_cart
+  match "delete_cart" => "welcome#delete_cart", :as => :delete_cart
+  match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
 
+  get "home/index"
+  get "home/edit_order"
+  get "home/update_order"
+  get "home/search"
+  match "update_order" => "home#update_order", :as => :update_order
+  
   match "upload" => "resource_items#upload"
+
+  #use get json
+  match "get_dish" => "dishes#get"
+  match "dish_list" => "dishes#dish_list"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

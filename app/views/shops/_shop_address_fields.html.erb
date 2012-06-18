@@ -1,0 +1,13 @@
+ <div class="dashboard_section panel">
+  <h3>餐厅地址信息</h3>
+  <div class="panel_contents">
+
+  <fieldset>
+    <select id="districts" name="shop[shop_address_attributes][district_id]">
+      <%= options_from_collection_for_select(District.where(:city_id => 234), :id, :name, :selected => @shop.shop_address.district_id) %>
+    </select>
+    <%= f.text_field :addr %><br />
+  </fieldset>
+
+ </div>
+</div>

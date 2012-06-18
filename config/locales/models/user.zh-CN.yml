@@ -7,6 +7,8 @@ zh-CN:
     attributes:
       user:
         email: 邮件地址
+        password: 密码
+        password_confirmation: 密码确认
     errors:
       news_cate: '失败'
   helpers:

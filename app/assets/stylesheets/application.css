@@ -55,3 +55,7 @@ a.button_del {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+/***********side bar help***************/
+#help_sidebar_content{
+  display: none;
+}

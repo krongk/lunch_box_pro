@@ -10,15 +10,8 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :shop %><br />
-    <%= f.text_field :shop %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
+  <%= f.hidden_field :shop, :value => @order.shop.id %>
+  <%# f.hidden_field :user, :value => @order.user.id %>
   <div class="field">
     <%= f.label :total_price %><br />
     <%= f.text_field :total_price %>

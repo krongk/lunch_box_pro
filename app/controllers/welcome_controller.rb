@@ -84,6 +84,7 @@ class WelcomeController < ApplicationController
       else
         session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
       end
+      render 'add_cart.js'
     else
       redirect_to new_address_path
       return

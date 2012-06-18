@@ -1,0 +1,50 @@
+<h2>编辑</h2>
+
+<%= form_for(@order, :url => '/home/update_order', :method => :get) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => "/orders/order_detail_list", :locals =>{:order => @order} %>
+
+  <div class="panel">
+    <%= f.hidden_field :id, :value => @order.id %>
+    <%= f.hidden_field :shop_id, :value => @order.shop.id %>
+    <%# f.hidden_field :user, :value => @order.user.id %>
+    <div class="field">
+      <%= f.label :total_price %><br />
+      <%= f.text_field :total_price %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.text_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :addr %><br />
+      <%= f.text_field :addr %>
+    </div>
+    <div class="field">
+      <%= f.label :user_note %><br />
+      <%= f.text_field :user_note %>
+    </div>
+    <div class="field">
+      <%= f.label :status %><br />
+      <%= f.number_field :status %>
+    </div>
+    <div class="field">
+      <%= f.label :admin_note %><br />
+      <%= f.text_field :admin_note %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -3,11 +3,20 @@
   
   <ul class="tabbed_navigation" id="tabs">
     <li id=""><%=link_to "首页", "/" %></li>
-    <li id=""><%=link_to "(#{session[:location].truncate(20)})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
+    <li id=""><%=link_to "(#{session[:location]})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
    
   </ul>
 
   <p id="utility_nav">
+     
+     <% if user_signed_in? %>
+       <%= current_user.email %>
+       <%= link_to '退出', destroy_user_session_path %>
+       <%= link_to '管理中心', '/home/index' %>
+     <% else %>
+       <%= link_to '管理登录', new_user_session_path %>
+     <% end %>
+
      <a id="help" href="/help">使用帮助</a>
   </p>
 </div>

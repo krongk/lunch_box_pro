@@ -1,15 +1,27 @@
 #encoding: utf-8
 class Shop < ActiveRecord::Base
-  attr_accessible :address_ids, :address_tokens
   has_one :shop_address
   has_one :shop_contact
   has_many :shop_dishes
   has_many :dishes, :through => :shop_dishes
 
-  attr_reader :address_tokens
+  accepts_nested_attributes_for :shop_address, allow_destroy: false
+  accepts_nested_attributes_for :shop_contact, allow_destroy: false
+  accepts_nested_attributes_for :shop_dishes, allow_destroy: true
 
-  def address_tokens=(ids)
-    self.address_ids = ids.split(',')
+  after_save :create_address_contact
+
+  def create_address_contact
+    #create addxress
+    ShopAddress.create(
+      :shop_id => self.id,
+      :region_id => 23,
+      :city_id => 234
+    )
+    #create contact
+    ShopContact.create(
+      :shop_id => self.id
+    )
   end
 
   def show_discount

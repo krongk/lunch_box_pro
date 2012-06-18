@@ -1,4 +1,5 @@
 class ShopAddressesController < InheritedResources::Base
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @shop_addresses = ShopAddress.limit(100).order(:addr)

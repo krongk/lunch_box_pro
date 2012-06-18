@@ -1,0 +1,24 @@
+
+<fieldset>
+  <% dish =  Dish.find_by_id(f.object.dish_id)%>
+
+  <% d_name = dish.name if dish.present? %>
+
+  <%= f.hidden_field :dish_id%>
+
+  <%= f.text_field :dish_name, :value => d_name, data: {autocomplete_source: '/dish_list'}, :style => "width: 60px;", :class => 'dish_name_field' %>
+
+  价格：
+  <%= f.text_field :price,  :class => 'dish_price', :style => "width: 60px;" %>
+
+  <%= f.label :is_discount, '打折:' %>
+  <%= f.check_box :is_discount %>&nbsp;&nbsp;
+  折扣价格：<%= f.text_field :discount_value,  :style => "width: 40px;" %>
+
+  <%= f.label :is_hot, '推荐:' %>
+  <%= f.check_box :is_hot %>&nbsp;&nbsp;
+ 
+  <%= f.hidden_field :_destroy %>&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to "删除", '#', class: "remove_fields" %>
+  
+</fieldset> 

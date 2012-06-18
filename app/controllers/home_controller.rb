@@ -1,44 +1,39 @@
 #encoding: utf-8
-load 'forager.rb'
-
+#区域代理用户管理中心
 class HomeController < ApplicationController
+  before_filter :authenticate_user!
   def index
   	#redirect_to :action => :site_map
+    @shops = Shop.where(:updated_by => current_user.id).paginate(:page => params[:page] || 1, :per_page => 40)
+    @orders = Order.where(:shop_id => @shops.map(&:id)).paginate(:page => params[:page] || 1, :per_page => 40)
   end
 
-  #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'
-  def location
-  	#@ip = request.remote_id
-  	@ip = '118.113.226.34'
-  	@location = Rails.cache.read(@ip)
+  def edit_order
+    @order = Order.find(params[:id])
   end
 
-  #syixia engine
-  def search
-    if params[:q].blank?
-      flash[:notice] = "请输入搜索关键词！"
-      render 'form', :layout => false
-      return
+  def update_order
+    @order = Order.find(params[:order][:id])
+
+    respond_to do |format|
+      if @order.update_attributes(params[:order])
+        format.html { redirect_to('/home/index', :notice => '订单修改成功.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
+      end
     end
-    @ic = Iconv.new('UTF-8//IGNORE', 'gb2312//IGNORE')
-    @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
-    @coder = HTMLEntities.new
+  end
 
-    #get key word
-    q = params[:q]
-    q = q.squeeze(' ').strip unless q.blank?
+  def search 
+    #http://www.smsbao.com/query?u=inruby&p=inruby.com
+    #http://www.smsbao.com/sms?u=inruby&p=inruby.com&m=15928661802&c=testaaf 
+    #发送短信接口： 通过'open-uri', 加密使用Digest::MD5
+    p = Digest::MD5.hexdigest "kenrome001"
+    open("http://www.smsbao.com/sms?u=inruby&p=#{p}&m=15928661802&c=testaaf") {|f|
+      f.each_line {|line| p line}
+    }
 
-    #get search source <web, wenda>
-    t = params[:t] || 'web'
-    t = ['web', 'wenda'].include?(t) ? t : 'web'
-
-    #get page number
-    @page = params[:page].to_i || 1
-    @page = (1..100).include?(@page) ? @page : 1
-
-    options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
-    # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
-    @result = Forager.get_result(options)
-  
   end
 end

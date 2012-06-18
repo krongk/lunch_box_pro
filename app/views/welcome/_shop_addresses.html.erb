@@ -5,10 +5,11 @@
     <% shop_dishes = shop.shop_dishes %>
     <li class="shop_item">
       <div class="shop_title_panel">
-        <%=image_tag  shop.photo_url || '/assets/shop_logo.jpg', :class => 'shop_logo' %>
+        <%=image_tag  shop.photo_url.blank? ? '/assets/shop_logo.jpg' : "/shop/#{shop.photo_url}", :class => 'shop_logo' %>
         <div class="shop_addr_panel">
           <div class="shop_title"><%=link_to shop.name, shop %></div>
           <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
+          <div><%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %></div>
         </div>
         <div class="shop_actions_panel">
           <span class="biz_time"><%=shop.show_biz_time%> </span>
@@ -23,6 +24,7 @@
       <div class="shop_dish_panel">
         <ul id="shop_dish_list">
           <% shop_dishes.each_with_index do |shop_dish, i| %>
+            <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
             <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
 
              <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>

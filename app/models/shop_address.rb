@@ -4,6 +4,7 @@ class ShopAddress < ActiveRecord::Base
   belongs_to :region
   belongs_to :city
   belongs_to :district
+
   
   #---start geocoder
   geocoded_by :full_addr

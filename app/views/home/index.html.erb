@@ -1,21 +1,30 @@
-<% title ["成都红宝石信息技术有限公司，您身边的企业信息化解决专家"].join(' - ') %>
-<% meta_keywords ["成都红宝石企业信息化策划专家"].join(' - ') %>
-<% meta_description ["成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
+<% title ["管理中心-乐活外卖"].join(' - ') %>
+<% meta_keywords ["乐活外卖"].join(' - ') %>
+<% meta_description ["乐活外卖"].join(' - ') %>
 
-<% if page = Page.find_by_path_name('home') %>
-   <%=page.body.html_safe unless page.body.blank?%>
-<% end %>
+<h2>区域经理管理中心</h2>
 
-<h3>最新项目展示</h3>
-<div class="wrapper">
-<% ProductItem.recent(3).each_with_index do |item, index| %>
-  <div class="col-<%=index + 1 %>">
-    <div class="box1">
-      <p><%=image_tag item.image_path, :title => item.title, :width => '140px' %></p>
-      <h4><%= item.title.truncate(20) %></h4>
-      <p class="p1"><%= truncate_content(item.description, 20) %></p>
-      <div class="wrapper"><a href="<%=product_item_path(item)%>" class="link1"><em><b>阅读更多</b></em></a></div>
-    </div>
+
+<div class="dashboard_section panel">
+  <h3>快速导航</h3>
+  <div class="panel_contents">
+    <ul>
+      <li><a href="/shops/new">添加餐厅</a></li>
+      <li><a href="/shops">查找餐厅</a></li>
+    </ul>
   </div>
-<% end %>
+</div>
+
+<div class="dashboard_section panel">
+  <h3>最新订单</h3>
+  <div class="panel_contents">
+    <%= render :partial => '/orders/order_list', :locals => {:orders => @orders }%>    
+  </div>
+</div>
+
+<div class="dashboard_section panel">
+  <h3>最近修改的餐厅</h3>
+  <div class="panel_contents">
+    <%= render :partial => '/shops/shop_list', :locals => {:shops => @shops} %>    
+  </div>
 </div>

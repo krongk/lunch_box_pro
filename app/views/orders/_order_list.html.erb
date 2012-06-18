@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <th>编号                 </th>
+    <th>餐厅             </th>
+    <th>总价         </th>
+    <th>电话               </th>
+    <th>详细地址                </th>
+    <th>期望送达时间</th>
+    <th>用户备注           </th>
+    <th>状态              </th>
+    <th>下单时间          </th>
+    <th>管理          </th>
+  </tr>
+
+<% orders.each do |order| %>
+  <tr>
+    <td><%= order.id                   %></td>
+    <td><%= link_to order.shop.name, shop_path(order.shop)             %></td>
+    <td><%= order.total_price          %></td>
+    <td><%= order.phone                %></td>
+    <td><%= order.addr                 %></td>
+    <td><%= order.require_deliver_time %></td>
+    <td><%= order.user_note            %></td>
+    <td><%= order.status               %></td>
+    <td><%= order.created_at.to_s(:db)          %></td>
+    <td><%= link_to '详细', "/home/edit_order?id=#{order.id}" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= will_paginate orders, :next_label => '下一页', :previous_label => '上一页' %>
+

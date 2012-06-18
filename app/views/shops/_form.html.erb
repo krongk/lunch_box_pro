@@ -1,3 +1,4 @@
+
 <%= form_for(@shop) do |f| %>
   <% if @shop.errors.any? %>
     <div id="error_explanation">
@@ -11,110 +12,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :avg %><br />
-    <%= f.text_field :avg %>
-  </div>
-  <div class="field">
-    <%= f.label :biz_time %><br />
-    <%= f.text_field :biz_time %>
-  </div>
+  <%= render :partial => 'shop_fields', :locals =>{:f => f} %>
 
-  <div class="field">
-    <%= f.label :rate %><br />
-    <%= f.text_field :rate %>
-  </div>
-  <div class="field">
-    <%= f.label :score %><br />
-    <%= f.text_field :score %>
-  </div>
-  <div class="field">
-    <%= f.label :score_kouwei %><br />
-    <%= f.text_field :score_kouwei %>
-  </div>
-  <div class="field">
-    <%= f.label :score_sudu %><br />
-    <%= f.text_field :score_sudu %>
-  </div>
-  <div class="field">
-    <%= f.label :score_fuwu %><br />
-    <%= f.text_field :score_fuwu %>
-  </div>
-  <div class="field">
-    <%= f.label :photo_url %><br />
-    <%= f.text_field :photo_url %>
-  </div>
-  <div class="field">
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </div>
-  <div class="field">
-    <%= f.label :secret %><br />
-    <%= f.text_field :secret %>
-  </div>
-  <div class="field">
-    <%= f.label :has_out_food %><br />
-    <%= f.check_box :has_out_food %>
-  </div>
-  <div class="field">
-    <%= f.label :has_out_people %><br />
-    <%= f.check_box :has_out_people %>
-  </div>
-  <div class="field">
-    <%= f.label :is_new_added %><br />
-    <%= f.check_box :is_new_added %>
-  </div>
-  <div class="field">
-    <%= f.label :is_hot %><br />
-    <%= f.check_box :is_hot %>
-  </div>
-  <div class="field">
-    <%= f.label :hot_unitl %><br />
-    <%= f.date_select :hot_unitl %>
-  </div>
-  <div class="field">
-    <%= f.label :is_discount %><br />
-    <%= f.check_box :is_discount %>
-  </div>
-  <div class="field">
-    <%= f.label :discount_value %><br />
-    <%= f.text_field :discount_value %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_by %><br />
-    <%= f.number_field :updated_by %>
-  </div>
-  <div class="field">
-    <%= f.label :is_contacted %><br />
-    <%= f.check_box :is_contacted %>
-  </div>
-  <div class="field">
-    <%= f.label :is_dealed %><br />
-    <%= f.check_box :is_dealed %>
-  </div>
-  <div class="field">
-    <%= f.label :original_source %><br />
-    <%= f.text_field :original_source %>
-  </div>
-  <div class="field">
-    <%= f.label :original_url %><br />
-    <%= f.text_field :original_url %>
-  </div>
+  <%= f.fields_for :shop_address do |builder| %>
+    <%= render 'shop_address_fields', f: builder %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :note %><br />
-    <%= f.text_field :address_tokens, data: {load: @shop.shop_address} %>
-  </div>
+  <%= f.fields_for :shop_contact do |builder| %>
+    <%= render 'shop_contact_fields', f: builder %>
+  <% end %>
 
+
+ <div class="dashboard_section panel">
+  <h3>餐厅菜谱信息</h3>
+  <div class="panel_contents">
+    <%= f.fields_for :shop_dishes do |builder| %>
+      <%= render 'shop_dish_fields', f: builder %>
+    <% end %>
+
+    <%= link_to_add_fields "添加菜单", f, :shop_dishes %>
+    <span style="padding:0 0 0 20px; color: #ccc;">| 查找菜名：
+    <input id="find_dish_nanme" class="dish_name_field ui-autocomplete-input" data-autocomplete-source="/dish_list" id="test_dish_name" size="50" style="width: 60px;" type="text" value="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+    (将查到的菜名复制到上面新添加的菜单中)
+    </span>
+
+  </div>
+ </div>
+ 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '提交更新' %>
   </div>
 <% end %>

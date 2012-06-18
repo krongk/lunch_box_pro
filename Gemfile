@@ -9,7 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails', '1.0.14'
+gem 'jquery-rails', '~>1.0.19'
 gem 'devise', '1.5.0'
 
 #==other

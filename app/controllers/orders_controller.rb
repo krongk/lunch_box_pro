@@ -1,11 +1,9 @@
 #encoding: utf-8
 class OrdersController < InheritedResources::Base
-  before_filter :load_session, :except => ['new', 'update', 'creat', 'show']
-  def load_session
-    unless session[:order]
-      redirect_to '/'
-    end
-  end
+  before_filter :authenticate_user!, :except => [:index, :show, :new, :create, :edit, :update]
+ 
+  #http://www.smsbao.com/sms?u=inruby&p=inruby.com&m=15928661802&c=test
+
   #session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
   #. create order
   #. create order_detail

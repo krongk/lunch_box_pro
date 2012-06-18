@@ -1,0 +1,53 @@
+ <div class="dashboard_section panel">
+  <h3>餐厅基本信息</h3>
+  <div class="panel_contents">
+   
+  <div class="field">
+    <%= f.label :name, '名称' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description, '介绍' %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :biz_time, '营业时间' %><br />
+    <%= f.text_field :biz_time %>
+  </div>
+  <div class="field">
+    <%= f.label :has_out_food, '提供外卖:' %>
+    <%= f.check_box :has_out_food %>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <%= f.label :has_out_people, '有配备外送人员:' %>
+    <%= f.check_box :has_out_people %>&nbsp;&nbsp;
+  </div>
+
+  <div class="field">
+    <%= f.label :is_hot, '推荐:' %>
+    <%= f.check_box :is_hot %>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <%= f.label :hot_unitl, '推荐结束时间:' %>&nbsp;&nbsp;
+    <%= f.date_select :hot_unitl %>
+  </div>
+  <div class="field">
+    <%= f.label :is_discount, '折扣：' %>
+    <%= f.check_box :is_discount %>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <%= f.label :discount_value, '折扣值:' %> <%= f.text_field :discount_value, :style => "width: 40px;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :is_contacted, '是否营销联系过:' %>
+    <%= f.check_box :is_contacted %>&nbsp;&nbsp;
+
+    <%= f.label :is_dealed, '是否签约:' %>
+    <%= f.check_box :is_dealed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note, '备注' %><br />
+    <%= f.text_field :note %>
+  </div>
+
+  </div>
+</div>

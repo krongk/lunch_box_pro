@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div id="shop_show">
   <h2> <%= @shop.name %> </h2>
   <div class="biz">
@@ -32,13 +30,6 @@
 <div id="shop_dish_show">
   <h2>菜谱</h2>
   <ul>
-    <% @shop.shop_dishes.each do |shop_dish| %>
-        <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
-         <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
-           <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
-           <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> ￥<%= shop_dish.price || 10 %></button_edit>
-         <% end %>
-        </li>
-    <% end %>
+  
   </ul>
 </div>

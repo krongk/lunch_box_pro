@@ -32,3 +32,7 @@ jQuery ->
 #
 #    str = "<li>#{ljust(current_li.attr('data-name'))}#{current_li.attr('data-price')} x 1</li>"
 #    $('#order_dish_list').append(str)
+
+
+  $("#help_sidebar_title").bind 'click', (event) ->
+    $("#help_sidebar_content").toggle(800)
