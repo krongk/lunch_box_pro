@@ -55,7 +55,7 @@ class WelcomeController < ApplicationController
   def map_data
     if session[:location].present? && session[:location_point].present? && session[:shop_address_ids].present?
       @shop_addresses = ShopAddress.find(session[:shop_address_ids])
-      render json: @shop_addresses.map{|sa| [sa.shop.id, sa.shop.name, sa.latitude, sa.longitude].join('|')}
+      render json: @shop_addresses.map{|sa| [sa.shop.id, sa.shop.name, sa.latitude, sa.longitude, sa.shop.show_has_out_food, [sa.shop.shop_contact.tel_phone,sa.shop.shop_contact.mobile_phone].compact.join(',')].join('|')}
     else
       redirect_to '/'
       return

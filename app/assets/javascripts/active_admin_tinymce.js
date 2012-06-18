@@ -6,8 +6,8 @@
     tinyMCE.init({
       mode: 'textareas',
       language : "zh-cn",
-      theme: 'simple'
-      //theme: 'advanced'
+      //theme: 'simple'
+      theme: 'advanced'
 
     });
   }

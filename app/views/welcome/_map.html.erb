@@ -22,6 +22,9 @@
     $.getJSON('/welcome/map_data', function(data) {
       var items = [];
 
+      //empty right list bar
+      $('#side_bar_content').empty();
+      
       $.each(data, function(key, val) {
         var val_arr = val.split('|');
         items.push('<li id="' + key + '"><a href="/shops/' + val_arr[0] + '">' + val_arr[1] + '</a></li>');
@@ -35,9 +38,12 @@
         google.maps.event.addListener(marker, 'click', function() {
           var marker = this;
           var latLng = marker.getPosition();
-          infoWindow.setContent('<h3>' + val_arr[1] + '</h3><div id="' + val_arr[0] + '" onClick="javascript:add_favorite(this.id);"><a id="' + val_arr[0] +'" class="happy_shop"><img src="/assets/favorite.gif"/>加到最爱</a></div>' +
-              latLng.lat() + ', ' + latLng.lng() + ', ' );
-
+         //一下的是成功实现了‘加入收藏’功能代码
+         // infoWindow.setContent('<h3>' + val_arr[1] + '</h3><div id="' + val_arr[0] + '" onClick="javascript:add_favorite(this.id);"><a id="' + val_arr[0] +'" class="happy_shop"><img src="/assets/favorite.gif"/>加到最爱</a></div>' +latLng.lat() + ', ' + latLng.lng() + ', ' );
+          var str = '<h3>' + val_arr[1] + '</h3>'
+          str = str + val_arr[4] + ', 试试电话订餐'
+          str = str + '<br/>订餐电话：' + val_arr[5]
+          infoWindow.setContent(str);
           infoWindow.open(map, marker);
         });
       });

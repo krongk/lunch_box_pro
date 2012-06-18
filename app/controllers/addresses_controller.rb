@@ -45,7 +45,7 @@ class AddressesController < ApplicationController
 
   #render json used for auto-complete
   def index
-    @addresses = Address.where("en_combined_addr like ? OR en_addr like ? OR addr like ?", "%#{params[:term]}%",  "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
+    @addresses = Address.where("en_combined_address like ? OR en_addr like ? OR addr like ?",  "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
     render json: @addresses.map(&:addr)
   end
 end
