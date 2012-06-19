@@ -1,22 +1,24 @@
 <div id="header">
-  <h1 id="site_title"><a href="http://localhost:3000/">Happy.cd</a></h1>
-  
-  <ul class="tabbed_navigation" id="tabs">
-    <li id=""><%=link_to "首页", "/" %></li>
-    <li id=""><%=link_to "(#{session[:location]})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
-   
-  </ul>
-
-  <p id="utility_nav">
-     
-     <% if user_signed_in? %>
-       <%= current_user.email %>
-       <%= link_to '退出', destroy_user_session_path %>
-       <%= link_to '管理中心', '/home/index' %>
-     <% else %>
-       <%= link_to '管理登录', new_user_session_path %>
-     <% end %>
-
-     <a id="help" href="/help">使用帮助</a>
-  </p>
+<div class="hx_t">
+  <div class="hi_p">您好，欢迎光临乐活外卖!
+  <div class="right_p">
+    关注我们： 
+    <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a> 
+    <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a> 
+  </div>
 </div>
+</div>
+<div class="menu">
+<div class="header2">
+  <div class="logo"><a href="#" title="乐活外卖">乐活外卖</a></div>
+  <ul class="tabbed_navigation" id="tabs">
+    <li class="currt"><a href="/">首页</a></li>
+    <li style="line-height:26px;">所在位置:</li>
+    <li class="qutn"><%=link_to "(#{session[:location]})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
+  </ul>
+  <div class="help" style="float:right;">
+    <a id="help" href="/help">使用帮助</a>
+  </div>
+</div>
+</div>
+<div class="topbg"><a href="#">回到顶部</a></div>

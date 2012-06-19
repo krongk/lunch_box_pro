@@ -7,3 +7,14 @@
     <a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备11016427号</a> &nbsp;&nbsp;
     Copyright &copy; 2012 Happy.cd 保留所有权利。<img src="/assets/ico-1.gif" height="20px" valign="bottom"/>
 </div>
+
+ <div class="admin_menu"> 
+       <% if user_signed_in? %>
+         <%= current_user.email %>
+         <%= link_to '退出', destroy_user_session_path %>
+         <%= link_to '管理中心', '/home/index' %>
+       <% else %>
+         <%= link_to '管理登录', new_user_session_path %>
+       <% end %>
+      </div>
+    </div>

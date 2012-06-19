@@ -1,3 +1,7 @@
+<% title "乐活外卖.成都" %>
+<% meta_keywords "成都外卖, 成都快餐, 网上订餐, 电话订餐, 餐厅,美食, 24小时外卖" %>
+<% meta_description "网上订餐洋盘吧~ 想叫外卖了？就上乐活外卖。1分钟订餐，半小时等待，3000家餐厅，上万道美食，Happy!" %>
+
 <script language = "javascript">
    jQuery(function() {
     return $('#address_addr').autocomplete({
@@ -10,30 +14,30 @@
 </script>
 
 <div id="head">
-  <div id="logo">
-    <br/>happy.CD
+  <div id="logo" class="logo">
+    <a href="#">乐活外卖</a>
   </div>
-
+</div>
+  <div class="js_list"></div>
+  <div class="js_list2"></div>
+  <div class="js_rng">
+    <p>今天你订外卖了嘛？</p>
+    <p>还在为吃饭愁吗？有木有想换换口味?这里有上千家餐厅可以选择！</p>
+    <p>很多人已经用上瘾了，你也试一次吧。 直接在线订餐啦！</p>
+  </div>
+  
   <div id="addr_form">
     <%  @address ||= Address.new %>
     <%= form_for(@address, :html =>{:class => "formtastic"}) do |f| %>
-  	  <div class="tips">*请输入您所在的位置， 如：北大街88号天盛壹中心</div>
-  	  <fieldset class="buttonss">
-  	    <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => session[:location] %>
-  	    <%= f.submit '  找外卖  ', :id => 'submit'%>
-  	  </fieldset>
+      <div class="tips">*请输入您所在的位置， 如：北大街88号天盛壹中心</div>
+      <div class="buttonss">
+        <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => session[:location], :style => "height: 40px; width: 500px; font-size: 24px; padding: 2px 4px;text-align: left; text-valign: middle;" %>
+        <%= f.submit '找外卖', :id => 'submit', :style => "width: 120px; height: 40px; padding: 2px 4px; text-align: center; font-size: 22px;"%>
+      </div>
     <% end %>
   </div>
-</div>
 
-<div id="main">
-  <div id="help_flow" class="help-panel">
-    <img src="/assets/help1.jpg" /><br/>
-    <img src="/assets/help2.jpg" /><br/>
-  </div>
-
-  <div id="help_about" class="help-panel">
-    <img src="/assets/help3.jpg" /><br/>
-    <img src="/assets/help4.jpg" /><br/>
-  </div>
+<div class="bg_list">
+  <div class="wodow"><a id="how_to_shop" href="javascript:void(0);" title="我怎么订餐?">我怎么订餐?</a></div>
 </div>
+<div class="bcpic2" id="div_liucheng"></div>

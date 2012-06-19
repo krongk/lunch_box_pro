@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="zh-cn" />
   <meta name="robots" content="all" />
-  <meta name="author" content="inruby" />
-  <meta name="Copyright" content="Inruby Lcd, All Rights Reserved." />
+  <meta name="author" content="happy.cd" />
+  <meta name="Copyright" content="happy.cd Lcd, All Rights Reserved." />
   <title><%= yield(:title) %> </title>
   <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
   <meta name="description" content="<%= yield(:meta_description)%>" />
@@ -17,20 +17,33 @@
   <!--[if lt IE 7]>
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
+  <!--[if IE 6]>
+    <script src="js/iepng.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       EvPNG.fix('img,#logo,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
+    </script>
+  <![endif]-->
 </head> 
  
 <body class="index admin_contacts logged_in" screen_capture_injected="true">
-
-<div id="header">
- 
-</div>
-
-<div id="wrapper">
-  <div id="active_admin_content" class="with_sidebar">
-    <%=render :partial => "layouts/flashes" %>
-    <%= yield %>
+  
+   
+  <div id="header">
+   <div class="hx_t">
+     <div class="hi_p">您好，欢迎光临乐活外卖!</div>
+     <div class="right_p">关注我们：
+       <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a>
+       <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a>
+     </div>
+   </div>
   </div>
-  <%=render :partial => "layouts/footer" %>
+
+  <div id="wrapper">
+    <div id="active_admin_content" class="with_sidebar">
+      <div class="flashes">
+  </div>
+
+  <%= yield %>
 </div>
 </body>
 </html>
