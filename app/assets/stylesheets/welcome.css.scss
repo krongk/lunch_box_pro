@@ -40,7 +40,7 @@ li{ list-style:none;}
 .help{ float:right; padding-top:8px;}
 .help a{ color:#6D6D6D; text-decoration:none;}
 #main_content_wrapper{ background:#FFF;}
-.cotnet{}
+
 .title{ font-size:22px; color:#7CC130; padding:20px 0; margin-left:10px; font-weight:bold;}
 .pic img{ width:135px; height:115px; float:left;}
 .shop_addr_panel{ float:left; margin-left:20px; width:504px; position:relative;}
@@ -69,8 +69,9 @@ li{ list-style:none;}
 .sale{ float:right; padding-right:4px;}
 .curt{ background:#2F2F2F;}
 .normal{ background:#E4E4E4;}
-#main_content_wrapper{background:url(/assets/shop-bg.jpg) repeat-y 683px 0; }
+#main_content_wrapper{background:url(/assets/shop-bg.jpg) repeat-y 683px 0; width: 960px;}
 #main_content{ background:#FFF;}
+#main_content ul{padding: 0px; margin: 0px;}
 .p_fen0{ background:url(/assets/ico-happ.png) no-repeat;}
 .p_fen0{ background-position:0 -395px; width:84px; height:16px; display:inline-block; vertical-align:middle;}
 .shop{ padding:6px 10px 12px; border-bottom:1px solid #6CB122; }

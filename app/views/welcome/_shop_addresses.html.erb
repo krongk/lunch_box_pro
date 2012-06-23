@@ -4,10 +4,15 @@
     <% shop = shop_address.shop %>
     <% shop_dishes = shop.shop_dishes %>
     <li class="shop_item">
-      <div class="shop_title_panel">
-        <%=image_tag  shop.photo_url.blank? ? '/assets/shop_logo.jpg' : "/shop/#{shop.photo_url}", :class => 'shop_logo' %>
+      <div class="list_00">
+        <div class="pic">
+          <div style="width:135px; height:115px;"><%=image_tag  shop.photo_url.blank? ? '/assets/shop_logo.jpg' : "/shop/#{shop.photo_url}", :class => 'shop_logo' %></div>
+          <div class="wanmh"><%= shop.show_has_out_food %></div>
+        </div>
         <div class="shop_addr_panel">
+          <span class="shou_ca"><a href="#" title="立即收藏">立即收藏</a></span>
           <div class="shop_title"><%=link_to shop.name, shop %></div>
+          <span class="rate">评级：<span class="p_fen0"></span></span>
           <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
           <div><%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %></div>
         </div>
@@ -21,20 +26,24 @@
           <span class="rate"><%= shop.show_rate %></span>
         </div>
       </div>
-      <div class="shop_dish_panel">
-        <ul id="shop_dish_list">
+      <div class="meun0">
+        <div class="title_menu"><span class="ico_me">菜单</span> <span style="float:right;"> 建外SOHO西区14:00~17:00才可送餐 / 该餐厅多数情况能送外卖 / 起送</span> </div>
+          <div class="shop_dish_panel2">
+          <ul>
           <% shop_dishes.each_with_index do |shop_dish, i| %>
             <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
-            <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
-
+            <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+            
              <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
-               <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
-               <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> <span class="shop_dish_price">￥<%= shop_dish.price || 10 %></span></button_edit>
+              <div class="din1" id="shop_dish_count_<%= shop_dish.id%>" >1</div>
+              <div class="din2">+<%= shop_dish.dish.name %> </div>
+              <div class="din3"></div>
+              <div class="sale">￥<%= shop_dish.price || 10 %></div>
              <% end %>
             </li>
           <% end %>
         </ul>
-      </div>
+      </div></div>
     </li>
   <% end %>
   </ul>

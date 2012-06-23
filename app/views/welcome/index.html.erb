@@ -4,14 +4,14 @@
 
 <%#main bar            %>
 <div class="">
-<% unless params[:map].present? %>
-  <% next_nav("地图展示", "/?map=g") %>
-  <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
-  
-<% else %>
-  <% next_nav("返回", "/") %>
-  <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
-<% end %>
+  <% unless params[:map].present? %>
+    <% next_nav("地图展示", "/?map=g") %>
+    <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
+    
+  <% else %>
+    <% next_nav("返回", "/") %>
+    <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
+  <% end %>
 </div>
 
 <%#side bar            %>

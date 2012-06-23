@@ -1,0 +1,76 @@
+<div id ='shop_addresses'>
+  <ul>
+  <% @shop_addresses.each_with_index do |shop_address, index| %>
+    <% shop = shop_address.shop %>
+    <% shop_dishes = shop.shop_dishes %>
+    <li class="shop_item">
+      <div class="list_00">
+        <%=image_tag  shop.photo_url.blank? ? '/assets/shop_logo.jpg' : "/shop/#{shop.photo_url}", :class => 'shop_logo' %>
+        <div class="shop_addr_panel">
+          <div class="shop_title"><%=link_to shop.name, shop %></div>
+          <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
+          <div><%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %></div>
+        </div>
+        <div class="shop_actions_panel">
+          <span class="biz_time"><%=shop.show_biz_time%> </span>
+          <span class="biz_time"><%=shop.show_start_price%> </span>
+          <span class="biz_time"><%=shop.show_outer_price%> </span>
+          <span class="has_out_food"><%= shop.show_has_out_food %></span>
+          <span class="is_hot"><%= shop.show_is_hot %></span>
+          <span class="is_hot"><%= shop.show_is_discount %></span>
+          <span class="rate"><%= shop.show_rate %></span>
+        </div>
+      </div>
+      <div class="shop_dish_panel">
+        <ul id="shop_dish_list">
+          <% shop_dishes.each_with_index do |shop_dish, i| %>
+            <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
+            <li class="shop_dish_item"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+
+             <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
+               <span id="shop_dish_count_<%= shop_dish.id%>" class="shop_dish_count">+</span>
+               <button_edit><%= shop_dish.dish.name.ljust(30, '一') %> <span class="shop_dish_price">￥<%= shop_dish.price || 10 %></span></button_edit>
+             <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+
+  <%= will_paginate @shop_addresses %>
+</div>
+  
+
+<li class="shop_item">
+  <div class="list_00">
+    <div class="pic">
+      <div style="width:135px; height:115px;"><img 
+
+src="./index_files/11398643_m.jpg"></div>
+      <div class="wanmh">本店提供外卖</div>
+    </div>
+    <div class="shop_addr_panel"> <span class="shou_ca"><a href="#" title="立即收藏">立即收藏</a></span>
+                            <div class="shop_title"><a href="http://localhost:3000/shops/6495">薄荷水吧</a></div>
+                                  <div>人均：￥16</div>
+      <span class="rate">评级：<span class="p_fen0"></span></span>
+      <div class="shop_addr">地址：科华街1号附20号<span class="shop_distance">(13.7 米)</span></div>
+      <div style="margin:4px 0;">
+        <!-- JiaThis Button BEGIN -->
+        <div id="ckepop"> <span class="jiathis_txt">分享到：</span> <a 
+
+                                class="jiathis_button_icons_1"></a> <a class="jiathis_button_icons_2"></a> <a 
+
+                                    class="jiathis_button_icons_3"></a> <a class="jiathis_button_icons_4"></a> <a 
+
+                                        href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" 
+
+                                            target="_blank"></a> <a class="jiathis_counter_style"></a> </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?
+
+                                            uid=1339571511184312" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+      </div>
+    </div>
+  </div>
