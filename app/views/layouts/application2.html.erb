@@ -18,32 +18,37 @@
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
   <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="/assets/iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
-       EvPNG.fix('img,#logo,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
+       EvPNG.fix('img,#logo a,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
     </script>
   <![endif]-->
 </head> 
  
-<body class="index admin_contacts logged_in" screen_capture_injected="true">
-  
-   
-  <div id="header">
-   <div class="hx_t">
-     <div class="hi_p">您好，欢迎光临乐活外卖!</div>
-     <div class="right_p">关注我们：
-       <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a>
-       <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a>
-     </div>
-   </div>
-  </div>
-
-  <div id="wrapper">
-    <div id="active_admin_content" class="with_sidebar">
-      <div class="flashes">
-  </div>
-
-  <%= yield %>
+<body>
+<div id="header">
+ <div class="hx_t">
+ <div class="hi_p">您好，欢迎光临乐活外卖!</div>
+ <div class="right_p">关注我们：
+ <a target="_blank" class="sinaweibo" href="http://weibo.com/happy.cd"></a>
+ <a target="_blank" class="txweibo" href="http://t.qq.com/happy.cd"></a>
+ </div>
+ </div>
 </div>
+
+<div id="wrapper">
+  <div id="active_admin_content" class="with_sidebar">
+    <div id="head">
+      <div id="logo">
+        <a href="#">乐活外卖</a>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</div>
+  <div class="bg_list">
+    <div class="wodow"><a href="#" title="我怎么订餐?">我怎么订餐?</a></div>
+  </div>
+  <div class="bcpic2"></div>
 </body>
 </html>

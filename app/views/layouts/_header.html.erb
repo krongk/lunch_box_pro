@@ -1,15 +1,21 @@
-
-<div class="menu">
-<div class="header2">
-  <div class="logo"><a href="#" title="乐活外卖">乐活外卖</a></div>
-  <ul class="tabbed_navigation" id="tabs">
-    <li class="currt"><a href="/">首页</a></li>
-    <li style="line-height:26px;">所在位置:</li>
-    <li class="qutn"><%=link_to "(#{session[:location]})/<span class='switch'>切换</span>".html_safe, new_address_path %></li>
-  </ul>
-  <div class="help" style="float:right;">
-    <a id="help" href="/help">使用帮助</a>
+<div id="header">
+  <div class="hx_t">
+    <div class="hi_p">您好，欢迎光临乐活外卖!</div>
+    <div class="right_p">关注我们： <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a> <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a> </div>
   </div>
 </div>
+
+<div class="menu">
+  <div class="header2">
+    <div class="logo"><a href="#" title="乐活外卖">乐活外卖</a></div>
+    <ul class="tabbed_navigation" id="tabs">
+      <li class="currt"><a href="/">首页</a></li>
+      <li style="line-height:26px;">所在位置:</li>
+      <li class="qutn">
+        <%=link_to "(#{session[:location]})/<span class='switch'>切换</span>".html_safe, new_address_path %>
+      </li>
+    </ul>
+    <div class="help" style="float:right;"><a id="help" href="/help">使用帮助</a></div>
+  </div>
 </div>
 <div class="topbg"><a href="#">回到顶部</a></div>

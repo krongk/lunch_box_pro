@@ -14,7 +14,7 @@ development:
   reconnect: false
   pool: 15
   host: 127.0.0.1
-  port: 3306
+  port: 3303
   username: root
   password: kenrome001
   database: lunch_box_pro

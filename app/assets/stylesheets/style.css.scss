@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+li{ list-style:none;}
+/* 首页*/
+.hx_t{ margin:0 auto; color:#fff; overflow:hidden;}
+.hi_p{ float:left;}
+.right_p{ float:right; _padding-top:15px;}
+.right_p a{display:inline-block;}
+#header{ margin: 0; padding: 0;}
+.switch{color: red; font-weight: 600;}
+.sinaweibo,.txweibo{background:url(/assets/ico-happ.png) no-repeat; vertical-align:middle; text-indent:9999em;}
+.sinaweibo{ background-position:0 -1px; height:18px; width:18px; margin-left:5px; }
+.txweibo{background-position:0 -23px; height:18px; width:18px; margin-left:5px;}
+#logo a{ height:59px; width:160px; display:block; text-indent:-9999em; background:url(/assets/index_happy.png) no-repeat 0 0;}
+.js_list,.js_list2{ background:url(/assets/index_happy.png) no-repeat;}
+.js_list{ background-position:0 -68px; clear:both; height:88px; width:825px; margin:84px auto 0;}
+.js_list2{background-position:0 -176px;height:74px; width:739px; margin:20px auto 0;}
+.js_rng{ margin-left:130px; margin-bottom:40px; color:#292929;}
+.js_rng p{ line-height:22px; margin:0; padding:0;}
+.subit{background:url(/assets/index_happy.png) no-repeat; text-indent:-999em; border:none;background-position:-457px -280px;width:138px;height:73px; float:left;}
+.subit:hover{background-position:-603px -280px; cursor:pointer;}
+.input_search_txt{ background:url(/assets/index_happy.png) no-repeat 0 -281px; width:445px; height:66px; line-height:66px; border:none; padding:6px; font-family:"微软雅黑"; font-weight:600; float:left; font-size:26px; color:#444444; }
+#addr_form{ margin-left:130px;}
+.bg_list{ background:url(/assets/index_happy.png) repeat-x 0 -370px; height:54px; line-height:54px; margin-top:60px;}
+.wodow{background:url(/assets/index_happy.png) no-repeat 0 -440px; width:211px; margin:0 auto; text-indent:-999em;}
+.wodow a{ display:block; width:211px; height:54px;}
+.bcpic2{ background:url(/assets/index_happy.png) no-repeat 0 -512px; width:823px; height:226px; margin:0 auto;}
+
+/* 餐厅列表页*/
+.shop_logo{ width: 140px;}
+.header2{ overflow:hidden;  width:900px; margin:0 auto;}
+.logo{ float:left;}
+.logo a{ background:url(/assets/index_happy.png) no-repeat 0 0; width:158px; height:59px; display:block; text-indent:-999em;}
+#tabs{ float:left;}
+.tabbed_navigation li{ float:left; margin:0 8px;}
+.tabbed_navigation{ padding:8px 0; margin-left:62px;}
+.menu{ border-bottom: 1px solid #4F8F1D;margin-top:22px; padding-bottom:4px;}
+.currt{ background:url(/assets/ico-happ.png) no-repeat 0 -86px; width:63px; color:#FFF; height:26px; line-height:26px; text-align:center;}
+.currt a{ color:#FFF; text-decoration:none;}
+.qutn{ border:2px solid #A7A7A7; background:#FFF; height:28px; line-height:28px; padding: 0 4px;}
+.qutn a{ text-decoration:none; color:#6D6D6D;}
+.utility_nav{ float:right;}
+.help{ float:right; padding-top:8px;}
+.help a{ color:#6D6D6D; text-decoration:none;}
+#main_content_wrapper{ background:#FFF;}
+.cotnet{}
+.title{ font-size:22px; color:#7CC130; padding:20px 0; margin-left:10px; font-weight:bold;}
+.pic img{ width:135px; height:115px; float:left;}
+.shop_addr_panel{ float:left; margin-left:20px; width:504px; position:relative;}
+#shop_addresses li{ overflow:hidden; }
+.pic{ float:left; width:135px;}
+.shop_title{ margin-bottom:8px;}
+.shop_title a{ text-decoration:none; color:#333; font-size:14px; font-weight:bold;}
+.shop_title a:hover{ text-decoration:underline;}
+.shop_item{padding:12px;}
+.wanmh{ background:url(/assets/ico-happ.png) no-repeat 0 -146px;height:18px; padding-left:20px; margin-top:8px;}
+.shou_ca{ position:absolute; right:0; top:0; }
+.shou_ca a{background:url(/assets/ico-happ.png) no-repeat 0 -47px; display:block; width:36px; height:35px; text-indent:-999em;}
+.list_00{ overflow:hidden; height:160px;}
+.meun0{}
+.title_menu{ border-bottom:1px dotted #999; padding-bottom:4px; height:22px;}
+.ico_me{ background:url(/assets/ico-happ.png) no-repeat 0 -232px; height:18px; padding-left:15px; text-align:left; display:inline-block; float:left;}
+.foter{ border-bottom:1px solid #D9D9D9; height:60px;}
+#footer{ border-top:1px solid #fff; text-align:center; height:47px; line-height:47px;}
+#footer a{ color:#666;}
+.shop_dish_panel{ margin-top:20px;}
+#shop_dish_list li{ line-height:22px; border-bottom:1px dotted #B5B7B7;}
+.shop_dish_panel2 li{line-height:28px; height:28px; border-bottom:1px dotted #B5B7B7; margin:8px 0; overflow:hidden; clear:both;}
+.din1,.din2,.din3{ float:left;}
+.din1{ width:25px; text-align:center; font-weight:bold; background:#7CC130; color:#FFF;}
+.din2{ margin-left:15px;}
+.din3{ background:url(/assets/ico-happ.png) no-repeat 0 -118px; width:27px; height:24px; line-height:24px; margin-left:60px;}
+.sale{ float:right; padding-right:4px;}
+.curt{ background:#2F2F2F;}
+.normal{ background:#E4E4E4;}
+#main_content_wrapper{background:url(/assets/shop-bg.jpg) repeat-y 623px 0;}
+#main_content{ background:#FFF; padding-bottom:25px;}
+.p_fen0{ background:url(/assets/ico-happ.png) no-repeat;}
+.p_fen0{ background-position:0 -395px; width:84px; height:16px; display:inline-block; vertical-align:middle;}
+.shop{ padding:6px 10px 12px; border-bottom:1px solid #6CB122; }
+.shop h3{ color:#FFF;}
+.shop p{ margin: 2px 0; padding: 2px 0;}
+.line{ border-top:1px solid #8ED244; padding-top:15px;}
+#cart_list li{ border-bottom:1px dotted #fff; overflow:hidden; padding-bottom:4px;}
+#cart_list h3{margin: 10px 0; color: red; font-weight: 600; }
+.menn_00{ float:left;}
+.mennn_11{ float:right;}
+.mxn_kj{ margin-left:10px;}
+.carlst{ margin-top:15px;}
+.carlst li{ float:left; margin:4px 2px; background:url(/assets/ico-happ.png) no-repeat 0 -263px; width:79px; height:29px; text-align:center; line-height:29px;}
+.titl-00{background:url(/assets/ico-happ.png) repeat-x 0 -418px; height:36px; line-height:36px; color:#FFF; font-weight:bold; margin-top:15px;}
+.titl-00 span{ display:block;}
+.leftmn{ float:left; padding-left:4px;}
+.rightmn{ float:right; padding-right:4px;}
+.jsmn{ margin:4px 0;}
+.piclist{ text-align:center;}
+.menupic{ border-top:1px solid #EDEDED;}
+.meun0{ border-bottom:1px solid #D1D1D1; padding-bottom:10px;}
+.topbg{position:absolute; right:28px; bottom:18px; }
+.topbg a{ display:block;background:url(/assets/top.gif) no-repeat 0 0; width:71px; height:71px; text-indent:-999em;}
+.topbg a:hover{ background-position:0 -81px; cursor:pointer;}
+.tips{ clear:both; margin-bottom:6px;}
+
+.button_del{
+	background-color: #ffcc00;
+	padding: 2px 6px;
+	color: #fff;
+	font-weight: 500;
+}

@@ -1,3 +1,5 @@
+# == GeoLocation Config================================================================
+
 unless GeoLocation == nil
   # Use Hostip (free)
   GeoLocation::use = :hostip
@@ -26,3 +28,9 @@ end
 #   puts location[:latitude] # => 43.1059
 #   puts location[:longitude] # => -76.2099
 #   puts location[:timezone] # => America/New_York
+
+
+# ===Geocoder Config==========================================================================
+unless Geocoder == nil
+  Geocoder::Configuration.timeout = 15
+end

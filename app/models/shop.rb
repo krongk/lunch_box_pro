@@ -25,87 +25,80 @@ class Shop < ActiveRecord::Base
   end
 
   def show_discount
-    if is_discount
-      "有优惠，打#{discount_value}折"
-    else
-      ""
-    end
+    is_discount.blank? ? "" : "<p>有优惠，打#{discount_value}折</p>".html_safe
   end
 
   def show_biz_time
-    if biz_time.blank?
-      ""
-    else
-      "营业时间：#{biz_time}"
-    end
+    biz_time.blank? ? "" : "<p>营业时间：#{biz_time}</p>".html_safe
   end
 
   def show_avg
-    if avg.blank?
-      ""
-    else
-      "人均：￥#{avg}"
-    end
+    avg.blank? ? "" : "<p>人均：￥#{avg}</p>".html_safe
   end
 
   def show_has_out_food
-    if has_out_food
-      "提供外卖"
-    else
-      "不提供外卖"
-    end
+    has_out_food ? %{<p class="has_out_food">该店提供外卖</p>}.html_safe : 
+      %{<p>该店暂没上网开店<br/>您可以电话订餐！</p>}.html_safe
   end
 
   def show_start_price
-    "起送价：#{start_price}"
+    start_price.blank? ? "" : "<p>起送价：￥#{start_price}</p>".html_safe
   end
 
   def show_outer_price
-    "配送费：#{outer_price}"
+    outer_price.blank? ? "" : "<p>配送费：￥#{outer_price}</p>".html_safe
   end
 
   def show_is_hot
-    if is_hot
-      "推荐"
-    else
-      ""
-    end
+    !is_hot ? "" : %{<span class="hot">热卖</span>}.html_safe
   end
 
   def show_is_discount
-    if is_discount
-      "有折扣"
-    else
-      ""
-    end
+    !is_discount ? "" : %{<span class="discount">打折</span>}.html_safe
+  end
+
+  def show_description
+    self.description
   end
 
   def show_rate
-    rate.blank? ? "" : "评级：#{rate}"
+    rate.blank? ? "" : "<p>评级：#{rate}</p>".html_safe
   end
   def show_score
-    score.blank? ? "" : "点评数：#{score}"
+    score.blank? ? "" : "<p>点评数：#{score}</p>".html_safe
   end
   def show_score_sudu
-    score_sudu.blank? ? "" : "速度：#{score_sudu}"
+    score_sudu.blank? ? "" : "<p>速度：#{score_sudu}</p>".html_safe
   end
   def show_score_kouwei
-    score_kouwei.blank? ? "" : "口味：#{score_kouwei}"
+    score_kouwei.blank? ? "" : "<p>口味：#{score_kouwei}</p>".html_safe
   end
   def show_score_fuwu
-    score_fuwu.blank? ? "" : "服务：#{score_fuwu}"
+    score_fuwu.blank? ? "" : "<p>服务：#{score_fuwu}</p>".html_safe
   end
   def show_tags
     tags.blank? ? "" : tags.split(',').map{|t| "<a href='/tags?#{t}' target='_blank'>#{t}</a>"}.join("，")
   end
-  def show_photo_url
-    photo_url.blank? ? "" : %{<span style="float: left: padding: 4px;"><img src="#{photo_url}" alt="#{name}"/></span>}
+  def show_photo
+    photo_url.blank? ? %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/assets/shop.jpg" alt="#{name}" width="100px"/></span>}.html_safe : 
+      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="#{photo_url}" alt="#{name}"  width="100px"/></span>}.html_safe
   end
   def show_shihe
-    shihe.blank? ? "" : %{适合：#{shihe}}
+    shihe.blank? ? "" : %{适合：#{shihe}}.html_safe
   end
   def show_sheshi
-    sheshi.blank? ? "" : %{<p>设施：#{sheshi}</p>}
+    sheshi.blank? ? "" : %{<p>设施：#{sheshi}</p>}.html_safe
+  end
+
+  def show_address
+    self.shop_address.nil? ? "" : %{<p>地址：#{self.shop_address.addr}</p>}.html_safe
+  end
+
+  def show_contact_phone
+    self.shop_contact.nil? ? "" : 
+      [self.shop_contact.tel_phone, self.shop_contact.mobile_phone].any? ? 
+        %{<p>订餐电话： #{[self.shop_contact.tel_phone, self.shop_contact.mobile_phone].compact.join("<br/>")}</p>}.html_safe :
+        ""
   end
  
 end

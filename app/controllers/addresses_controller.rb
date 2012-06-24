@@ -1,6 +1,7 @@
 #encoding: utf-8
 class AddressesController < ApplicationController
   layout 'application2'
+  
   def new
     @address = Address.new
   end

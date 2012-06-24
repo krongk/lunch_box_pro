@@ -2,37 +2,14 @@
 <% meta_keywords "外卖,快餐,网上订餐,电话订餐,餐厅,美食,24小时外卖" %>
 <% meta_description "网上订餐洋盘吧~ 想叫外卖了？就上成都欢乐餐吧。1分钟订餐，半小时等待，3000家餐厅，上万道美食，Happy!" %>
 
-<%#main bar            %>
-<div class="">
-  <% unless params[:map].present? %>
-    <% next_nav("地图展示", "/?map=g") %>
-    <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
-    
-  <% else %>
-    <% next_nav("返回", "/") %>
-    <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
-  <% end %>
+<div class="title">
+  我们为您找到<span style="color:red;"><%=@shop_count%></span>家餐厅，<span style="color:red;"><%=@dish_count%></span>道菜！点击菜单即可下单~
 </div>
 
-<%#side bar            %>
-<% content_for :title_bar do %>
-  <div id="title_bar">
-    <div id="titlebar_left">
-      <span class="breadcrumb">
-        <a href="/">首页</a>           
-        <span class="breadcrumb_sep">/</span>
-        餐厅列表           
-        <span class="breadcrumb_sep">/</span>
-        我的最爱(<span id="favorite_count">0</span>)
-      </span>
-      <h2 id="page_title">我们为您找到<span style="color:red;"><%=@shop_count%></span>家餐厅，<span style="color:red;"><%=@dish_count%></span>道菜！点击菜单即可下单~</h2>
-    </div>
-
-    <div id="titlebar_right">
-      <div class="action_items">
-        <span class="action_item"><%=yield(:next_nav) %></span>
-      </div>
-    </div>
-  </div>
+<% unless params[:map].present? %>
+  <% next_nav("地图展示", "/?map=g") %>
+  <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
+<% else %>
+  <% next_nav("返回", "/") %>
+  <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>
 <% end %>
-

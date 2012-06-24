@@ -19,9 +19,9 @@
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
   <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="/assets/iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
-       EvPNG.fix('img,.logo a,.wanmh,.shou_ca a,.ico_me,.currt,.din3,.sinaweibo,.txweibo,.carlst li'); 
+       EvPNG.fix('img,#logo a,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
     </script>
   <![endif]-->
   <script language="javascript">
@@ -29,27 +29,23 @@
   </script>
 </head> 
  
-<body class="index admin_contacts logged_in" screen_capture_injected="true">
+<body>
   <%=render :partial => "layouts/header" %>
-  
-<div id="wrapper">
-  <%=render :partial => "layouts/flashes" %>
-  
-  <%#render :partial => "layouts/title_bar" %>
-  <%= yield(:title_bar) %>
-  <div id="active_admin_content" class="with_sidebar">
-    <div id="main_content_wrapper">
-      <div id="main_content">
-        <%= yield %>
+  <!--内容部分 -->
+  <div id="wrapper">
+    <div id="active_admin_content">
+      <div id="main_content_wrapper">
+        <div id="main_content">
+          <%= yield %>       
+        </div>    
       </div>
-    </div>
-    <div id="sidebar">
+      <!--右侧开始-->
       <%=render :partial => "layouts/sidebar" %>
-    </div>
-  </div>
-
-  <%=render :partial => "layouts/footer" %>
-</div>
-
+      <!--右侧结束--> 
+    </div> <!--end active_admin_content -->
+  </div><!--end wrapper -->
+ <!--footer-- >
+ <%=render :partial => "layouts/footer" %>
 </body>
 </html>
+  

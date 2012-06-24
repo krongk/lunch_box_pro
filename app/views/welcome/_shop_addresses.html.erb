@@ -1,53 +1,61 @@
-<div id ='shop_addresses'>
-  <ul>
+<div id="shop_list">
   <% @shop_addresses.each_with_index do |shop_address, index| %>
     <% shop = shop_address.shop %>
     <% shop_dishes = shop.shop_dishes %>
-    <li class="shop_item">
-      <div class="list_00">
-        <div class="pic">
-          <div style="width:135px; height:115px;"><%=image_tag  shop.photo_url.blank? ? '/assets/shop_logo.jpg' : "/shop/#{shop.photo_url}", :class => 'shop_logo' %></div>
-          <div class="wanmh"><%= shop.show_has_out_food %></div>
-        </div>
-        <div class="shop_addr_panel">
-          <span class="shou_ca"><a href="#" title="立即收藏">立即收藏</a></span>
-          <div class="shop_title"><%=link_to shop.name, shop %></div>
-          <span class="rate">评级：<span class="p_fen0"></span></span>
-          <div class="shop_addr"><%= shop_address.addr  %><span class="shop_distance">(<%= format("%.1f", (shop_address.distance.round(4) * 1000)) %> 米)</span></div>
-          <div><%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %></div>
-        </div>
-        <div class="shop_actions_panel">
-          <span class="biz_time"><%=shop.show_biz_time%> </span>
-          <span class="biz_time"><%=shop.show_start_price%> </span>
-          <span class="biz_time"><%=shop.show_outer_price%> </span>
-          <span class="has_out_food"><%= shop.show_has_out_food %></span>
-          <span class="is_hot"><%= shop.show_is_hot %></span>
-          <span class="is_hot"><%= shop.show_is_discount %></span>
-          <span class="rate"><%= shop.show_rate %></span>
+    <div class="shop" id="shop_<%=shop.id%>">
+      <table><tr>
+        <td width="100px">
+          <%= shop.show_photo %>
+        </td>
+        <td align="left" valign="top" width="300px">
+          <h3><%=link_to shop.name, shop %></h3>
+          <%= shop.show_rate %>
+          <%=shop.show_biz_time%>
+          <%=shop.show_address%>
+        </td>
+        <td align="right" valign="top">
+          <% if shop.has_out_food %>
+            <%= shop.show_has_out_food %>
+            <%= shop.show_start_price%>
+            <%= shop.show_outer_price%>
+            <%= shop.show_is_hot %>
+            <%= shop.show_is_discount %>
+          <% else %>
+            <%= shop.show_has_out_food %>
+            <%= shop.show_contact_phone %>
+          <% end %>
+          <%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %>
+        </td>
+      </tr><tr>
+        <td colspan="3">
+          <%=shop.show_description %>
+        </td>
+      </tr></table>
+
+     <!--菜单-->
+     <% if shop_dishes.any? %>
+      <div class="meun0">
+        <div class="title_menu"><span class="ico_me">菜单</span></div>
+        <div class="shop_dish_panel2">
+          <ul>
+            <% shop_dishes.each_with_index do |shop_dish, i| %>
+              <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
+              <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+
+               <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
+                 <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
+                 <div class="din2"><%= shop_dish.dish.name %> </div>
+                 <div class="sale">￥<%= shop_dish.price || 10 %></div>
+               <% end %>
+              </li>
+            <% end %>        
+          </ul>
         </div>
       </div>
-      <div class="meun0">
-        <div class="title_menu"><span class="ico_me">菜单</span> <span style="float:right;"> 建外SOHO西区14:00~17:00才可送餐 / 该餐厅多数情况能送外卖 / 起送</span> </div>
-          <div class="shop_dish_panel2">
-          <ul>
-          <% shop_dishes.each_with_index do |shop_dish, i| %>
-            <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
-            <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
-            
-             <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
-              <div class="din1" id="shop_dish_count_<%= shop_dish.id%>" >1</div>
-              <div class="din2">+<%= shop_dish.dish.name %> </div>
-              <div class="din3"></div>
-              <div class="sale">￥<%= shop_dish.price || 10 %></div>
-             <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div></div>
-    </li>
-  <% end %>
-  </ul>
+      <% end %>
+      <!--end菜单-->
 
+    </div>
+  <% end %>
   <%= will_paginate @shop_addresses %>
 </div>
-  
