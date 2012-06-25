@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 li{ list-style:none;}
+.rand_1{color: #333; background-color: #ffeecc;}
+.rand_2{color: #333; background-color: #eeffcc;}
+.rand_3{color: #333; background-color: #ddeeff;}
+.rand_4{color: #333; background-color: #eeddff;}
+.rand_5{color: #333; background-color: #ccddff;}
 /* 首页*/
 .hx_t{ margin:0 auto; color:#fff; overflow:hidden;}
 .hi_p{ float:left;}
@@ -17,9 +22,26 @@ li{ list-style:none;}
 .js_list2{background-position:0 -176px;height:74px; width:739px; margin:20px auto 0;}
 .js_rng{ margin-left:130px; margin-bottom:40px; color:#292929;}
 .js_rng p{ line-height:22px; margin:0; padding:0;}
-.subit{background:url(/assets/index_happy.png) no-repeat; text-indent:-999em; border:none;background-position:-457px -280px;width:138px;height:73px; float:left;}
-.subit:hover{background-position:-603px -280px; cursor:pointer;}
-.input_search_txt{ background:url(/assets/index_happy.png) no-repeat 0 -281px; width:445px; height:66px; line-height:66px; border:none; padding:6px; font-family:"微软雅黑"; font-weight:600; float:left; font-size:26px; color:#444444; }
+
+.subit{ 
+  border:none; 
+  width:138px; 
+  height:57px;
+  font-size: 26px;
+}
+.subit:hover{ cursor:pointer;}
+.input_search_txt{
+  height:40px; 
+  border:1px; 
+  padding:6px; 
+  text-valign: middle;
+  font-family:"微软雅黑"; 
+  font-weight:600; 
+  float:left; 
+  font-size:26px; 
+  color:#444444; 
+}
+
 #addr_form{ margin-left:130px;}
 .bg_list{ background:url(/assets/index_happy.png) repeat-x 0 -370px; height:54px; line-height:54px; margin-top:60px;}
 .wodow{background:url(/assets/index_happy.png) no-repeat 0 -440px; width:211px; margin:0 auto; text-indent:-999em;}
@@ -71,18 +93,29 @@ li{ list-style:none;}
 .din2{ margin-left:15px;}
 .din3{ background:url(/assets/ico-happ.png) no-repeat 0 -118px; width:27px; height:24px; line-height:24px; margin-left:60px;}
 .sale{ float:right; padding-right:4px;}
-.curt{ background:#2F2F2F;}
+.curt{ background:#ffcc00;}
 .normal{ background:#E4E4E4;}
 #main_content_wrapper{background:url(/assets/shop-bg.jpg) repeat-y 623px 0;}
-#main_content{ background:#FFF; padding-bottom:25px;}
+#main_content{ background:#FFF; padding-bottom:25px; padding: 10px;}
+#main_content h3{
+	font-weight: 600;
+	color: #7CC130;
+	margin: 4px 0;
+	padding: 4px 0;
+}
 .p_fen0{ background:url(/assets/ico-happ.png) no-repeat;}
 .p_fen0{ background-position:0 -395px; width:84px; height:16px; display:inline-block; vertical-align:middle;}
 .shop{ padding:6px 10px 12px; border-bottom:1px solid #6CB122; }
 .shop h3{ color:#FFF;}
 .shop p{ margin: 2px 0; padding: 2px 0;}
 .line{ border-top:1px solid #8ED244; padding-top:15px;}
+
+/**********/
 #cart_list li{ border-bottom:1px dotted #fff; overflow:hidden; padding-bottom:4px;}
 #cart_list h3{margin: 10px 0; color: red; font-weight: 600; }
+#cart_list_button_panel{margin: 20px 10px;}
+/**********/
+
 .menn_00{ float:left;}
 .mennn_11{ float:right;}
 .mxn_kj{ margin-left:10px;}
@@ -106,4 +139,9 @@ li{ list-style:none;}
 	padding: 2px 6px;
 	color: #fff;
 	font-weight: 500;
+}
+
+/*******page *******/
+.page_content{
+  
 }

@@ -70,6 +70,8 @@ RailsOnWeb::Application.routes.draw do
 
   devise_for :users
 
+  #common
+  match "help" => "pages#show", :id => 'help'
 
   # match "/a/:model/:state" => "sanctions#index", :constraints => {:model => /(doctor|dentist)/, :state => /(wa|oh)/}
   # scope "/:model/:state/:cate(/:history)", :constraints => {:history => /history/i, :cate => /(date|title)/i, :model => /(doctor|dentist|podiatrist)/i, :state => /(#{StateList::STATE_ABBR.join('|')})/i } do

@@ -1,6 +1,7 @@
 #encoding: utf-8
 ActiveAdmin.register ProjectItem do
-  menu :label => "项目", :parent => "IT项目中心"
+  menu false
+  #menu :label => "项目", :parent => "IT项目中心"
 
   index do 
     column :id

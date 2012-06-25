@@ -1,3 +1,3 @@
 ActiveAdmin.register User do
-  menu false
+  #menu false
 end

@@ -1,17 +1,17 @@
----
+#encoding: utf-8
 zh-CN:
-  active_record:
+  activerecord:
     models:
-      shop_dish: Shop dish
+      shop_dish: 餐厅菜谱
     attributes:
       shop_dish:
-        shop: Shop
-        dish: Dish
-        price: Price
-        is_discount: Is discount
-        discount_value: Discount value
-        description: Description
-        note: Note
+        shop: 餐厅
+        dish: 菜品
+        price: 价格
+        is_discount: 是否打折
+        discount_value: 折扣值
+        description: 菜品描述
+        note: 备注
     errors:
       shop_dish: !!null 
   helpers:

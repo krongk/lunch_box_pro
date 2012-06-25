@@ -1,6 +1,7 @@
 #encoding: utf-8
 ActiveAdmin.register ProductItem do
-  menu :parent => "成功案例"
+  menu false
+  #menu :parent => "成功案例"
 
   index do
     column :id

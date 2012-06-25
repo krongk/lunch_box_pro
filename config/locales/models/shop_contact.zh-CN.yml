@@ -1,20 +1,20 @@
----
+#encoding: utf-8
 zh-CN:
-  active_record:
+  activerecord:
     models:
-      shop_contact: Shop contact
+      shop_contact: 餐厅联系人
     attributes:
       shop_contact:
-        shop: Shop
-        contacter_name: Contacter name
-        tel_phone: Tel phone
-        mobile_phone: Mobile phone
-        qq: Qq
+        shop: 餐厅
+        contacter_name: 店长
+        tel_phone: 电话
+        mobile_phone: 手机
+        qq: QQ
         email: Email
-        other: Other
-        jiaotong: Jiaotong
-        website: Website
-        weibo: Weibo
+        other: 其他
+        jiaotong: 交通
+        website: 网站
+        weibo: 微博
     errors:
       shop_contact: !!null 
   helpers:

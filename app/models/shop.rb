@@ -38,7 +38,7 @@ class Shop < ActiveRecord::Base
 
   def show_has_out_food
     has_out_food ? %{<p class="has_out_food">该店提供外卖</p>}.html_safe : 
-      %{<p>该店暂没上网开店<br/>您可以电话订餐！</p>}.html_safe
+      %{<p>该店暂没上网开店<br/>您可以直接致电预定！</p>}.html_safe
   end
 
   def show_start_price
@@ -58,9 +58,17 @@ class Shop < ActiveRecord::Base
   end
 
   def show_description
-    self.description
+    if self.description.blank?
+      str = %{主打：#{self.shop_cate}} unless self.shop_cate.blank?
+      if self.shop_dishes.any?
+        str += %{主推：#{self.shop_dishes.map{|sd| sd.dish.name}.join(', ')}}
+      end
+      str.html_safe
+    else
+      i = 0
+      self.description.gsub(/(:?"|“)([^“”]+)(:?"|”)/){|m| %{<span class="rand_#{i += 1}">#{m}</span>}}.html_safe
+    end
   end
-
   def show_rate
     rate.blank? ? "" : "<p>评级：#{rate}</p>".html_safe
   end

@@ -1,20 +1,21 @@
----
+#encoding: utf-8
+#rember to change active_record: to activerecord:
 zh-CN:
-  active_record:
+  activerecord:
     models:
-      shop_address: Shop address
+      shop_address: 餐厅地址
     attributes:
       shop_address:
-        shop: Shop
-        zone: Zone
-        region: Region
-        city: City
-        district: District
-        addr: Addr
-        zip: Zip
-        latitude: Latitude
-        longitude: Longitude
-        is_geocoded: Is geocoded
+        shop: 餐厅
+        zone: 商圈
+        region: 省
+        city: 市
+        district: 区
+        addr: 详细
+        zip: 邮编
+        latitude: 纬度
+        longitude: 经度
+        is_geocoded: 是否编码
     errors:
       shop_address: !!null 
   helpers:

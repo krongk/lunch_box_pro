@@ -1,12 +1,13 @@
----
+#encoding: utf-8
+#rember to change active_record: to activerecord:
 zh-CN:
-  active_record:
+  activerecord:
     models:
-      dish_cate: Dish cate
+      dish_cate: 菜品分类
     attributes:
       dish_cate:
-        name: Name
-        description: Description
+        name: 名称
+        description: 描述
     errors:
       dish_cate: !!null 
   helpers:

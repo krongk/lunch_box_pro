@@ -39,17 +39,16 @@
             <% end %>
           <% end %>
         <% else %>
-          <li>点击左侧的菜单，然后这里下单，外卖自动上门啦</li>
+          <li>您还没开始点菜~</li>
         <% end %>
       </ul>
 
-      <% if session[:cart] &&  session[:cart].size > 0%>
-      <p><br/>
-        <%= link_to "清空", clear_cart_path, :remote => true, :class => "button" %> &nbsp;&nbsp;&nbsp;
-        <%= link_to "生成订单", new_order_path, :class => "button" %>
-      </p>
-      <% end %>
-
+      <div id="cart_list_button_panel">
+        <% if session[:cart] &&  session[:cart].size > 0%>
+          <%= link_to "清空", clear_cart_path, :remote => true, :class => "button" %> &nbsp;&nbsp;&nbsp;
+          <%= link_to "生成订单", new_order_path, :class => "button" %>
+        <% end %>
+      </div>
       </div>
     </div>
   </div>

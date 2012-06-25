@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
       return
     end
 
-    @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 26)
+    @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
     @shop_addresses.each do |sa|
       begin
         point = Geocoder.coordinates(sa.full_addr)

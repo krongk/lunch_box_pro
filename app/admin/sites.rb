@@ -1,7 +1,8 @@
 #encoding: utf-8
 ActiveAdmin.register Site do
-  menu :priority  => 1
-
+  #menu :priority  => 1
+  menu false
+  
   sidebar :"帮助中心" do
   	ul do
   	  li "本页用户设置网站的全局数据！"

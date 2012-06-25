@@ -1,6 +1,6 @@
 //update count span
-$("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("");
-$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#fff");
+$("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("+");
+$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").removeClass("curt").addClass("normal");
 
 //update sidebar cart list
 <%

@@ -1,6 +1,7 @@
 //update count span
 $("#shop_dish_count_<%= escape_javascript( @shop_dish.id.to_s ) %>").html("<%= session[:cart][params[:shop_id]][params[:shop_dish_id]][:count] || 1 %>");
-$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#ffcc00");
+//$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-color", "#ffcc00");
+$("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").removeClass("normal").addClass("curt");
 
 //update sidebar cart list
 <%
@@ -13,6 +14,7 @@ $("#shop_dish_<%= escape_javascript( @shop_dish.id.to_s ) %>").css("background-c
   end
 %>
 $("#cart_list").html("<%= list_arr.html_safe%>");
+
 
 //update cart_list_button_panel
 $("#cart_list_button_panel").html('<a href="/clear_cart" data-remote="true" class="button">清空</a> &nbsp;&nbsp; <a href="/orders/new" class="button">生成订单</a>');

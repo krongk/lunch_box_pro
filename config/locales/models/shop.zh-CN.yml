@@ -1,35 +1,41 @@
----
+#encoding: utf-8
+#rember to change active_record: to activerecord:
 zh-CN:
-  active_record:
+  activerecord:
     models:
-      shop: Shop
+      shop: 餐厅
     attributes:
       shop:
-        name: Name
-        description: Description
-        avg: Avg
-        biz_time: Biz time
-        note: Note
-        rate: Rate
-        score: Score
-        score_kouwei: Score kouwei
-        score_sudu: Score sudu
-        score_fuwu: Score fuwu
-        photo_url: Photo url
-        tags: Tags
-        secret: Secret
-        has_out_food: Has out food
-        has_out_people: Has out people
-        is_new_added: Is new added
-        is_hot: Is hot
-        hot_unitl: Hot unitl
-        is_discount: Is discount
-        discount_value: Discount value
-        updated_by: Updated by
-        is_contacted: Is contacted
-        is_dealed: Is dealed
-        original_source: Original source
-        original_url: Original url
+        name: 名称
+        description: 描述
+        avg: 人均消费
+        biz_time: 营业时间
+        shihe: 适合
+        sheshi: 设施
+        rate: 评级
+        score: 评分
+        score_kouwei: 口味
+        score_sudu: 速度
+        score_fuwu: 服务
+        origianl_photo_url: 原始图片
+        photo_url: 图片地址
+        shop_cate: 餐厅分类
+        tags: 标签
+        has_out_food: 是否提供外卖
+        has_out_people: 是否配备外送人员
+        start_price: 起始价
+        outer_price: 配送费
+        is_new_addes: 是否新加入
+        is_hot: 是否推荐
+        hot_until: 推荐截止日期
+        is_discount: 是否打折
+        discount_value: 折扣价
+        updated_by: 最后更新者
+        is_contacted: 是否营销
+        is_dealed: 是否协议
+        original_source: 原始数据
+        original_url: 原始链接
+        note: 备注
     errors:
       shop: !!null 
   helpers:
