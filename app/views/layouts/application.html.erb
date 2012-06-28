@@ -32,8 +32,10 @@
 <body>
   <%=render :partial => "layouts/header" %>
   <!--内容部分 -->
+
   <div id="wrapper">
     <div id="active_admin_content">
+      <%=render :partial => "layouts/flashes" %>
       <div id="main_content_wrapper">
         <div id="main_content">
           <%= yield %>       

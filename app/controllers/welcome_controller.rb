@@ -17,32 +17,48 @@ class WelcomeController < ApplicationController
       addr_arr = cookies[:user_input_addr].split('|')
       @location = addr_arr.shift
       @point = addr_arr.shift.split(',')
+    elsif request.remote_ip != '127.0.0.1' && ipa = IpAddress.find_by_ip(request.remote_ip)
+      a = ipa.address
+      #3.set cookie
+      cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
+      @location = a.addr
+      @point = [a.latitude, a.longitude]
+      #reset addr session
+      session[:shop_address_ids] = nil
+      session[:location_point] = nil
+      session[:location] = nil
+      #reset cart session
+      session[:cart] = nil
     else
       redirect_to new_address_path
       return
     end
 
     @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
-    @shop_addresses.each do |sa|
-      begin
-        point = Geocoder.coordinates(sa.full_addr)
-      rescue 
-      end
-      if point
-        sa.latitude = point[0]
-        sa.longitude = point[1]
-        sa.save!
-      end
-    end
+    
+    #==new shop need to geocode
+    # @shop_addresses.each do |sa|
+    #   begin
+    #     point = Geocoder.coordinates(sa.full_addr)
+    #   rescue 
+    #   end
+    #   if point
+    #     sa.latitude = point[0]
+    #     sa.longitude = point[1]
+    #     sa.save!
+    #   end
+    # end
+
     # @shop_addresses = ShopAddress.near(@point, 0.5) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 1) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5
     @shop_count = @shop_addresses.size
     @dish_count = @shop_count * (rand(10) + 1) #@shop_addresses.map{|sd| sd.dish_count}.sum
+
     #form map data
-    session[:shop_address_ids] = @shop_addresses.map(&:id)
-    session[:location_point] = @point
-    session[:location] = @location
+    session[:shop_address_ids] ||= @shop_addresses.map(&:id)
+    session[:location_point] ||= @point
+    session[:location] ||= @location
     
     respond_to do |format|
       format.html #show.html

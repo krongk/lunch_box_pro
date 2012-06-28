@@ -9,10 +9,13 @@
 //= require jquery_ujs
 // require jquery.tokeninput
 //= require jquery.validate
+//= require jquery.validate.ext
 //= require tinymce
-//= require shops
 //= require welcome
+//= require shops
+//= require orders
 
 // auto complete failed with active-admin.js, so 
 // see: http://stackoverflow.com/questions/8429531/jquery-ui-autocomplete-throws-uncaught-typeerror-object-has-no-method-autocomp
 //* require_tree .
+

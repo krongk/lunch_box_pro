@@ -4,6 +4,7 @@ class Address < ActiveRecord::Base
   belongs_to :city
   belongs_to :district
   belongs_to :zone
+  has_one :ip_address
 
   #geocoded_by :full_addr
   #after_validation :geocode

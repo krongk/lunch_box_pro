@@ -1,24 +1,25 @@
 <h2>订单确认</h2>
 
 <div class="panel">
-<ul>
-<% if session[:cart] %>
-  <% session[:cart].each do |k, v| %>
-    <h3><%= Shop.find(k).name %> </h3>
-    <% v.each do |kk, vv| %>
-      <li id='cart_shop_dish_<%=kk%>'><%= vv[:name].ljust(15, '一')%> <%=vv[:price] || '0.0' %> x <%=vv[:count] || 1 %></li>
+  <ul class='order_list'>
+  <% if session[:cart] %>
+    <% session[:cart].each do |k, v| %>
+      <% shop = Shop.find(k) %>
+      <h3><%= shop.name %> </h3>
+      <% v.each do |kk, vv| %>
+        <li id='cart_shop_dish_<%=kk%>'><%= vv[:name].ljust(15, '一')%> <%= (vv[:price] || '0.0').rjust(2,'  ') %> x <%=vv[:count] || 1 %></li>
+      <% end %>
+      <li><b>配送费：</b>￥<%= shop.outer_price || '0'%> </li>
     <% end %>
+  <% else %>
+      <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
   <% end %>
-<% else %>
-    <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
-<% end %>
-</ul>
+  </ul>
 
-<%#number_to_currency(amount.abs, :precision => 0, :format => "-%u%n") %>
-<h3>总价：<span class="red"> <%= session[:order][:total_price].to_f %> </span></h3>
+  <%#number_to_currency(amount.abs, :precision => 0, :format => "-%u%n") %>
+  <h3>总价：<span class="red"> ￥<%= session[:order][:total_price].to_f %> </span></h3>
 
-<div class="order_form">
- <%= render 'form' %>
-</div>
-
+  <div class="order_form">
+   <%= render 'form' %>
+  </div>
 </div>

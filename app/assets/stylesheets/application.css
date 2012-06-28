@@ -14,7 +14,19 @@
 }
 /************admin menu: login/sign_up********/
 
-
+/*********/
+#apDiv1 {
+  text-align: center;
+  color: red;
+  font-size: 24px;
+  font-family: "微软雅黑";
+  padding:20px;
+  background-color: #ff3;
+  border: 3px solid #F90;
+  filter:alpha(opacity=80);            
+  -moz-opacity:0.8;                   
+  opacity: 0.8;      
+}
 /************for auto-complete input*******/
 ul.ui-autocomplete {
   position: absolute;

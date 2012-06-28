@@ -1,0 +1,37 @@
+<div class="order_show">
+  <% if session[:order_show] %>
+    <% session[:order_show][:order_ids].each do |order_id| %>
+      <% order = Order.find(order_id) %>
+      <table border="0">
+        <tbody><tr>
+          <td class="supplierName" width="260"><b>外卖餐厅：</b><span class="green"><%=order.shop.name%></span></td>
+          <td class="orderId"><b>订单号：</b><%= order.code%></td>
+        </tr>
+        <tr>
+          <td class="address" colspan="2"><b>餐厅联系方式：</b><%= [order.shop.shop_contact.tel_phone, order.shop.shop_contact.mobile_phone].compact.join(', ') %></td>
+        </tr>
+        <tr>
+          <td class="address"><b>您的地址：</b><%= order.addr%></td>
+          <td class="contactPhone"><b>您的手机：</b><%= order.phone%></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>订单详情：</b>
+            <table class="order_detail"><tbody>
+              <% order.order_details.each do |rd| %>
+                <tr><td width="20%"><%= rd.shop_dish.dish.name %></td><td><%= rd.amount %> × ￥<%= rd.shop_dish.price %> = ￥<%= rd.total_price %></td></tr>
+              <% end %>
+            </tbody></table>
+          </td>
+        </tr>   
+        <tr>
+          <td class="cNote" colspan="1"><b>备注：</b><%= order.user_note %></td>
+          <td class="deliveryCharge" colspan="1"><b>配送费：</b><%= order.shop.outer_price || '0'%>元</td>
+        </tr>   
+        <tr>
+          <td class="totalPrice" colspan="2"><b>订单金额：</b><span class="red"><%= order.total_price %>元</span></td>
+        </tr>
+      </tbody></table>
+      <br/>
+    <% end %>
+  <% end %>
+</div>

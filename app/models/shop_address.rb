@@ -8,7 +8,7 @@ class ShopAddress < ActiveRecord::Base
   
   #---start geocoder
   geocoded_by :full_addr
-  after_validation :geocode #, :if => :full_addr_changed?
+  after_validation :geocode , :if => :full_addr_changed?
   #---end geocoder
 
   #---start def attr

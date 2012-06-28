@@ -1,5 +1,18 @@
 
-<h3>订餐成功！</h3>
+<div class="title"><div class="icon"></div>您的订单提交成功！</div>
 
-<p>稍候我们会有客服人员与您电话联系</p>
-<p>外送时间根据每个餐厅以及餐厅跟你的距离有关，一般控制在30分钟~1个小时</p>
+<div class="successtips">
+  <p>您的订单已发送至餐厅，请您耐心等待。请保持您的<em>电话畅通</em>，方便餐厅与您联系。</p>
+  <p>外送时间根据每个餐厅以及餐厅跟你的距离有关，一般控制在30分钟~1个小时!</p>
+</div>
+
+<%#session[:order_show] = {:total_price => 0.0, :order_ids => []} %>
+<%= render :partial => 'orders/order_show' %>
+
+<% content_for :side_bar_tips do %>
+  
+  <div class="action">
+    <a href="/find_order" class="button">订单查询</a>
+  </div> 
+  <div class="line"></div>
+<% end %>

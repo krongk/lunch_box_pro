@@ -2,4 +2,4 @@
 # 
 jQuery ->
   $('#how_to_shop').bind 'click', (event) ->
-    $('#div_liucheng').toggle(500)
+    $('#div_liucheng').slideToggle(500)

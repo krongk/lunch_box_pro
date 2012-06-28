@@ -26,29 +26,33 @@
 </head> 
  
 <body>
-<div id="header">
- <div class="hx_t">
- <div class="hi_p">您好，欢迎光临乐活外卖!</div>
- <div class="right_p">关注我们：
- <a target="_blank" class="sinaweibo" href="http://weibo.com/happy.cd"></a>
- <a target="_blank" class="txweibo" href="http://t.qq.com/happy.cd"></a>
- </div>
- </div>
-</div>
+  <div id="header">
+   <div class="hx_t">
+     <div class="hi_p">您好，欢迎光临乐活外卖!</div>
+     <div class="right_p">关注我们：
+       <a target="_blank" class="sinaweibo" href="#"></a>
+       <a target="_blank" class="txweibo" href="#"></a>
+     </div>
+   </div>
+  </div>
 
-<div id="wrapper">
-  <div id="active_admin_content" class="with_sidebar">
-    <div id="head">
-      <div id="logo">
-        <a href="#">乐活外卖</a>
+  <div id="apDiv1" class="info" >网站内测阶段，所有的订单都视为测试使用。 <a href="/pages/contact" target="_blank">请在这里报告错误</a></div>
+
+  <div id="wrapper">
+    <div id="active_admin_content" class="with_sidebar">
+      <div id="head">
+        <div id="logo">
+          <a href="#">乐活外卖</a>
+        </div>
       </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </div>
-</div>
   <div class="bg_list">
-    <div class="wodow" id ="how_to_shop"><a href="#" title="我怎么订餐?">我怎么订餐?</a></div>
+    <div class="wodow" id ="how_to_shop"><a href="javascript: void();" title="我怎么订餐?">我怎么订餐?</a></div>
+    <div id="div_liucheng" class="bcpic2"></div>
   </div>
-  <div class="bcpic2"></div>
+  
+
 </body>
 </html>

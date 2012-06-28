@@ -5,7 +5,7 @@
     <div class="shop" id="shop_<%=shop.id%>">
       <table><tr>
         <td width="100px">
-          <%= shop.show_photo %>
+          <p><%= shop.show_photo %></p>
         </td>
         <td align="left" valign="top" width="300px">
           <h3><%=link_to shop.name, shop %></h3>
@@ -39,12 +39,12 @@
         <div class="shop_dish_panel2">
           <ul>
             <% shop_dishes.each_with_index do |shop_dish, i| %>
-              <% next if shop_dish.shop.nil? || shop_dish.dish.nil? %>
-              <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=shop_dish.dish.name %>" data-price="<%=shop_dish.price %>">
+              <% next if (shop = shop_dish.shop).nil? || (dish = shop_dish.dish).nil? %>
+              <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=dish.name %>" data-price="<%=shop_dish.price %>">
 
-               <%= link_to add_cart_path(:shop_id => shop_dish.shop.id, :shop_dish_id => shop_dish.id, :name => shop_dish.dish.name, :price=> shop_dish.price), :remote => true do%>
+               <%= link_to add_cart_path(:shop_id => shop.id, :shop_dish_id => shop_dish.id, :name => dish.name, :price=> shop_dish.price), :remote => true do%>
                  <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
-                 <div class="din2"><%= shop_dish.dish.name %> </div>
+                 <div class="din2"><%= dish.name %> </div>
                  <div class="sale">￥<%= shop_dish.price || 10 %></div>
                <% end %>
               </li>
@@ -57,5 +57,5 @@
 
     </div>
   <% end %>
-  <%= will_paginate @shop_addresses %>
+  <%= will_paginate @shop_addresses, :next_label => '>>', :prev_label => '<<' %>
 </div>

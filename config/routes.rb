@@ -44,6 +44,7 @@ RailsOnWeb::Application.routes.draw do
   #resources :parts
   #resources :sites
   resources :pages
+  
 
   get "welcome/search"
   get "welcome/index"
@@ -51,6 +52,7 @@ RailsOnWeb::Application.routes.draw do
   match "add_cart" => "welcome#add_cart", :as => :add_cart
   match "delete_cart" => "welcome#delete_cart", :as => :delete_cart
   match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
+  match "find_order" => "orders#find", :as => :find_order
 
   get "home/index"
   get "home/edit_order"

@@ -19,13 +19,14 @@
       });
   </script>
   <div class="shop">
-  <h3>Happy菜篮子</h3>
-   <ul id="cart_list2">
-       <li>今天您订餐了吗？</li>
-        <li>点击左侧的餐品，然后这里下单，外卖自动上门啦</li>
-      </ul>
+    <h3>Happy菜篮子</h3>
+    <ul id="cart_list2">
+      <li><br/>今天您订餐了吗？</li>
+      <li>点击左侧的菜单，然后这里下单，外卖自动上门啦~</li>
+    </ul>
   </div>
   <div class="line"></div>
+
   <div class="shop" id="cart_sidebar_section">
       <h3>网上订餐</h3>  
     <div id="side_bar_content">
@@ -54,4 +55,5 @@
   </div>
 <% end %>
 
+ <%= yield :side_bar_tips %>
 </div>

@@ -1,15 +1,58 @@
 @charset "utf-8";
 /* CSS Document */
-li{ list-style:none;}
+.red{color: red; font-size: 14px; font-weight: bold;}
+.green{color: #669933; font-size: 14px; font-weight: bold;}
+.light_green{color: #7CC130}
+  
 .rand_1{color: #333; background-color: #ffeecc;}
 .rand_2{color: #333; background-color: #eeffcc;}
 .rand_3{color: #333; background-color: #ddeeff;}
 .rand_4{color: #333; background-color: #eeddff;}
 .rand_5{color: #333; background-color: #ccddff;}
+.rand_6{color: #333; background-color: #ffcc99;}
+.rand_7{color: #333; background-color: #cccc99;}
+.rand_8{color: #333; background-color: #99cc99;}
+.rand_9{color: #333; background-color: #cc99cc;}
+.rand_10{color: #333; background-color: #cccccc;}
+
+.flash {
+  background: #f7f1d3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f1d3), to(#f5edc5));
+  background: -moz-linear-gradient(-90deg, #f7f1d3, #f5edc5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f1d3, endColorstr=#f5edc5);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f1d3, endColorstr=#f5edc5);
+  text-shadow: #fafafa 0 1px 0;
+  border-bottom: 1px solid #eee098;
+  color: #cb9810;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.0em;
+  margin-bottom: 10px;
+  padding: 13px 30px 11px;
+}
+.flash.flash_notice {
+  background: #dce9dd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dce9dd), to(#ccdfcd));
+  background: -moz-linear-gradient(-90deg, #dce9dd, #ccdfcd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
+  border-bottom: 1px solid #adcbaf;
+  color: #416347;
+}
+.flash.flash_error {
+  background: #f5e4e4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
+  background: -moz-linear-gradient(-90deg, #f5e4e4, #f1dcdc);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5e4e4, endColorstr=#f1dcdc);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5e4e4, endColorstr=#f1dcdc);
+  border-bottom: 1px solid #e0c2c0;
+  color: #b33c33;
+}
+
 /* 首页*/
 .hx_t{ margin:0 auto; color:#fff; overflow:hidden;}
 .hi_p{ float:left;}
-.right_p{ float:right; _padding-top:15px;}
+.right_p{ float:right; _padding-top:15px; width: 300px;}
 .right_p a{display:inline-block;}
 #header{ margin: 0; padding: 0;}
 .switch{color: red; font-weight: 600;}
@@ -47,6 +90,7 @@ li{ list-style:none;}
 .wodow{background:url(/assets/index_happy.png) no-repeat 0 -440px; width:211px; margin:0 auto; text-indent:-999em;}
 .wodow a{ display:block; width:211px; height:54px;}
 .bcpic2{ background:url(/assets/index_happy.png) no-repeat 0 -512px; width:823px; height:226px; margin:0 auto;}
+#div_liucheng{display: none;}
 
 /* 餐厅列表页*/
 .shop_logo{ width: 140px;}
@@ -99,9 +143,9 @@ li{ list-style:none;}
 #main_content{ background:#FFF; padding-bottom:25px; padding: 10px;}
 #main_content h3{
 	font-weight: 600;
-	color: #7CC130;
-	margin: 4px 0;
-	padding: 4px 0;
+	color: #669933;
+	margin: 6px;
+	padding: 6px;
 }
 .p_fen0{ background:url(/assets/ico-happ.png) no-repeat;}
 .p_fen0{ background-position:0 -395px; width:84px; height:16px; display:inline-block; vertical-align:middle;}
@@ -144,4 +188,70 @@ li{ list-style:none;}
 /*******page *******/
 .page_content{
   
+}
+/*******order*****************/
+.order_show{
+  margin: 20px 0 20px 40px;
+}
+.order_detail{
+  width: 100%;
+  border: none;
+}
+.order_list{}
+.order_list li{
+  margin: 4px 10px;
+  padding: 4px;
+}
+.order_form .field{
+  margin: 20px 0;
+}
+.order_form .field label{
+  font-size: 14px;
+  font-weight: 600;
+}
+.icon {
+  float: left;
+  margin-right: 5px;
+  width: 46px;
+  height: 46px;
+  background: url(/assets/elements.png) -248px -100px;
+}
+.title{
+  margin: 0 auto 18px auto;
+  line-height: 30px;
+  font-size: 24px;
+  font-family: "微软雅黑", "黑体";
+  color: #6C6;
+}
+.successtips {
+  text-align: center;
+  line-height: 24px;
+  font-size: 14px;
+}
+.btn_ck {
+  display: block;
+  width: 106px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: 
+  white!important;
+  text-align: center;
+  background: url(/assets/elements.png) -116px -380px;
+  cursor: pointer;
+}
+.action{
+  padding: 20px;
+}
+.back {
+  float: left;
+  height: 37px;
+  line-height: 37px;
+  font-size: 14px;
+}
+.successtips em {
+  color: 
+  #F90;
+  font-size: 18px;
+  font-weight: bold;
 }

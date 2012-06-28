@@ -29,14 +29,20 @@ class AddressesController < ApplicationController
     #3.set cookie
     cookies.delete :user_input_addr
     cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
-    #reset cart
+    #reset addr session
+    session[:shop_address_ids] = nil
+    session[:location_point] = nil
+    session[:location] = nil
+    #reset cart session
     session[:cart] = nil
     #4.store IP-address
-    if request.remote_ip
+    if ip = request.remote_ip
       begin
-        ip_addr = IpAddress.find_or_create_by_ip(request.remote_ip)
-        ip_addr.address_id = a.id
-        ip_addr.save!
+        ip_addr = IpAddress.find_or_create_by_ip(ip)
+        unless ip_addr.address_id == a.id
+          ip_addr.address_id = a.id
+          ip_addr.save!
+        end
       rescue
       end
     end

@@ -1,0 +1,17 @@
+<script>
+    $(document).ready(function(){
+      $("#edit_order").validate();
+    });
+</script>
+
+<form accept-charset="UTF-8" action="/find_order" class="formtastic" id="edit_order" method="get" novalidate="novalidate">
+
+  <div class="field">
+    <label for="order_phone">请输入您订餐使用的手机号：</label><br>
+    <input class="required mobile" id="order_phone" name="phone" size="30" type="text">
+    <input class="create" name="commit" type="submit" value="提交">
+  </div>
+</form>
+
+<%#session[:order_show] = {:total_price => 0.0, :order_ids => []} %>
+<%= render :partial => 'orders/order_show' %>

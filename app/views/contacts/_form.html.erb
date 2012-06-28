@@ -24,15 +24,15 @@
   </div>
   <div class="field">
     <%= f.label :phone, "电话：" %><br />
-    <%= f.text_field :phone, :class => 'required number'%>
+    <%= f.text_field :phone, :class => 'required number mobile'%>
   </div>
   <div class="field">
     <%= f.label :email, "电子邮件：" %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "email" %>
   </div>
   <div class="field">
     <%= f.label :qq %><br />
-    <%= f.text_field :qq %>
+    <%= f.text_field :qq, :class => "qq" %>
   </div>
 <!--   <div class="field">
     <%= f.label :company %><br />
@@ -48,7 +48,7 @@
   </div> -->
   <div class="field">
     <%= f.label :message, "内容：" %><br />
-    <%= f.text_area :message, :cols => 80, :value => '请详细描述您的需求' %>
+    <%= f.text_area :message%>
   </div>
 <!--   <div class="field">
     <%= f.label :cate %><br />

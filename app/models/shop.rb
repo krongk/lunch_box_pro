@@ -4,11 +4,19 @@ class Shop < ActiveRecord::Base
   has_one :shop_contact
   has_many :shop_dishes
   has_many :dishes, :through => :shop_dishes
-
+  has_many :orders
+  
+  #user to add edit shop, add contact, address
   accepts_nested_attributes_for :shop_address, allow_destroy: false
   accepts_nested_attributes_for :shop_contact, allow_destroy: false
   accepts_nested_attributes_for :shop_dishes, allow_destroy: true
 
+  #scope
+  scope :new_added, where(:is_new_added => true)
+  scope :contacted, where(:is_contacted => true)
+  scope :dealed, where(:is_dealed => true)
+
+  #one shop must has one contact, one address
   after_save :create_address_contact
 
   def create_address_contact
@@ -59,9 +67,9 @@ class Shop < ActiveRecord::Base
 
   def show_description
     if self.description.blank?
-      str = %{主打：#{self.shop_cate}} unless self.shop_cate.blank?
+      str = %{分类：#{self.shop_cate}} unless self.shop_cate.blank?
       if self.shop_dishes.any?
-        str += %{主推：#{self.shop_dishes.map{|sd| sd.dish.name}.join(', ')}}
+        str += %{, &nbsp;&nbsp;主推：#{self.shop_dishes.map{|sd| sd.dish.name}.join(', ')}}
       end
       str.html_safe
     else
@@ -89,7 +97,7 @@ class Shop < ActiveRecord::Base
   end
   def show_photo
     photo_url.blank? ? %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/assets/shop.jpg" alt="#{name}" width="100px"/></span>}.html_safe : 
-      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="#{photo_url}" alt="#{name}"  width="100px"/></span>}.html_safe
+      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/shop/#{photo_url}" alt="#{name}"  width="100px"/></span>}.html_safe
   end
   def show_shihe
     shihe.blank? ? "" : %{适合：#{shihe}}.html_safe

@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.references :shop
       t.references :user
+      t.code :string
       t.float :total_price, :precision => 8, :scale => 2
       t.string :phone
       t.string :addr
