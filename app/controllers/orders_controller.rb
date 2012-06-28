@@ -31,10 +31,10 @@ class OrdersController < InheritedResources::Base
         end
         total_price += Shop.find(shop_id).outer_price.to_f
         order.total_price = total_price
+        
+        #code = created_at + shop_id + order_id
+        order.code = order.created_at.to_s.gsub(/[^0-9]/, '')[2..7] + shop_id.to_s.rjust(6, '0') + order.id.to_s.rjust(5, '0')
         order.save!
-        #code = shop_id + 
-        code = order.created_at.to_s.gsub(/[^0-9]/, '')[2..7] + shop_id.to_s.rjust(6, '0') + order.id.to_s.rjust(5, '0')
-        Order.update(order.id, :code => code)
 
         session[:order][:total_price] += order.total_price
         session[:order][:order_ids] << order.id
