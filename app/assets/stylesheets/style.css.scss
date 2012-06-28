@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* CSS Document */
+
 .red{color: red; font-size: 14px; font-weight: bold;}
 .green{color: #669933; font-size: 14px; font-weight: bold;}
 .light_green{color: #7CC130}
@@ -49,7 +49,7 @@
   color: #b33c33;
 }
 
-/* 首页*/
+/* index*/
 .hx_t{ margin:0 auto; color:#fff; overflow:hidden;}
 .hi_p{ float:left;}
 .right_p{ float:right; _padding-top:15px; width: 300px;}
@@ -78,7 +78,6 @@
   border:1px; 
   padding:6px; 
   text-valign: middle;
-  font-family:"微软雅黑"; 
   font-weight:600; 
   float:left; 
   font-size:26px; 
@@ -92,7 +91,7 @@
 .bcpic2{ background:url(/assets/index_happy.png) no-repeat 0 -512px; width:823px; height:226px; margin:0 auto;}
 #div_liucheng{display: none;}
 
-/* 餐厅列表页*/
+/* shop index*/
 .shop_logo{ width: 140px;}
 .header2{ overflow:hidden;  width:900px; margin:0 auto;}
 .logo{ float:left;}
@@ -220,7 +219,6 @@
   margin: 0 auto 18px auto;
   line-height: 30px;
   font-size: 24px;
-  font-family: "微软雅黑", "黑体";
   color: #6C6;
 }
 .successtips {
