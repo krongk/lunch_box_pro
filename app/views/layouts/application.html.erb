@@ -24,7 +24,22 @@
        EvPNG.fix('img,#logo a,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
     </script>
   <![endif]-->
-  <script language="javascript">
+  <script language="javascript" type="text/javascript">
+
+    //'back to top'
+    $(document).ready(function() {
+      /*
+      var defaults = {
+          containerID: 'toTop', // fading element id
+        containerHoverID: 'toTopHover', // fading element hover id
+        scrollSpeed: 1200,
+        easingType: 'linear' 
+      };
+      */
+      
+      $().UItoTop({ easingType: 'easeOutQuart' });
+      
+    });
 
   </script>
 </head> 
@@ -33,8 +48,7 @@
   <%=render :partial => "layouts/header" %>
   <!--内容部分 -->
 
-  <div id="wrapper">
-    <div id="active_admin_content">
+    <div id="active_admin_content" class = "<%= need_sidebar?(params) %>">
       <%=render :partial => "layouts/flashes" %>
       <div id="main_content_wrapper">
         <div id="main_content">
@@ -45,7 +59,7 @@
       <%=render :partial => "layouts/sidebar" %>
       <!--右侧结束--> 
     </div> <!--end active_admin_content -->
-  </div><!--end wrapper -->
+
  <!--footer-- >
  <%=render :partial => "layouts/footer" %>
 </body>

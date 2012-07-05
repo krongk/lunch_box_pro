@@ -10,6 +10,7 @@
 // require jquery.tokeninput
 //= require jquery.validate
 //= require jquery.validate.ext
+//= require jquery.ui.totop
 //= require tinymce
 //= require welcome
 //= require shops
@@ -19,3 +20,6 @@
 // see: http://stackoverflow.com/questions/8429531/jquery-ui-autocomplete-throws-uncaught-typeerror-object-has-no-method-autocomp
 //* require_tree .
 
+function toggle_dish_notice(id_name){
+  $('#' + id_name).html("该菜品不提供外卖!");
+};

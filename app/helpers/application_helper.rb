@@ -27,6 +27,14 @@ module ApplicationHelper
     content_for(:next_nav){ link_to(name, link)}
   end
 
+  def need_sidebar?(params)
+    if params.values.to_s =~ /order/i
+      'without_sidebar'
+    else
+      ''
+    end
+  end
+
   def need_show_cart
     ha={
       'welcome' =>['index'],
@@ -44,7 +52,7 @@ module ApplicationHelper
   end
   
   def get_dish_cart_li(shop_id, shop_dish_id, name, price, count)
-    "<li id='cart_shop_dish_#{shop_dish_id}'>#{name.ljust(13, '一').gsub(/([一]+)/, '<span style=\'color:#7cc130;\'>\1</span>')} #{price.to_s.rjust(2, '0').gsub(/^([0])/, '<span style=\'color:#7cc130;\'>\1</span>') || '0.0' } x #{count.to_s || '1' }&nbsp;&nbsp;<a href='/delete_cart?shop_id=#{shop_id}&shop_dish_id=#{shop_dish_id}' data-remote='true' class='button_del'><span style='color:#fff;'>x</span></a></li>".html_safe
+    "<li id='cart_shop_dish_#{shop_dish_id}'>#{name.ljust(13, '一').gsub(/([一]+)/, '<span style=\'color:#fff;\'>\1</span>')} #{price.to_s.rjust(2, '0').gsub(/^([0])/, '<span style=\'color:#fff;\'>\1</span>') || '0.0' } x #{count.to_s || '1' }&nbsp;&nbsp;<a href='/delete_cart?shop_id=#{shop_id}&shop_dish_id=#{shop_dish_id}' data-remote='true' class='button_del'><span style='color:#fff;'>x</span></a></li>".html_safe
   end
   #链接菜单导航，如：首页/关于我们
   #input: nav_bar [['首页', '/'], ['关于', '/about']]

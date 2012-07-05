@@ -24,3 +24,4 @@ jQuery ->
     dish_id = $(dish_name).prev('input').val()
     $.getJSON '/get_dish.json?name=' + dish_name.attr('value'), (data) ->
       $(dish_name).prev('input').val(data)
+      

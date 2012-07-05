@@ -3,12 +3,14 @@
     <% shop = shop_address.shop %>
     <% shop_dishes = shop.shop_dishes %>
     <div class="shop" id="shop_<%=shop.id%>">
-      <table><tr>
+      <table style="width: 100%;">
+       <tbody>
+       <tr>
         <td width="100px">
           <p><%= shop.show_photo %></p>
         </td>
         <td align="left" valign="top" width="300px">
-          <h3><%=link_to shop.name, shop %></h3>
+          <h3><%=shop.name %></h3>
           <%= shop.show_rate %>
           <%=shop.show_biz_time%>
           <%=shop.show_address%>
@@ -24,13 +26,13 @@
             <%= shop.show_has_out_food %>
             <%= shop.show_contact_phone %>
           <% end %>
-          <%= link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %>
+          <%# link_to_if user_signed_in?, '编辑', edit_shop_path(shop) %>
         </td>
       </tr><tr>
         <td colspan="3">
           <%=shop.show_description %>
         </td>
-      </tr></table>
+      </tr></tbody></table>
 
      <!--菜单-->
      <% if shop_dishes.any? %>
@@ -42,11 +44,19 @@
               <% next if (shop = shop_dish.shop).nil? || (dish = shop_dish.dish).nil? %>
               <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=dish.name %>" data-price="<%=shop_dish.price %>">
 
+              <% if shop.is_contacted && shop.has_out_food %>
                <%= link_to add_cart_path(:shop_id => shop.id, :shop_dish_id => shop_dish.id, :name => dish.name, :price=> shop_dish.price), :remote => true do%>
                  <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
-                 <div class="din2"><%= dish.name %> </div>
+                 <div class="din2"><%= dish.name %></div>
                  <div class="sale">￥<%= shop_dish.price || 10 %></div>
                <% end %>
+              <% else %>
+                <%= link_to "javascript:toggle_dish_notice('dish_notice_#{shop_dish.id}');" do %>
+                  <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
+                  <div class="din2"><%= dish.name %><span class="dish_notice" id="dish_notice_<%= shop_dish.id %>"></span></div>
+                  <div class="sale">￥<%= shop_dish.price || 10 %></div>
+                <% end %>
+              <% end %>
               </li>
             <% end %>        
           </ul>

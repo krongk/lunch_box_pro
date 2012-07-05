@@ -1,5 +1,5 @@
 <div id="sidebar">
-
+ <div class="sidebar_content">
 <% if need_show_cart %>
   <script type="text/javascript">
       $(function() {
@@ -28,7 +28,7 @@
   <div class="line"></div>
 
   <div class="shop" id="cart_sidebar_section">
-      <h3>网上订餐</h3>  
+    <h3>网上订餐</h3>  
     <div id="side_bar_content">
 
       <ul id="cart_list">
@@ -50,10 +50,10 @@
           <%= link_to "生成订单", new_order_path, :class => "button" %>
         <% end %>
       </div>
-      </div>
     </div>
   </div>
 <% end %>
 
  <%= yield :side_bar_tips %>
+ </div>
 </div>
