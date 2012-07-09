@@ -6,3 +6,5 @@ tmp/
 config/database.yml
 public/dish
 public/shop
+Gemfile
+Gemfile.lock

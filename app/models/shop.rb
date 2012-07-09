@@ -1,10 +1,10 @@
 #encoding: utf-8
 class Shop < ActiveRecord::Base
-  has_one :shop_address
-  has_one :shop_contact
-  has_many :shop_dishes
+  has_one :shop_address, :dependent => :destroy  
+  has_one :shop_contact, :dependent => :destroy  
+  has_many :shop_dishes, :dependent => :destroy  
   has_many :dishes, :through => :shop_dishes
-  has_many :orders
+  has_many :orders, :dependent => :destroy  
   
   #user to add edit shop, add contact, address
   accepts_nested_attributes_for :shop_address, allow_destroy: false
@@ -18,6 +18,11 @@ class Shop < ActiveRecord::Base
 
   #one shop must has one contact, one address
   after_save :create_address_contact
+
+
+  def self.recent(count)
+    Shop.order("updated_at DESC").limit(count)
+  end
 
   def create_address_contact
     #create addxress

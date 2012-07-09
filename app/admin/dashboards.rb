@@ -39,32 +39,31 @@ ActiveAdmin::Dashboards.build do
     ul do
       li link_to "添加新闻", new_admin_news_item_path
       li link_to "添加页面", new_admin_page_path
-      li link_to "添加页面片断", new_admin_part_path
       li link_to "添加资源", new_admin_resource_item_path
-      li link_to "添加产品", new_admin_product_item_path
+      li link_to "添加餐厅", new_admin_shop_path
     end
   end
 
-  section :"最新新闻列表" do
+  # section :"最新新闻列表" do
+  #   ul do
+  #     NewsItem.recent(10).collect do |item|
+  #       li link_to(item.title, admin_news_item_path(item))
+  #     end
+  #   end
+  # end
+
+  section :"最新订单列表" do
     ul do
-      NewsItem.recent(10).collect do |item|
-        li link_to(item.title, admin_news_item_path(item))
+      Order.recent(10).collect do |item|
+        li link_to item.shop.name, admin_order_path(item)
       end
     end
   end
 
-  section :"最新产品列表" do
+  section :"最新餐厅列表" do
     ul do
-      ProductItem.recent(10).collect do |item|
-        li link_to item.title, admin_product_item_path(item)
-      end
-    end
-  end
-
-  section :"最新资源列表" do
-    ul do
-      ResourceItem.recent(10).collect do |item|
-        li link_to item.resource_name, admin_resource_item_path(item)
+      Shop.recent(10).collect do |item|
+        li link_to item.name, admin_shop_path(item)
       end
     end
   end

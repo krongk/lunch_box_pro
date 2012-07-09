@@ -18,7 +18,7 @@ class Address < ActiveRecord::Base
     a ||= self.where(["full_addr like ?", "%#{addr}%"]).try(:first)
 
     if a.nil?
-      point = []
+      point = nil
       begin
         point = Geocoder.coordinates(addr)
       rescue 

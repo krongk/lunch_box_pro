@@ -1,6 +1,7 @@
 #encoding: utf-8
 class ShopsController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_admin_user!, :only => [:destroy]
   
   def index
     @shops =Shop.paginate(:page => params[:page] || 1, :per_page => 40)
