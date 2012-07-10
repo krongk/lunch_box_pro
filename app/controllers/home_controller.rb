@@ -6,7 +6,13 @@ require 'iconv'
 require 'cgi'
 
 class HomeController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :auth
+
+  def auth
+    authenticate_user!
+    
+  end
+
   def index
   	#redirect_to :action => :site_map
     @shops = Shop.where(:updated_by => current_user.id).paginate(:page => params[:page] || 1, :per_page => 40)

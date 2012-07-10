@@ -10,9 +10,6 @@ ActiveAdmin.register NewsItem do
     column :title do |item|
       link_to item.title || '<空>', admin_news_item_path(item)
     end
-    column :body do |item|
-      strip_tags(item.body).truncate(100) unless item.body.blank?
-    end
     column :image_path do |item|
       unless item.image_path.blank?
         image_tag(item.image_path, :width => 60) 

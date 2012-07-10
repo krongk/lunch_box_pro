@@ -3,14 +3,7 @@
     <div class="hi_p">您好，欢迎光临乐活外卖!</div>
     <div class="right_p">
 
-   
-         <% if user_signed_in? %>
-           <%= current_user.email %>
-           <%= link_to '退出', destroy_user_session_path %>
-           <%= link_to '管理中心', '/home/index' %>
-         <% else %>
-           <%= link_to '登录', new_user_session_path %>
-         <% end %>
+      <%=render :partial => '/devise/menu/login_items' %>
         
       关注我们： <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a> <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a> 
       

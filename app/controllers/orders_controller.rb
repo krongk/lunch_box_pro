@@ -1,7 +1,7 @@
 #encoding: utf-8
 class OrdersController < InheritedResources::Base
+  before_filter :authenticate_admin_user!, :only => [:destroy]
   before_filter :authenticate_user!, :except => [:index, :show, :new, :create, :edit, :update, :find]
- 
   #session[:cart][params[:shop_id]][params[:shop_dish_id]] = {:name => params[:name], :price => params[:price], :count => 1}
   #. create order
   #. create order_detail

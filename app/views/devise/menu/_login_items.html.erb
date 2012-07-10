@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-  <%= link_to('退出', destroy_user_session_path, :method => :delete) %>        
+  <%= link_to('退出', destroy_user_session_path, :method => :delete) %> 
+  <%= link_to '管理中心', '/home/index' %>       
 <% else %>
   <%= link_to('登录', new_user_session_path)  %>  
 <% end %>
