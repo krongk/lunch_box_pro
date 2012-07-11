@@ -6,12 +6,14 @@
 <div class="news_main">
   <div style="margin:4px;">首页 > <a href="/news_cates">信息中心</a> > <%=link_to @news_item.news_cate.name, news_cate_path(@news_item.news_cate_id)%></div>
 
-  <div class="titlerb">
+  <div style="padding: 20px 0;">
     <h1><%= @news_item.title %></h1>
   </div>
   <div class="news_content">
     <% unless @news_item.image_path.blank? %>
      <div class="news_img"><%= image_tag(@news_item.image_path) %></div>
+    <% else %>
+     <div class="news_img"><%= image_tag(asset_path("food/#{rand(20)}.jpg"), :width => "650px") %></div>
     <% end %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @news_item.body.blank?%>
     <div class="bshare">

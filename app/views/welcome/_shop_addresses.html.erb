@@ -54,7 +54,7 @@
                 <%= link_to "javascript:toggle_dish_notice('dish_notice_#{shop_dish.id}');" do %>
                   <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
                   <div class="din2"><%= dish.name %><span class="dish_notice" id="dish_notice_<%= shop_dish.id %>"></span></div>
-                  <div class="sale">￥<%= shop_dish.price || 10 %></div>
+                  <div class="sale"><%= shop_dish.show_dish_price %></div>
                 <% end %>
               <% end %>
               </li>

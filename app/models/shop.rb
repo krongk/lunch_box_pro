@@ -75,7 +75,7 @@ class Shop < ActiveRecord::Base
       str = ''
       str = %{分类：#{self.shop_cate}} unless self.shop_cate.blank?
       if self.shop_dishes.any?
-        str += %{, &nbsp;&nbsp;主推：#{self.shop_dishes.map{|sd| sd.dish.name}.join(', ')}}
+        str += %{, &nbsp;&nbsp;主推：#{self.shop_dishes.map{|sd| sd.dish.present? ? sd.dish.name : ''}.join(', ')}}
       end
       str.to_s.html_safe
     else
@@ -119,7 +119,7 @@ class Shop < ActiveRecord::Base
   def show_contact_phone
     self.shop_contact.nil? ? "" : 
       [self.shop_contact.tel_phone, self.shop_contact.mobile_phone].any? ? 
-        %{<p>订餐电话： #{[self.shop_contact.tel_phone, self.shop_contact.mobile_phone].compact.join("<br/>")}</p>}.html_safe :
+        %{<p>订餐电话： <span class="red">#{[self.shop_contact.tel_phone, self.shop_contact.mobile_phone].compact.join("<br/>")}</span></p>}.html_safe :
         ""
   end
  

@@ -2,17 +2,18 @@
 <% meta_keywords ["乐活成都，外卖，在线订餐"].join(' - ') %>
 <% meta_description ["happy.cd 乐活成都外卖网，成都外卖订餐领跑者"].join(' - ') %>
 
-<div class="list">
-  <h3 class="titlbg"><%=@news_cate.name %></h3>
-
-  <ul>
-    <% @news_items.each_with_index do |item, index| %>
-      <li>
-        <h3 class="titbg" ><%=link_to item.title, news_item_path(item)%></h3>
-        <p><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200).html_safe%>
-        <strong><%=link_to '[阅读详情]↓', news_item_path(item)%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<%= will_paginate @news_items %>
+<% @news_items.each do |item| %>
+  <table>
+  <tbody>
+    <tr><td colspan="2"><h2 class="news_title"><%=link_to item.title, news_item_path(item)%></h2></td></tr>
+    <tr>
+      <td>&nbsp;<%= image_tag(item.image_path.blank? ? asset_path("food/#{rand(20)}.jpg") : item.image_path, :width => '200px') %></td>
+      <td><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(300).html_safe %>
+          <br/><strong><%=link_to '>>阅读详情', news_item_path(item), :target => "_blank"%></strong> &nbsp;&nbsp;<%= item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<% end %>
+<%= will_paginate @news_items, :next_label => "下一页", :prev_label => "上一页" %>

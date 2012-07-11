@@ -1,6 +1,11 @@
 @charset "utf-8";
 
 /***********************/
+#slideshow1 {
+  width: 640px;
+  height: 20px;
+}
+
 .red{color: red; font-size: 14px; font-weight: bold;}
 .green{color: #669933; font-size: 14px; font-weight: bold;}
 .light_green{color: #7CC130}
@@ -77,13 +82,44 @@
 }
 #main_content_wrapper{background:url(/assets/shop-bg.jpg) repeat-y 680px 0;}
 #main_content{ background:#FFF;}
+#header_wrapper{
+  background: #EDEFEF;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #C6CCCC;
+}
+#header{ 
+  margin: 0; 
+  padding: 8px !important;
+  padding: 18px;
+}
+#footer{ 
+  border-top: 1px solid #C6CCCC; 
+  margin: 80px 0 0 0;
+  padding: 20px 10px;
+  overflow:hidden;  
+  width:920px; 
+  margin:0 auto;
+  color: #ccc;
+  text-align: center; 
+  font-size: 105%;
+}
+#footer a{ 
+  color: green;
+  margin: 0 10px;
+}
 /* index*/
 .hx_t{ margin:0 auto; color:#fff; overflow:hidden;}
 .hi_p{ float:left;}
-.right_p{ float:right; _padding-top:15px; width: 300px;}
+.right_p{ 
+  float:right; 
+  margin: 0 !important;
+  margin: -4px 0 0 0;
+  width: 500px;
+  text-align: right;
+}
 .right_p a{display:inline-block;}
-#header{ margin: 0; padding: 0;}
-.switch{color: red; font-weight: 600;}
+.switch{color: #cc3333; font-weight: 600; margin: 0 4px; letter-spacing: 0.2em;}
 .sinaweibo,.txweibo{background:url(/assets/ico-happ.png) no-repeat; vertical-align:middle; text-indent:9999em;}
 .sinaweibo{ background-position:0 -1px; height:18px; width:18px; margin-left:5px; }
 .txweibo{background-position:0 -23px; height:18px; width:18px; margin-left:5px;}
@@ -123,15 +159,20 @@
 .shop_logo{ width: 140px;}
 .header2{ overflow:hidden;  width:960px; margin:0 auto;}
 .logo{ float:left;}
-.logo a{ background:url(/assets/index_happy.png) no-repeat 0 0; width:158px; height:59px; display:block; text-indent:-999em;}
+.logo a{ 
+
+}
 #tabs{ float:left;}
-.tabbed_navigation li{ float:left; margin:0 8px;}
-.tabbed_navigation{ padding:8px 0; margin-left:62px;}
-.menu{margin-top:22px; padding-bottom:4px;}
+.tabbed_navigation li{ float:left; margin: 10px 8px;}
+.tabbed_navigation{ padding:8px 0; margin: 20px 0 0 62px;}
+.menu{
+   padding: 0 0 4px 0 !important;
+   padding: 10px;
+ }
 .currt{ background:url(/assets/ico-happ.png) no-repeat 0 -86px; width:63px; color:#FFF; height:26px; line-height:26px; text-align:center;}
 .currt a{ color:#FFF; text-decoration:none;}
-.qutn{ border:2px solid #A7A7A7; background:#FFF; height:28px; line-height:28px; padding: 0 4px;}
-.qutn a{ text-decoration:none; color:#6D6D6D;}
+.qutn{ border: 1px solid #A7A7A7; background:#FFF; height:28px; line-height:28px; padding: 0 4px;}
+.qutn a{ text-decoration:none; color:#090;}
 .utility_nav{ float:right;}
 .help{ float:right; padding-top:8px;}
 .help a{ color:#6D6D6D; text-decoration:none;}
@@ -155,9 +196,6 @@
 .meun0{}
 .title_menu{ border-bottom:1px dotted #999; padding-bottom:4px; height:22px;}
 .ico_me{ background:url(/assets/ico-happ.png) no-repeat 0 -232px; height:18px; padding-left:15px; text-align:left; display:inline-block; float:left;}
-.foter{ border-bottom:1px solid #D9D9D9; height:60px;}
-#footer{ border-top:1px solid #fff; text-align:center; height:47px; line-height:47px; margin: 40px 0 0 0;}
-#footer a{ color:#666;}
 .shop_dish_panel{ margin-top:20px;}
 #shop_dish_list li{ line-height:22px; border-bottom:1px dotted #B5B7B7;}
 .shop_dish_panel2 ul{margin: 0px; padding: 0px;}
@@ -204,8 +242,8 @@
 .menupic{ border-top:1px solid #EDEDED;}
 .meun0{padding-bottom:10px;}
 .tips{ clear:both; margin-bottom:6px;}
-.has_out_food{color: red;}
-.no_out_food{color: green;}
+.has_out_food{color: #cc3333; font-weight: 600;}
+.no_out_food{color: #090;}
 .button_del{
 	background-color: #ffcc00;
 	padding: 2px 6px;
@@ -282,4 +320,18 @@
   #F90;
   font-size: 18px;
   font-weight: bold;
+}
+
+/*********news******************/
+.news_title{
+  margin: 0;
+  padding: 0;
+}
+.news_title a{
+  color: #090;
+  text-decoration: none;
+}
+.news_title a:hover{
+  color: #cc3333;
+  text-decoration: underline;
 }

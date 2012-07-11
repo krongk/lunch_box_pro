@@ -11,6 +11,8 @@
 //= require jquery.validate
 //= require jquery.validate.ext
 //= require jquery.ui.totop
+//= require jquery.sliders
+//= require jquery.easing.1.3
 //= require tinymce
 //= require welcome
 //= require shops

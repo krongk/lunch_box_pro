@@ -10,8 +10,8 @@
   <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
   <meta name="description" content="<%= yield(:meta_description)%>" />
     
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "jquery", "jquery-ui", "addresses" %>
+  <%= stylesheet_link_tag  "content", "index_style" %>
+  <%= javascript_include_tag "jquery", "jquery-ui", "jquery.sliders", "addresses", "index_script" %>
 
   <%= csrf_meta_tags %>
   <!--[if lt IE 7]>
@@ -24,36 +24,57 @@
     </script>
   <![endif]-->
 </head> 
- 
-<body style="background-color: #ddd;">
-  <div id="header">
-   <div class="hx_t">
-     <div class="hi_p">您好，欢迎光临乐活外卖!</div>
-     <div class="right_p">关注我们：
-       <a target="_blank" class="sinaweibo" href="#"></a>
-       <a target="_blank" class="txweibo" href="#"></a>
-     </div>
-   </div>
-  </div>
 
-  <div id="apDiv1" class="info" >网站内测阶段，所有的订单都视为测试使用。 <a href="/pages/contact" target="_blank">请在这里报告错误</a></div>
-  <%=render :partial => "layouts/flashes" %>
-  
-  <div id="wrapper">
-    <div id="active_admin_content" class="with_sidebar">
-      <div id="head">
-        <div id="logo">
-          <a href="#">乐活外卖</a>
-        </div>
+<body>
+<div id="header">
+  <!-- jQuery handles to place the header background images -->
+  <div id="headerimgs">
+    <div id="headerimg1" class="headerimg"></div>
+    <div id="headerimg2" class="headerimg"></div>
+  </div>
+  <!-- Top navigation on top of the images -->
+  <div id="nav-outer">
+    <div id="navigation">
+      <div id="search">
+        <%= yield %>
       </div>
-      <%= yield %>
+      
     </div>
   </div>
-  <div class="bg_list">
-    <div class="wodow" id ="how_to_shop"><a href="javascript: void();" title="我怎么订餐?">我怎么订餐?</a></div>
-    <div id="div_liucheng" class="bcpic2"></div>
+  <!-- Slideshow controls -->
+  <div id="headernav-outer">
+    <div id="headernav">
+      <div id="back" class="btn"></div>
+      <div id="control" class="btn"></div>
+      <div id="next" class="btn"></div>
+    </div>
   </div>
-  
+  <!-- jQuery handles for the text displayed on top of the images -->
+  <div id="headertxt">
+    <p class="caption">
+      <span id="firstline"></span>
+      <a href="#" id="secondline"></a>
+    </p>
+    <p class="pictured">
+      Pictured:
+      <a href="#" id="pictureduri"></a>
+    </p>
+  </div>
+</div>
+<div id="content">
+  <p>&nbsp;</p>
+  <p style="color: #cc3333; font-size: 2em; font-weight: 700; font-family: "黑体"; line-height: 20px; padding: 10px 0;">洋盘吧， 成都也可以在线订外卖了~ 你试过没？</p>
+  <p style="color: #090; font-size: 2em; line-height: 20px; padding: 10px 0;">想叫外卖了？就上成都乐活， happy.cd</p>
+  <p style="font-weight: 600;">1分钟订餐，半小时等待，3000家餐厅，上万道美食!</p>
+  <p>乐活外卖基于地理位置, 为您呈现您所在区域的餐厅和外卖信息。 您可以直接通过网络订餐，订餐成功后，外卖会在30分钟--1个小时之内及时送达！您所需的操作只有三步："确定您所在的区域" ---> "点菜" ---> "留下电话和地址，下单！" .</p>
+  <p>乐活外卖提倡一种绿色、健康、时尚、快乐的饮食理念和生活方式，为广大上班族白领、社区家庭、学校等用户不断创造价值。乐活外卖为餐厅提供一体化解决方案，为餐厅提供一个免费的网络推广平台，迅速建立起良好的品牌形象和市场知名度。</p>
+  <p><img src="/assets/how.png" width="824" height="280" alt="如何订餐"></p>
+  <p>&nbsp;</p>
 
+  <!--footer-- >
+  <%=render :partial => "layouts/footer" %>
+</div>
+
+ 
 </body>
 </html>

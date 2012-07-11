@@ -20,6 +20,6 @@ class ShopDish < ActiveRecord::Base
   end
   
   def show_dish_price
-    price.blank? ? "" : "价格：#{price}"
+    price.blank? ? "价格不详" : "￥#{price}"
   end
 end
