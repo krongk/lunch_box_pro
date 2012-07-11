@@ -2,8 +2,9 @@
 #区域代理用户管理中心
 
 require 'open-uri'
-require 'iconv'
+require 'base_extension'
 require 'cgi'
+require 'iconv'
 
 class HomeController < ApplicationController
   before_filter :auth
@@ -39,6 +40,7 @@ class HomeController < ApplicationController
 
   #短信宝测试
   def search 
+
     #http://www.smsbao.com/query?u=inruby&p=inruby.com
     #http://www.smsbao.com/sms?u=inruby&p=inruby.com&m=15928661802&c=testaaf 
     #发送短信接口： 通过'open-uri', 加密使用Digest::MD5
@@ -67,9 +69,10 @@ class HomeController < ApplicationController
     puts 'encoding'
     puts content.encoding
 
-    open("http://www.smsbao.com/sms?u=inruby&p=#{p}&m=15928661802&c=#{URI.escape(content)}") {|f|
-      f.each_line {|line| p line}
-    }
-    render :text => content
+    # open("http://www.smsbao.com/sms?u=inruby&p=#{p}&m=15928661802&c=#{URI.escape(content)}") {|f|
+    #   f.each_line {|line| p line}
+    # }
+    status = SmsBao.send('15928661802', content)
+    render :text => status
   end
 end

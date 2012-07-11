@@ -74,6 +74,24 @@ class OrdersController < InheritedResources::Base
       if @order
         #清空购物车
         session[:cart] = nil
+        #发送短信
+        #session[:order] = {:total_price => 0.0, :order_ids => []}
+        session[:order][:order_ids].each do |order_id|
+          order = Order.find(order_id)
+          content = []
+          content << "电话：#{order.phone}"
+          content << "地址：#{order.addr}"
+          content << "总价：#{order.total_price}"
+          order.order_details.each do |rd|
+            content << "#{rd.shop_dish.dish.name}  #{rd.amount}份" 
+          end
+          content << "备注：#{order.user_note}"
+          status = SmsBao.send('15928661802', content.join("\n"))
+          puts "........................................"
+          puts status
+          puts "........................................"
+          #Order.update(order_id, :sms_status => status)
+        end
         #清空订单
         session[:order_show] = session[:order] 
         session[:order] = nil
@@ -87,6 +105,7 @@ class OrdersController < InheritedResources::Base
     end
   end
 
+  #订单查询
   def find
     #render :text => params
     q = params[:phone]
