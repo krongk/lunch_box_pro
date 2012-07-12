@@ -7,7 +7,7 @@
        <tbody>
        <tr>
         <td width="100px">
-          <p><%= shop.show_photo %></p>
+          <p><%= shop.show_photo %>&nbsp;</p>
         </td>
         <td align="left" valign="top" width="300px">
           <h3><%=shop.name %></h3>
@@ -44,11 +44,11 @@
               <% next if (shop = shop_dish.shop).nil? || (dish = shop_dish.dish).nil? %>
               <li class="normal"  id = "shop_dish_<%=shop_dish.id%>" data-id ="<%=shop_dish.id %>" data-name="<%=dish.name %>" data-price="<%=shop_dish.price %>">
 
-              <% if shop.is_contacted && shop.has_out_food %>
+              <% if shop.is_contacted && shop.has_out_food && !shop_dish.price.blank? %>
                <%= link_to add_cart_path(:shop_id => shop.id, :shop_dish_id => shop_dish.id, :name => dish.name, :price=> shop_dish.price), :remote => true do%>
                  <div class="din1" id="shop_dish_count_<%= shop_dish.id%>">+</div>
                  <div class="din2"><%= dish.name %></div>
-                 <div class="sale">￥<%= shop_dish.price || 10 %></div>
+                 <div class="sale"><%= shop_dish.show_dish_price  %></div>
                <% end %>
               <% else %>
                 <%= link_to "javascript:toggle_dish_notice('dish_notice_#{shop_dish.id}');" do %>

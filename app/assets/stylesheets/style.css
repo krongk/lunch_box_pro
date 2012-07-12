@@ -208,7 +208,7 @@
 .curt{ background:#ffcc00;}
 .normal{ background:#E4E4E4;}
 .normal a{color: green; font-size: 110%; display: block;}
-.dish_notice{color: #ffcc00; margin: 0 0 0 40px;}
+.dish_notice{color: #cc3333; margin: 0 0 0 20px;}
 #main_content h3{
 	font-weight: 600;
 	color: #669933;
@@ -246,9 +246,10 @@
 .no_out_food{color: #090;}
 .button_del{
 	background-color: #ffcc00;
-	padding: 2px 6px;
-	color: #fff;
-	font-weight: 500;
+	padding: 1px 6px;
+	color: #000;
+	font-weight: 600;
+  font-size: 14px;
 }
 
 /*******page *******/

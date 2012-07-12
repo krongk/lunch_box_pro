@@ -17,7 +17,17 @@ module SmsBao
     when '30' 
 	    'password error'
     when '40'
-        'bad account'
+      'bad account'
+    when '41'
+      'no money'
+    when '42'
+      'account expired'
+    when '43'
+      'IP denied'
+    when '50'
+      'content sensitive'
+    when '51'
+      'bad phone number'
     else 
 	    'unknown error'
     end

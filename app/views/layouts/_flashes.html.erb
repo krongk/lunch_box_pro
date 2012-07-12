@@ -11,12 +11,19 @@
 	</script>
 <% end %>
 
+<%# some flash need to display longtime%>
+<% if flash[:tips] %>
+  <div id="notice_tips" class="flash flash_error%>">
+    <%= flash[:tips] %>
+  </div>
+<% end %>
+
 <% if @shop_count && @dish_count %>
-	<div id="notice" class="flash flash_notice">
+	<div id="notice2" class="flash flash_notice">
 	  我们为您找到<span style="color:red;"><%=@shop_count%></span>家餐厅，<span style="color:red;"><%=@dish_count%></span>道菜！点击菜单即可下单~
 	</div>
     <script type="text/javascript">
-	  setTimeout( $('#notice').fadeOut(5000), 55000)
+	  setTimeout( $('#notice2').fadeOut(5000), 55000)
       //$('#notice').fadeIn(50000).fadeOut(1000);
 	</script>
 <% end %>

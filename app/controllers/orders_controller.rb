@@ -1,4 +1,6 @@
 #encoding: utf-8
+require 'base_extension'
+
 class OrdersController < InheritedResources::Base
   before_filter :authenticate_admin_user!, :only => [:destroy]
   before_filter :authenticate_user!, :except => [:index, :show, :new, :create, :edit, :update, :find]
@@ -72,8 +74,6 @@ class OrdersController < InheritedResources::Base
 
     respond_to do |format|
       if @order
-        #清空购物车
-        session[:cart] = nil
         #发送短信
         #session[:order] = {:total_price => 0.0, :order_ids => []}
         session[:order][:order_ids].each do |order_id|
@@ -81,17 +81,29 @@ class OrdersController < InheritedResources::Base
           content = []
           content << "电话：#{order.phone}"
           content << "地址：#{order.addr}"
-          content << "总价：#{order.total_price}"
           order.order_details.each do |rd|
-            content << "#{rd.shop_dish.dish.name}  #{rd.amount}份" 
+            content << "#{rd.shop_dish.dish.name}(#{rd.amount}份)" 
           end
+          content << "总价：#{order.total_price}"
           content << "备注：#{order.user_note}"
-          status = SmsBao.send('15928661802', content.join("\n"))
-          puts "........................................"
-          puts status
-          puts "........................................"
-          #Order.update(order_id, :sms_status => status)
+          shop = Shop.find(order.shop_id)
+          phone = shop.shop_contact.mobile_phone
+          unless phone =~ /^1[23456789]\d{9}$/
+            puts 'bad phone..........'
+            flash[:tips] = "商家手机短信发送失败，请尝试拨打商家电话进行订餐：<h1 style='color: #cc3333;'>#{shop.shop_contact.tel_phone}</h1>".html_safe 
+            render action: "edit"
+            return
+          end
+          status = SmsBao.send(phone, content.join("\n"))
+          unless status == 'success'
+            flash[:tips] = "商家手机短信发送失败，请尝试拨打商家电话进行订餐：<h1 style='color: #cc3333;'>#{shop.shop_contact.tel_phone}</h1>".html_safe
+            render action: "edit"
+            return
+          end
+          Order.update(order_id, :sms_status => status)
         end
+        #清空购物车
+        session[:cart] = nil
         #清空订单
         session[:order_show] = session[:order] 
         session[:order] = nil
@@ -110,7 +122,7 @@ class OrdersController < InheritedResources::Base
     #render :text => params
     q = params[:phone]
     unless q.blank?
-      if q !~ /1[23456789]\d{9}/
+      if q !~ /^1[23456789]\d{9}$/
         flash[:error] = "请输入正确的手机号码"
         render :action => :find
         return

@@ -112,8 +112,8 @@ body {
 
 /* HEADER TEXT */
 #headertxt { width:960px; margin:0 auto; clear:both; position:relative; top:74px; }
-#firstline { background-image:url("/assets/index/textbg.png"); color:#333; font-size:36px; line-height: 20px; padding: 20px; float:left; display:block; }
-#secondline { background-image:url("/assets/index/textbg.png"); color:#CD2B3A; text-decoration:none; line-height: 30px; font-size:60px; padding: 20px; float:left; display:block; clear:both; }
+#firstline { background-image:url("/assets/index/mask.png"); color:#333; font-size:36px; line-height: 20px; padding: 20px; float:left; display:block; }
+#secondline { background-image:url("/assets/index/mask.png"); color:#CD2B3A; text-decoration:none; line-height: 30px; font-size:60px; padding: 20px; float:left; display:block; clear:both; }
 #secondline:hover { text-decoration: none; color:#7F000C; }
 
 .pictured { background-color:#CC3333; color:#FFF; font-size:12px; padding:9px 16px; text-transform:uppercase; float:left; display:block; clear:both; margin-top:10px; }
