@@ -12,6 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: true
+  wait_timeout: 600
   pool: 50
   host: 127.0.0.1
   port: 3306
@@ -26,20 +27,22 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  wait_timeout: 600
   pool: 5
   host: 127.0.0.1
   port: 3306
   username: root
   password: kenrome001
-  database: lunch_box
+  database: lunch_box_pro
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  wait_timeout: 600
   pool: 5
   host: 127.0.0.1
   port: 3306
   username: root
   password: kenrome001
-  database: lunch_box
+  database: lunch_box_pro

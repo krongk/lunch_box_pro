@@ -17,22 +17,25 @@ ul.ui-autocomplete {
   border: solid 1px #999;
   cursor: default;
   background: green;
-  li {
+}
+.ui-autocomplete li {
     background-color: #090;
     border-top: solid 1px #DDD;
     margin: 0px;
     padding: 0px;
     font-size: 14px;
-    a {
+    }
+
+.ui-autocomplete li a {
       color: #fff;
       display: block;
       padding: 8px;
     }
-    a.ui-state-hover, a.ui-state-active {
+
+.ui-autocomplete li a.ui-state-hover, a.ui-state-active {
       background-color: #CC3333;
     }
-  }
-}
+  
 
 /* BASIC RESET */
 ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input{margin:0; padding:0;}
