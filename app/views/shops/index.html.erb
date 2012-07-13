@@ -1,3 +1,14 @@
-<h1>餐厅列表</h1>
+<style>
+ #main_content{
+   width: 100%;
+ }
+ #sidebar{
+   width: 20px;
+   display: none;
+ }
+</style>
 
+
+<h1>餐厅搜素</h1>
+<%= render :partial => 'shops/shop_search' %>
 <%= render :partial => '/shops/shop_list', :locals => {:shops => @shops} %>

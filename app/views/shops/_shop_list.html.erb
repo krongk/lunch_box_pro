@@ -1,18 +1,22 @@
 <table>
   <tr>
     <th>名称</th>
-    <th>营业时间</th>   
+    <th>地址</th>
+    <th>联系电话</th>  
     <th>是否提供外卖</th>
-     <th>是否签约</th>
+    <th>是否签约</th>
+    <th>是否促销</th>
     <th>功能</th>
   </tr>
 
 <% shops.each do |shop| %>
   <tr>
     <td><b><%= link_to shop.name, shop %></b></td>
-     <td><%= shop.biz_time %></td>
+     <td><%= shop.shop_address.addr %></td>
+     <td><%= shop.show_contact_phone %></td>
      <td><%= shop.has_out_food %></td>
      <td><%= shop.is_dealed %></td>
+     <td><%= shop.show_is_discount %></td>
      <td><%= link_to '修改', edit_shop_path(shop)%></td>
   </tr>
 <% end %>

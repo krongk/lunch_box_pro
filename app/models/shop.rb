@@ -102,8 +102,12 @@ class Shop < ActiveRecord::Base
     tags.blank? ? "" : tags.split(',').map{|t| "<a href='/tags?#{t}' target='_blank'>#{t}</a>"}.join("，")
   end
   def show_photo
-    photo_url.blank? ? %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/assets/shop.jpg" alt="#{name}" width="100px"/></span>}.html_safe : 
-      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/shop/#{photo_url}" alt="#{name}"  width="100px"/></span>}.html_safe
+    if photo_url.blank?
+      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/assets/shop.jpg" alt="#{name}" width="100px"/></span>}.html_safe
+    else
+      photo_arr = photo_url.split(',').map{|c| c.strip}
+      %{<span style="float: left: padding: 4px; background-color:#ddd;"><img src="/shop/#{photo_arr[0]}" alt="#{name}"  width="100px"/></span>}.html_safe
+    end
   end
   def show_shihe
     shihe.blank? ? "" : %{适合：#{shihe}}.html_safe

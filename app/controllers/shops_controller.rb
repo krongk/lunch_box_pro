@@ -4,7 +4,11 @@ class ShopsController < InheritedResources::Base
   before_filter :authenticate_admin_user!, :only => [:destroy]
   
   def index
-    @shops =Shop.paginate(:page => params[:page] || 1, :per_page => 40)
+    if params[:shop_name].blank?
+      @shops =Shop.paginate(:page => params[:page] || 1, :per_page => 20)
+    else
+      @shops = Shop.where("name like '%#{params[:shop_name]}%' ").paginate(:page => params[:page] || 1, :per_page => 20)
+    end
   end
 
   def create

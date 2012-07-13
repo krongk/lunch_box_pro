@@ -2,15 +2,24 @@
 <% meta_keywords ["乐活外卖"].join(' - ') %>
 <% meta_description ["乐活外卖"].join(' - ') %>
 
-<h2>区域经理管理中心</h2>
+<style>
+ #main_content{
+   width: 100%;
+ }
+ #sidebar{
+   width: 20px;
+ }
+</style>
 
+<h2>区域经理管理中心</h2>
 
 <div class="dashboard_section panel">
   <h3>快速导航</h3>
   <div class="panel_contents">
     <ul>
       <li><a href="/shops/new">添加餐厅</a></li>
-      <li><a href="/shops">查找餐厅</a></li>
+      <li><a href="/shops">餐厅列表</a></li>
+      <li><%= render :partial => 'shops/shop_search' %></li>
     </ul>
   </div>
 </div>
