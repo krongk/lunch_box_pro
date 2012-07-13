@@ -28,6 +28,40 @@ ul.ui-autocomplete {
       background-color: #CC3333;
     }
   
+/******flashs *******/
+.flash {
+  background: #f7f1d3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f1d3), to(#f5edc5));
+  background: -moz-linear-gradient(-90deg, #f7f1d3, #f5edc5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f1d3, endColorstr=#f5edc5);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f1d3, endColorstr=#f5edc5);
+  text-shadow: #fafafa 0 1px 0;
+  border-bottom: 1px solid #eee098;
+  color: #cb9810;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.0em;
+  margin-bottom: 10px;
+  padding: 13px 30px 11px;
+}
+.flash.flash_notice {
+  background: #dce9dd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dce9dd), to(#ccdfcd));
+  background: -moz-linear-gradient(-90deg, #dce9dd, #ccdfcd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
+  border-bottom: 1px solid #adcbaf;
+  color: #416347;
+}
+.flash.flash_error {
+  background: #f5e4e4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
+  background: -moz-linear-gradient(-90deg, #f5e4e4, #f1dcdc);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5e4e4, endColorstr=#f1dcdc);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5e4e4, endColorstr=#f1dcdc);
+  border-bottom: 1px solid #e0c2c0;
+  color: #b33c33;
+}
 
 /* BASIC RESET */
 ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input{margin:0; padding:0;}
@@ -49,14 +83,13 @@ body {
   height:110px;
   padding-top:11px;
   position:relative;
-  top:24px;
   background-color: #666;
 }
 #navigation { 
   height:100px; 
   width:960px; 
   margin:0 auto; 
-  background-image:url("/assets/logo.png");
+  background-image:url("/assets/logo2.png");
   background-position:top left; 
   background-repeat:no-repeat; 
 }

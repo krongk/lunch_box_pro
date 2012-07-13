@@ -60,6 +60,7 @@ RailsOnWeb::Application.routes.draw do
   get "home/search"
   match "update_order" => "home#update_order", :as => :update_order
   
+  match "g" => "addresses#new"
   match "upload" => "resource_items#upload"
 
   #use get json

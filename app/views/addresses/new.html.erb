@@ -16,7 +16,7 @@
 <div id="addr_form">
   <%  @address ||= Address.new %>
   <%= form_for(@address, :html =>{:class => ""}) do |f| %>
-      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => session[:location], :class => 'input_search_txt' %>
+      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => session[:location] || '   输入您所在的地址', :class => 'input_search_txt' %>
       <%= f.submit '  找外卖  ', :id => 'submit', :class => 'subit'%>
   <% end %>
 </div>

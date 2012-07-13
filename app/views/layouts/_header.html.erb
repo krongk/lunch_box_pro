@@ -17,9 +17,10 @@
       <div class="logo"><a href="#" title="乐活外卖"><%= image_tag asset_path("logo.png") %></a></div>
       <ul class="tabbed_navigation" id="tabs">
         <li class="currt"><a href="/">首页</a></li>
-        <li style="line-height:26px;">所在位置:</li>
+        <li class="currt"><a href="/g">切换位置</a></li>
+
         <li class="qutn">
-          <%=link_to "#{session[:location]}<span class='switch'>(切换)</span>".html_safe, new_address_path %>
+          <%=link_to session[:location], '/g' %>
         </li>
       </ul>
       <div class="help" style="float:right;"><a id="help" href="/help">使用帮助</a></div>
