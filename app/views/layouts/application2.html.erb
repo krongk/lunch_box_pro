@@ -15,18 +15,28 @@
 
   <%= csrf_meta_tags %>
   <!--[if lt IE 7]>
-    <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
-  <![endif]-->
-  <!--[if IE 6]>
     <script src="/assets/iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
-       EvPNG.fix('img,#logo a,.wanmh,.bcpic,.input_search_txt,.subit,.sinaweibo,.txweibo'); 
+       EvPNG.fix('img,#navigation,.input_search_txt,.subit'); 
     </script>
   <![endif]-->
 </head> 
 
 <body>
+ <div class="index_flash"><%=render :partial => "layouts/flashes" %></div>
+ <!-- Top navigation on top of the images current on here-->
+<div id="nav-outer">
+  <div id="navigation">
+    <div id="search">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
 <div id="header">
+
+
   <!-- jQuery handles to place the header background images -->
   <div id="headerimgs">
     <div id="headerimg1" class="headerimg"></div>
@@ -56,17 +66,9 @@
 </div>
 
  <!-- Top navigation on top of the images current on here-->
-  <div id="nav-outer">
-    
-    <div id="navigation">
-      <div id="search">
-        <%= yield %>
-      </div>
-    </div>
-  </div>
+
 
 <div id="content">
-  <%=render :partial => "layouts/flashes" %>
   <p style="color: #cc3333; font-size: 2em; font-weight: 700; font-family: "黑体"; line-height: 20px; padding: 10px 0;">洋盘吧， 成都也可以在线订外卖了~ 你试过没？</p>
   <p style="color: #090; font-size: 2em; line-height: 20px; padding: 10px 0;">想叫外卖了？就上成都乐活， happy.cd</p>
   <p style="font-weight: 600;">1分钟订餐，半小时等待，3000家餐厅，上万道美食!</p>
