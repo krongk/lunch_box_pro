@@ -47,7 +47,7 @@
   body {
     font-family: "微软雅黑", Arial, Helvetica, sans-serif;
     font-size:75.00%;
-    color:#444;
+    color:#000;
   }
 
   /*--- Headings | Überschriften ------------------------------------------------------------------------*/
@@ -122,7 +122,7 @@
 
   /*--- Links ----------------------------------------------------------------------------------------- */
 
-  a { color:green; background:transparent; text-decoration:none; }
+  a { color:green; background:transparent; text-decoration: none;}
   a:visited  { color:#339900; }
 
   /* (en) maximum constrast for tab focus - change with great care */
@@ -174,7 +174,7 @@
   tbody th[scope="row"], tbody th.sub { background:#f0f0f0; }
 
   tbody th { border-bottom:1px solid #fff; text-align:left; }
-  tbody td { border-bottom:1px solid #eee; }
+  tbody td { border-bottom:0px solid #eee; }
 
   tbody tr:hover th[scope="row"],
   tbody tr:hover tbody th.sub { background:#f0e8e8; }

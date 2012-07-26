@@ -5,6 +5,7 @@
 <% unless params[:map].present? %>
   <% next_nav("地图展示", "/?map=g") %>
   <%=render :partial => 'shop_addresses', :locals =>{:shop_addresses => @shop_addresses} %>
+  <% if @shop_addresses.size > 5 %><a id="pagination_ajax_title" href="javascript: void(0);">点击获取更多餐厅信息...</a><% end %>
 <% else %>
   <% next_nav("返回", "/") %>
   <%= render :partial => 'map', :locals => {:shop_addresses => @shop_addresses} %>

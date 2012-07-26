@@ -1,13 +1,20 @@
+<% if current_user %>
+<div class="flash flash_notice">
+  <%= link_to '编辑', edit_shop_path(@shop) %>  &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to '返回管理中心', '/home/index' %>
+</div>
+<% end %>
+
 <div id="shop_show">
   <h2> <%= @shop.name %> </h2>
   <div class="biz">
-    <%= @shop.show_biz_time %>
+    <%= @shop.show_biz_or_outer_time %>
     <%= @shop.show_avg %>
     <%= @shop.show_has_out_food %>
     <%= @shop.show_is_hot %>
     <%= @shop.show_discount %>
   </div>
-  <div class="rate">
+  <div >
     评级：<%= @shop.rate %>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <%= @shop.show_score %>
@@ -19,7 +26,7 @@
     <%= @shop.show_score_fuwu %>
   </div>
 
-  <div class="desc">
+  <div>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= @shop.description %></p>
     <%= @shop.show_shihe %>
     <%= @shop.show_sheshi.html_safe %>
@@ -30,6 +37,6 @@
 <div id="shop_dish_show">
   <h2>菜谱</h2>
   <ul>
-  
+    
   </ul>
 </div>

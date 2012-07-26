@@ -58,6 +58,7 @@ RailsOnWeb::Application.routes.draw do
   get "home/edit_order"
   get "home/update_order"
   get "home/search"
+  get "home/location"
   match "update_order" => "home#update_order", :as => :update_order
   
   match "g" => "addresses#new"

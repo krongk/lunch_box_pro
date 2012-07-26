@@ -10,16 +10,31 @@
 .green{color: #669933; font-size: 14px; font-weight: bold;}
 .light_green{color: #7CC130}
   
-.rand_1{color: #333; background-color: #ffeecc;}
-.rand_2{color: #333; background-color: #eeffcc;}
-.rand_3{color: #333; background-color: #ddeeff;}
-.rand_4{color: #333; background-color: #eeddff;}
-.rand_5{color: #333; background-color: #ccddff;}
-.rand_6{color: #333; background-color: #ffcc99;}
-.rand_7{color: #333; background-color: #cccc99;}
-.rand_8{color: #333; background-color: #99cc99;}
-.rand_9{color: #333; background-color: #cc99cc;}
-.rand_10{color: #333; background-color: #cccccc;}
+.rand_1{background-color: #fff;}
+.rand_2{background-color: #fff;}
+.rand_3{background-color: #fff;}
+.rand_4{background-color: #fff;}
+.rand_5{background-color: #fff;}
+.rand_6{background-color: #fff;}
+.rand_7{background-color: #fff;}
+.rand_8{background-color: #fff;}
+.rand_9{background-color: #fff;}
+.rand_10{background-color: #fff;}
+
+.rate{
+  background: url(/assets/ico-happy.png) no-repeat;
+  background-position:0 -304px;
+  width: 85px;
+  height: 15px;
+  float: left;
+  display: block;
+}
+.rate_0{ background-position:0 -395px;}
+.rate_1{ background-position:0 -375px;}
+.rate_2{ background-position:0 -358px;}
+.rate_3{ background-position:0 -340px;}
+.rate_4{ background-position:0 -322px;}
+.rate_5{ background-position:0 -304px;}
 
 .flash {
   background: #f7f1d3;
@@ -119,8 +134,8 @@
   text-align: right;
 }
 .right_p a{display:inline-block;}
-.switch{color: #cc3333; font-weight: 600; margin: 0 4px; letter-spacing: 0.2em;}
-.sinaweibo,.txweibo{background:url(/assets/ico-happ.png) no-repeat; vertical-align:middle; text-indent:9999em;}
+.switch{color: #F00; font-weight: 600; margin: 0 4px; letter-spacing: 0.2em;}
+.sinaweibo,.txweibo{background:url(/assets/ico-happy.png) no-repeat; vertical-align:middle; text-indent:9999em;}
 .sinaweibo{ background-position:0 -1px; height:18px; width:18px; margin-left:5px; }
 .txweibo{background-position:0 -23px; height:18px; width:18px; margin-left:5px;}
 #logo a{ height:59px; width:160px; display:block; text-indent:-9999em; background:url(/assets/index_happy.png) no-repeat 0 0;}
@@ -169,7 +184,7 @@
    padding: 0 0 4px 0 !important;
    padding: 10px;
  }
-.currt{ background:url(/assets/ico-happ.png) no-repeat 0 -86px; width:63px; color:#FFF; height:26px; line-height:26px; text-align:center;}
+.currt{ background:url(/assets/ico-happy.png) no-repeat 0 -86px; width:63px; color:#FFF; height:26px; line-height:26px; text-align:center;}
 .currt a{ color:#FFF; text-decoration:none;}
 .qutn{ border: 1px solid #A7A7A7; background:#FFF; height:28px; line-height:28px; padding: 0 4px;}
 .qutn a{ text-decoration:none; color:#090;}
@@ -180,7 +195,20 @@
 .cotnet{}
 .pic img{ width:135px; height:115px; float:left;}
 .shop_addr_panel{ float:left; margin-left:20px; width:504px; position:relative;}
+
+#pagination_ajax_title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #F00;
+  text-decoration: none;
+}
 #shop_addresses li{ overflow:hidden; }
+#shop_addresses .pagination a{
+  display: none;
+}
+#shop_addresses .pagination span{
+  display: none;
+}
 .pic{ float:left; width:135px;}
 .shop_title{ margin-bottom:8px;}
 .shop_title a{ 
@@ -189,39 +217,61 @@
   font-weight:bold;}
 .shop_title a:hover{ text-decoration:underline;}
 .shop_item{padding:12px;}
-.wanmh{ background:url(/assets/ico-happ.png) no-repeat 0 -146px;height:18px; padding-left:20px; margin-top:8px;}
+.wanmh{ background:url(/assets/ico-happy.png) no-repeat 0 -146px;height:18px; padding-left:20px; margin-top:8px;}
 .shou_ca{ position:absolute; right:0; top:0; }
-.shou_ca a{background:url(/assets/ico-happ.png) no-repeat 0 -47px; display:block; width:36px; height:35px; text-indent:-999em;}
+.shou_ca a{background:url(/assets/ico-happy.png) no-repeat 0 -47px; display:block; width:36px; height:35px; text-indent:-999em;}
 .list_00{ overflow:hidden; height:160px;}
 .meun0{}
-.title_menu{ border-bottom:1px dotted #999; padding-bottom:4px; height:22px;}
-.ico_me{ background:url(/assets/ico-happ.png) no-repeat 0 -232px; height:18px; padding-left:15px; text-align:left; display:inline-block; float:left;}
+.shop_dish_panel_menu{ border-bottom:1px dotted #999; padding-bottom:4px; height:22px;}
+.shop_dish_panel_menu a{color: #f00; font-weight: bold;}
+.ico_me{ background:url(/assets/ico-happy.png) no-repeat 0 -232px; height:18px; padding-left:15px; text-align:left; display:inline-block; float:left;}
 .shop_dish_panel{ margin-top:20px;}
 #shop_dish_list li{ line-height:22px; border-bottom:1px dotted #B5B7B7;}
+.shop_dish_panel2{display: none;}
 .shop_dish_panel2 ul{margin: 0px; padding: 0px;}
 .shop_dish_panel2 li{line-height:28px; height:28px; border-bottom:1px dotted #B5B7B7; margin:8px 0; overflow:hidden; clear:both;}
 .din1,.din2,.din3{ float:left;}
 .din1{ width:25px; text-align:center; font-weight:bold; background:#7CC130; color:#FFF;}
 .din2{ margin-left:15px;}
-.din3{ background:url(/assets/ico-happ.png) no-repeat 0 -118px; width:27px; height:24px; line-height:24px; margin-left:60px;}
+.din3{ background:url(/assets/ico-happy.png) no-repeat 0 -118px; width:27px; height:24px; line-height:24px; margin-left:60px;}
 .sale{ float:right; padding-right:4px;}
 .curt{ background:#ffcc00;}
 .normal{ background:#E4E4E4;}
 .normal a{color: green; font-size: 110%; display: block;}
-.dish_notice{color: #cc3333; margin: 0 0 0 20px;}
-#main_content h3{
-	font-weight: 600;
-	color: #669933;
-	margin: 6px;
-	padding: 6px;
-}
-.p_fen0{ background:url(/assets/ico-happ.png) no-repeat;}
+.dish_notice{color: #F00; margin: 0 0 0 20px;}
+
+.p_fen0{ background:url(/assets/ico-happy.png) no-repeat;}
 .p_fen0{ background-position:0 -395px; width:84px; height:16px; display:inline-block; vertical-align:middle;}
 .shop{ padding:6px 10px 12px; border-bottom:1px solid #6CB122; }
-.shop h3{ color:#FFF;}
+.shop h3{ color: green; padding: 0px; margin: 0px;}
 .shop p{ margin: 2px 0; padding: 2px 0;}
+.shop_description{ color: #999;}
 .line{ border-top:1px solid #8ED244; padding-top:15px;}
-
+.shop .discount{
+  color: green;
+  border: 1px solid #0c0;
+}
+.shop .hot{
+  color: green;
+  border: 1px solid #0c0;
+}
+.shop .shop_note{
+  color: green;
+}
+.shop_right_status{
+  float: right;
+  border: 1px solid #FC9;
+  padding: 2px 4px;
+  margin:  2px;
+  display: block;
+  background: #fff8f8;
+  text-align: center;
+}
+.take_out_status{
+  color: #f00;
+  font-weight: 600;
+  background: #fff8f8;
+}
 /**********/
 #cart_list li{ border-bottom:1px dotted #fff; overflow:hidden; padding-bottom:4px;}
 #cart_list h3{margin: 10px 0; color: red; font-weight: 600; }
@@ -232,8 +282,8 @@
 .mennn_11{ float:right;}
 .mxn_kj{ margin-left:10px;}
 .carlst{ margin-top:15px;}
-.carlst li{ float:left; margin:4px 2px; background:url(/assets/ico-happ.png) no-repeat 0 -263px; width:79px; height:29px; text-align:center; line-height:29px;}
-.titl-00{background:url(/assets/ico-happ.png) repeat-x 0 -418px; height:36px; line-height:36px; color:#FFF; font-weight:bold; margin-top:15px;}
+.carlst li{ float:left; margin:4px 2px; background:url(/assets/ico-happy.png) no-repeat 0 -263px; width:79px; height:29px; text-align:center; line-height:29px;}
+.titl-00{background:url(/assets/ico-happy.png) repeat-x 0 -418px; height:36px; line-height:36px; color:#FFF; font-weight:bold; margin-top:15px;}
 .titl-00 span{ display:block;}
 .leftmn{ float:left; padding-left:4px;}
 .rightmn{ float:right; padding-right:4px;}
@@ -242,7 +292,7 @@
 .menupic{ border-top:1px solid #EDEDED;}
 .meun0{padding-bottom:10px;}
 .tips{ clear:both; margin-bottom:6px;}
-.has_out_food{color: #cc3333; font-weight: 600;}
+.has_out_food{color: #F00; font-weight: 600;}
 .no_out_food{color: #090;}
 .button_del{
 	background-color: #ffcc00;
@@ -333,6 +383,6 @@
   text-decoration: none;
 }
 .news_title a:hover{
-  color: #cc3333;
+  color: #F00;
   text-decoration: underline;
 }

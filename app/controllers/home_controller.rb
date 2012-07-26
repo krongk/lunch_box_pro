@@ -38,6 +38,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def location
+
+  end
   #短信宝测试
   def search 
 
@@ -76,3 +79,4 @@ class HomeController < ApplicationController
     render :text => status
   end
 end
+

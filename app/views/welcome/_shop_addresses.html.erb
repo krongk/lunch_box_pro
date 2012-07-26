@@ -7,21 +7,25 @@
        <tbody>
        <tr>
         <td width="100px">
-          <p><%= shop.show_photo %>&nbsp;</p>
+          <%= shop.show_photo %>&nbsp;
         </td>
         <td align="left" valign="top" width="300px">
           <h3><%=shop.name %></h3>
           <%= shop.show_rate %>
-          <%=shop.show_biz_time%>
+          <%=shop.show_biz_or_outer_time%>
           <%=shop.show_address%>
         </td>
         <td align="right" valign="top">
           <% if shop.has_out_food %>
+            <table border="0"><tr><td width="120px" align="left">
             <%= shop.show_has_out_food %>
             <%= shop.show_start_price%>
             <%= shop.show_outer_price%>
+            </td><td align="right">
+            <%= shop.show_take_out_status %>
             <%= shop.show_is_hot %>
             <%= shop.show_is_discount %>
+            </td></tr></table>
           <% else %>
             <%= shop.show_has_out_food %>
             <%= shop.show_contact_phone %>
@@ -37,8 +41,8 @@
      <!--菜单-->
      <% if shop_dishes.any? %>
       <div class="meun0">
-        <div class="title_menu"><span class="ico_me">菜单</span></div>
-        <div class="shop_dish_panel2">
+        <div class="shop_dish_panel_menu"><a class="shop_dish_panel_menu_a" id="shop_dish_panel_menu_<%=shop.id%>" href="javascript:void(0);"><span class="ico_me">查看菜单</span></a></div>
+        <div id="shop_dish_panel_<%=shop.id%>" class="shop_dish_panel2">
           <ul>
             <% shop_dishes.each_with_index do |shop_dish, i| %>
               <% next if (shop = shop_dish.shop).nil? || (dish = shop_dish.dish).nil? %>
@@ -67,5 +71,5 @@
 
     </div>
   <% end %>
-  <%= will_paginate @shop_addresses, :next_label => '>>', :prev_label => '<<' %>
+    <%= will_paginate @shop_addresses, :next_label => '>>', :prev_label => '<<', :page_links => false%>
 </div>

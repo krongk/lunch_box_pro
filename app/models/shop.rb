@@ -26,23 +26,14 @@ class Shop < ActiveRecord::Base
 
   def create_address_contact
     #create addxress
-    ShopAddress.create(
-      :shop_id => self.id,
-      :region_id => 23,
-      :city_id => 234
-    )
+    ShopAddress.find_or_create_by_shop_id(self.id)
     #create contact
-    ShopContact.create(
-      :shop_id => self.id
-    )
+    ShopContact.find_or_create_by_shop_id(self.id)
   end
 
-  def show_discount
-    is_discount.blank? ? "" : "<p>有优惠，打#{discount_value}折</p>".html_safe
-  end
-
-  def show_biz_time
-    biz_time.blank? ? "" : "<p>营业时间：#{biz_time}</p>".html_safe
+  def show_biz_or_outer_time
+    !outer_time.blank? ? %{<p class="outer_time">配送时间：#{outer_time}</p>}.html_safe :
+    biz_time.blank? ? "" : %{<p class="biz_time">营业时间：#{biz_time}</p>}.html_safe
   end
 
   def show_avg
@@ -55,36 +46,48 @@ class Shop < ActiveRecord::Base
   end
 
   def show_start_price
-    start_price.blank? ? "" : "<p>起送价：￥#{start_price}</p>".html_safe
+    start_price.blank? ? "" : %{<p class="shop_right">起送价：￥#{start_price}</p>}.html_safe
   end
 
   def show_outer_price
-    outer_price.blank? ? "" : "<p>配送费：￥#{outer_price}</p>".html_safe
+    outer_price.blank? ? "" : %{<p class="shop_right">配送费：￥#{outer_price}</p>}.html_safe
   end
 
   def show_is_hot
-    !is_hot ? "" : %{<span class="hot">热卖</span>}.html_safe
+    !is_hot ? "" : %{<span class="shop_right_status hot">热卖</span>}.html_safe
   end
 
   def show_is_discount
-    !is_discount ? "" : %{<span class="discount">打折</span>}.html_safe
+    !is_discount ? "" : %{<span class="shop_right_status discount">打折</span>}.html_safe
+  end
+  def show_discount
+    is_discount.blank? ? "" : "<p>有优惠，打#{discount_value}折</p>".html_safe
+  end
+
+
+  def show_take_out_status
+    take_out_status.blank? ? "" : %{<span class="shop_right_status take_out_status">#{take_out_status}</span>}.html_safe 
   end
 
   def show_description
+    str = '<div class="shop_description">'
     if self.description.blank?
-      str = ''
-      str = %{分类：#{self.shop_cate}} unless self.shop_cate.blank?
+      str += %{分类：#{self.shop_cate}} unless self.shop_cate.blank?
       if self.shop_dishes.any?
         str += %{, &nbsp;&nbsp;主推：#{self.shop_dishes.map{|sd| sd.dish.present? ? sd.dish.name : ''}.join(', ')}}
       end
-      str.to_s.html_safe
     else
       i = 0
-      self.description.gsub(/(:?"|“)([^“”]+)(:?"|”)/){|m| %{<span class="rand_#{i += 1}">#{m}</span>}}.to_s.html_safe
+      str += self.description.gsub(/(:?"|“)([^“”]+)(:?"|”)/){|m| %{<span class="rand_#{i += 1}">#{m}</span>}}
     end
+    unless shop_note.blank?
+      str += %{<p class="shop_note"><b>店长公告：</b>&nbsp;&nbsp;#{shop_note}</p>}
+    end
+    str += '</div>'
+    str.to_s.html_safe
   end
   def show_rate
-    rate.blank? ? "" : "<p>评级：#{rate}</p>".html_safe
+    rate.blank? ? "" : %{<p><span class="rate rate_#{rate.to_i}">&nbsp;</span><span>&nbsp;&nbsp;评级：#{rate}</span></p>}.html_safe
   end
   def show_score
     score.blank? ? "" : "<p>点评数：#{score}</p>".html_safe
