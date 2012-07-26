@@ -34,8 +34,16 @@ class WelcomeController < ApplicationController
       return
     end
 
-    @shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
+    #@shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
+    #@shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 1').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
+    @shop_addresses = ShopAddress.near(@point, 0.1).paginate(:page => params[:page] || 1, :per_page => 6)
+    @has_out_food_shop_addresses, @no_out_food_shop_addresses = @shop_addresses.partition{|sd| sd.shop.has_out_food == true}
     
+    @has_out_food_shop_addresses = @has_out_food_shop_addresses.sort{|a, b| b.shop.sort_id <=> a.shop.sort_id}
+
+    puts "................................................."
+    puts @has_out_food_shop_addresses.size
+    puts @no_out_food_shop_addresses.size
     #==new shop need to geocode
     # @shop_addresses.each do |sa|
     #   begin

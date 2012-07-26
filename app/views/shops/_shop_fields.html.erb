@@ -24,7 +24,8 @@
   <div class="field">
     <%= f.label :outer_time, '外送时间：' %><%= f.text_field :outer_time, :value => '10:00 - 14:00  18:00 - 21:00' %><br/>
     <%= f.label :shop_note, '店长公告：' %><%= f.text_field :shop_note%><br/>
-    <%= f.label :outer_time, '餐厅状态：' %><%= f.select :take_out_status, TAKE_OUT_STATUS %> 
+    <%= f.label :outer_time, '餐厅状态：' %><%= f.select :take_out_status, TAKE_OUT_STATUS %> <br/>
+    <%= f.label :outer_time, '区域排名：' %><%= f.select :sort_id, (1..10) %> *(数值越大，排名越靠前) 
   </div>
 
   <div class="field">

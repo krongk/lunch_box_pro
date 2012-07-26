@@ -292,7 +292,7 @@
 .menupic{ border-top:1px solid #EDEDED;}
 .meun0{padding-bottom:10px;}
 .tips{ clear:both; margin-bottom:6px;}
-.has_out_food{color: #F00; font-weight: 600;}
+.has_out_food{color: #F00; font-weight: 600; margin: 0px;}
 .no_out_food{color: #090;}
 .button_del{
 	background-color: #ffcc00;
