@@ -18,6 +18,14 @@
           });
       });
   </script>
+
+  <div class="shop">
+    <% if session[:location_point] %>
+      <%= render :partial => 'welcome/map_user_location' %>
+    <% end %>
+  </div>
+  <div class="line"></div>
+
   <div class="shop">
     <h3>Happy菜篮子</h3>
     <ul id="cart_list2">

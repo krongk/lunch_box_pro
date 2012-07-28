@@ -35,15 +35,14 @@ class WelcomeController < ApplicationController
     end
 
     #@shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
-    #@shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 1').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
-    @shop_addresses = ShopAddress.near(@point, 0.1).paginate(:page => params[:page] || 1, :per_page => 6)
-    @has_out_food_shop_addresses, @no_out_food_shop_addresses = @shop_addresses.partition{|sd| sd.shop.has_out_food == true}
+    @has_out_food_shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 1').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 20)
+    @no_out_food_shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 0').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
+    
+    #@shop_addresses = ShopAddress.near(@point, 0.1).paginate(:page => params[:page] || 1, :per_page => 6)
+    #@has_out_food_shop_addresses, @no_out_food_shop_addresses = @shop_addresses.partition{|sd| sd.shop.has_out_food == true}
     
     @has_out_food_shop_addresses = @has_out_food_shop_addresses.sort{|a, b| b.shop.sort_id <=> a.shop.sort_id}
 
-    puts "................................................."
-    puts @has_out_food_shop_addresses.size
-    puts @no_out_food_shop_addresses.size
     #==new shop need to geocode
     # @shop_addresses.each do |sa|
     #   begin
@@ -60,18 +59,16 @@ class WelcomeController < ApplicationController
     # @shop_addresses = ShopAddress.near(@point, 0.5) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 1) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5
-    @shop_count = @shop_addresses.size
-    @dish_count = @shop_count * (rand(10) + 1) #@shop_addresses.map{|sd| sd.dish_count}.sum
-
+    
     #form map data
-    session[:shop_address_ids] ||= @shop_addresses.map(&:id)
+    session[:shop_address_ids] ||= @has_out_food_shop_addresses.map(&:id)
     session[:location_point] ||= @point
     session[:location] ||= @location
     
     respond_to do |format|
       format.html #show.html
       format.js
-      format.json { render :json => @shop_addresses }
+      format.json { render :json => @has_out_food_shop_addresses }
    end
   end
   

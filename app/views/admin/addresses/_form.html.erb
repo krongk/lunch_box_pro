@@ -1,0 +1,50 @@
+<%#encoding: utf-8 %>
+<%= stylesheet_link_tag    "active_admin" %>
+<%= form_for(@address, :class => "formtastic user", :id => "address_new") do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+        <li class="string optional"><%= msg %></li>
+      <% end %>
+      </ul>
+    </li>
+  <% end %>
+<fieldset class="inputs">
+<ol><li class="string optional">
+    <%= f.label :addr %>
+    <%= f.text_field :addr %>
+  </li>
+  <li class="string optional">
+    <label for="address_region">选择区域</label>
+<table width="500px"><tr>
+    <%=render :partial => "/addresses/dropdown_region_city_district", :locals =>{:style => 'no'}%>
+</tr></table>
+  </li>
+  <li class="string optional">
+    <%= f.label :en_addr %>
+    <%= f.text_field :en_addr %>
+  </li>
+  <li class="string optional">
+    <%= f.label :full_addr %>
+    <%= f.text_field :full_addr %>
+  </li>
+  <li class="string optional">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+  </li>
+  <li class="string optional">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </li>
+  
+</ol></<fieldset>
+<fieldset class="buttons">
+  <ol>
+    <li class="commit"><%= f.submit %></li>
+  
+  </ol>
+</fieldset>
+<% end %>

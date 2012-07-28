@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  function initialize() {
+    //--create map 
+    var myLatlng = new google.maps.LatLng(<%=session[:location_point][0]%>, <%=session[:location_point][1]%>);
+    var myOptions = {
+      zoom: 18,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("user_location_map_canvas"), myOptions);
+
+    //add marker
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        title:"您所在的区域"
+    });
+    //To add the marker to the map, call setMap();
+    marker.setMap(map);
+
+  }//end initialize
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<div id="user_location_map_canvas" style="width:99%; height:200px"></div>

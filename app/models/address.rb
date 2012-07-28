@@ -6,8 +6,19 @@ class Address < ActiveRecord::Base
   belongs_to :zone
   has_one :ip_address
 
-  #geocoded_by :full_addr
-  #after_validation :geocode
+  #when add a new address on admin
+  geocoded_by :full_addr
+  after_validation :geocode
+  before_update :translate
+
+  def translate
+    puts "translate...................."
+    en_addr = Pinyin.t addr
+    en_combined_addr = en_addr.gsub(/[^0-9a-z]/i, '')
+    require 'pp'
+    pp self
+
+  end
 
   #通过搜索参数获取地址的point, 通过point就可以得到所有附件餐厅
   def self.get(addr)
@@ -38,3 +49,31 @@ class Address < ActiveRecord::Base
   end
 
 end
+
+=begin
+after_save runs both on create and update, but always after the more specific callbacks after_create and after_update, no matter the order in which the macro calls were executed.
+10.1 Creating an Object
+before_validation
+after_validation
+before_save
+around_save
+before_create
+around_create
+after_create
+after_save
+
+10.2 Updating an Object
+before_validation
+after_validation
+before_save
+around_save
+before_update
+around_update
+after_update
+after_save
+
+10.3 Destroying an Object
+before_destroy
+around_destroy
+after_destroy
+=end

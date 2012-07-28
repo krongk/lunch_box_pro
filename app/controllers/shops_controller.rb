@@ -7,7 +7,7 @@ class ShopsController < InheritedResources::Base
     if params[:shop_name].blank?
       @shops =Shop.paginate(:page => params[:page] || 1, :per_page => 20)
     else
-      @shops = Shop.where("name like '%#{params[:shop_name]}%' ").paginate(:page => params[:page] || 1, :per_page => 20)
+      @shops = Shop.joins(:shop_address).where("shops.name like '%#{params[:shop_name]}%' OR shop_addresses.addr like '%#{params[:shop_name]}%' ").paginate(:page => params[:page] || 1, :per_page => 20)
     end
   end
 

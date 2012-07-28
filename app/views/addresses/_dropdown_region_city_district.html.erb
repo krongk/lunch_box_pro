@@ -1,0 +1,104 @@
+<% address = @address %>
+<% address ||= address.first %>
+<% address ||= address.new %>
+
+<script type="text/javascript">
+$(document).ready(function() {   
+   $('select#regions').change(function(){
+   	  //获得选中的下拉框的值
+	  var region_id = $(this).find('option:selected').val();
+	  //通过jquery.rest插件的read方法获取get请求，返回json对象
+	  $.read(
+	    '/regions/{region_id}/cities.json',
+	    { region_id: region_id },
+	    function (data) {
+			//此处返回的data已经是json对象 
+			//以下为JQuery解析json的方法 
+			var options = '<option value="1">请选择城市</option>';
+			$.each(data,function(idx,item){ 
+			    options = options + '<option value="'+item.id+'">'+item.name+'</option>'
+				// alert("name:"+item.name+",value:"+item.id); 
+			});
+			var select = $('select#cities');
+			$('option', select).remove();
+			select.append(options); 
+	    }
+	  );
+	});
+
+	$('select#cities').change(function(){
+	  //获取选中的下拉框的值
+	  var city_id = $(this).find('option:selected').val();
+	  //通过jquery.rest插件read方法获取get请求，返回json对象
+	  $.read(
+	  	'/cities/{city_id}/districts.json',
+	  	{city_id: city_id},
+	  	function (data){
+	  		//data为get请求成功后，返回的一个json对象
+	  		//以下通过jquery遍历获取json对象数据，并保存为select的option
+	  		var options ='<option value="1">请选择地区</option>';
+	  		$.each(data, function(idx, item){
+	  		    options = options + '<option value="'+item.id+'">'+item.name+'</option>'
+	  		});
+	  		//删除select原来的option，替换为新的值
+	  		var select = $('select#districts');
+	  		$('option', select).remove();
+	  		select.append(options);
+	  	}
+	  );
+	});
+});
+</script>
+
+<style type="text/css">
+<!--
+#search_address {
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: #eee;
+}
+#search_address ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+#search_address li {
+	float: left;
+	margin-right: 4px;
+}
+-->
+</style>
+<% if style == 'table' %> 
+	<tr><td>
+	  <select id="regions" name="address[region_id]">
+	    <option value="1">请选择省份</option>
+	    <%= options_from_collection_for_select(Region.all, :id, :name) %>
+	  </select>
+	 
+	</td></tr>
+	<tr><td>
+	  <select id="cities" name="address[city_id]">
+	    <option value="1">请选择城市</option>
+	  </select>
+	</td></tr>
+<% else %>
+	<li>选择省份:</li>
+	<li>
+	  <select id="regions" name="address[region_id]">
+	    <option value="1">请选择省份</option>
+	    <%= options_from_collection_for_select(Region.all, :id, :name) %>
+	  </select>
+	</li>
+	<li>选择城市:</li>
+	<li>
+	    <select id="cities" name="address[city_id]">
+	      <option value="1">请选择城市</option>
+	    </select>
+	</li>
+	 <li>选择地区:</li>
+	<li>
+	    <select id="districts" name="address[district_id]">
+	      <option value="1">请选择地区</option>
+	    </select>
+	</li>
+<% end %>
