@@ -10,4 +10,5 @@ class ShopAddressesController < InheritedResources::Base
       format.json { render json: @shop_addresses.tokens(params[:q]) }
     end
   end
+
 end

@@ -10,7 +10,7 @@ class Shop < ActiveRecord::Base
   accepts_nested_attributes_for :shop_address, allow_destroy: false
   accepts_nested_attributes_for :shop_contact, allow_destroy: false
   accepts_nested_attributes_for :shop_dishes, allow_destroy: true
-
+  
   #scope
   scope :new_added, where(:is_new_added => true)
   scope :contacted, where(:is_contacted => true)
@@ -19,16 +19,48 @@ class Shop < ActiveRecord::Base
   #one shop must has one contact, one address
   after_save :create_address_contact
 
+  def create_address_contact
+    #create contact
+    ShopContact.find_or_create_by_shop_id(self.id)
+    #create addxress
+    sa = ShopAddress.find_or_create_by_shop_id(self.id)
+    if sa.addr
+      sa.full_addr   = "#{Region.find(sa.region_id).name}#{City.find(sa.city_id).name}#{District.find(sa.district_id).name}#{sa.addr}"
+      point = nil
+      if sa.latitude
+        point = [sa.latitude, sa.longitude]
+      else
+        begin
+          point = Geocoder.coordinates(sa.full_addr)
+        rescue 
+        end
+      end
+      
+      if point.nil?
+        sa.is_geocoded = 'f'
+      else
+        sa.is_geocoded = 'y'
+        a = Address.find_or_create_by_addr(sa.addr)
+        a.region_id   = sa.region_id
+        a.city_id     = sa.city_id
+        a.district_id = sa.district_id
+        a.zone_id     = sa.zone_id
+        a.addr        = sa.addr
+        en            = Pinyin.t(sa.addr)
+        a.en_addr     = en
+        a.en_combined_addr = en.gsub(/\s+/, '').downcase unless en.nil?
+        a.full_addr   = sa.full_addr
+        a.latitude    = sa.latitude
+        a.longitude   = sa.longitude
+        a.save!
+        sa.is_copied = 'y'
+      end
+      sa.save!
+    end
+  end
 
   def self.recent(count)
     Shop.order("updated_at DESC").limit(count)
-  end
-
-  def create_address_contact
-    #create addxress
-    ShopAddress.find_or_create_by_shop_id(self.id)
-    #create contact
-    ShopContact.find_or_create_by_shop_id(self.id)
   end
 
   def show_biz_or_outer_time

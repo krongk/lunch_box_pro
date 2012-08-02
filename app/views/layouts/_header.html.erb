@@ -3,18 +3,15 @@
     <div class="hx_t">
       <div class="hi_p">您好，欢迎光临乐活外卖!</div>
       <div class="right_p">
-
         <%=render :partial => '/devise/menu/login_items' %>
-          
         关注我们： <a target="_blank" class="sinaweibo" href="http://weibo.com/inruby"></a> <a target="_blank" class="txweibo" href="http://t.qq.com/kenrome"></a> 
-        
       </div>
     </div>
   </div>
 
   <div class="menu">
     <div class="header2">
-      <div class="logo"><a href="#" title="乐活外卖"><%= image_tag asset_path("logo.png") %></a></div>
+      <div class="logo"><a href="#" title="乐活.成都，外卖"><%= image_tag asset_path("logo.png"), :title =>'乐活.成都' %></a></div>
       <ul class="tabbed_navigation" id="tabs">
         <li class="currt"><a href="/">首页</a></li>
         <li class="currt"><a href="/g">切换位置</a></li>

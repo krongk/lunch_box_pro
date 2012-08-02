@@ -11,6 +11,13 @@ class ShopAddress < ActiveRecord::Base
   after_validation :geocode , :if => :full_addr_changed?
   #---end geocoder
 
+  #use to create new zone when new shop added.
+  attr_accessor :zone_name
+# attr_accessor :meth # for getter and setters
+# attr_writer :meth # for setters
+# attr_reader :meth # for getters
+  accepts_nested_attributes_for :zone
+
   #---start def attr
   def dish_count
     ShopDish.where(:shop_id => shop_id).count

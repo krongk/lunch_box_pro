@@ -3,9 +3,16 @@
   <div class="panel_contents">
 
   <fieldset>
+    <b>商圈：</b><br/>
+    <select id="districts" name="shop[shop_address_attributes][zone_id]">
+      <option value='0'>选择商圈</option>
+      <%= options_from_collection_for_select(Zone.all, :id, :name, :selected => @shop.shop_address.zone_id) %>
+    </select>或者：
+    <%= f.text_field :zone_name %>
+    <br/> <b>地址:</b><br/>
     <select id="districts" name="shop[shop_address_attributes][district_id]">
       <%= options_from_collection_for_select(District.where(:city_id => 234), :id, :name, :selected => @shop.shop_address.district_id) %>
-    </select>
+    </select>详细：
     <%= f.text_field :addr %><br />
   </fieldset>
 

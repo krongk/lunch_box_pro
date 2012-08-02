@@ -14,7 +14,7 @@ jQuery ->
     $(this).before($(this).attr('data-fields'))
     event.preventDefault()
 
-  #auto-complete 菜单
+  #auto-complete 菜单 home/_shop_dish_fields.html.rb
   $('.dish_name_field').autocomplete
     source: $('.dish_name_field').data('autocomplete-source')
 

@@ -3,7 +3,7 @@
   <div class="panel_contents">
    
   <div class="field">
-    <%= f.label :name, '名称' %><br />
+    <b><%= f.label :name, '名称' %></b><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -18,13 +18,17 @@
   <br/>
 
   <div class="field">
-    <%= f.label :has_out_food, '是否提供外卖:' %><%= f.check_box :has_out_food %>
+    <b><%= f.label :has_out_food, '是否提供外卖:' %></b><%= f.check_box :has_out_food %><br />
+    <%= f.label :start_price, '起送价:' %>
+    <%= f.text_field :start_price %><br />
+    <%= f.label :outer_price, '配送费:' %>
+    <%= f.text_field :outer_price %>
   </div>
 
   <div class="field">
     <%= f.label :outer_time, '外送时间：' %><%= f.text_field :outer_time, :value => '10:00 - 14:00  18:00 - 21:00' %><br/>
     <%= f.label :shop_note, '店长公告：' %><%= f.text_field :shop_note%><br/>
-    <%= f.label :outer_time, '餐厅状态：' %><%= f.select :take_out_status, TAKE_OUT_STATUS %> <br/>
+    <%= f.label :outer_time, '餐厅状态：' %><%= f.select :take_out_status, TAKE_OUT_STATUS %> &nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.label :outer_time, '区域排名：' %><%= f.select :sort_id, (1..10) %> *(数值越大，排名越靠前) 
   </div>
 
@@ -46,7 +50,7 @@
    <br/>
 
   <div class="field">
-    <%= f.label :is_contacted, '是否营销联系过:' %>
+    <b><%= f.label :is_contacted, '是否营销联系过:' %></b>
     <%= f.check_box :is_contacted %>&nbsp;&nbsp;
 
     <%= f.label :is_dealed, '是否签约:' %>

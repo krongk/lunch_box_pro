@@ -116,6 +116,9 @@ class WelcomeController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @shop_dish = ShopDish.find(params[:shop_dish_id])
     session[:cart][params[:shop_id]].delete(params[:shop_dish_id])
+    if session[:cart][params[:shop_id]].empty?
+      session[:cart].delete(params[:shop_id])
+    end
   end
 
   def clear_cart

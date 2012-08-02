@@ -18,19 +18,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :phone, "您的手机号, 我们会通过该电话联系您" %><br />
+    <b>您的手机号</b>(餐厅店长会通过该电话联系到您)<br />
     <%= f.text_field :phone, :class=> 'required mobile' %>
   </div>
   <div class="field">
-    <%= f.label :addr, "详细地址, 请尽可能详细填写，方便外卖准确送达" %><br />
+    <b>详细地址</b>(请尽可能详细填写，方便外卖准确送达)<br />
     <%= f.text_field :addr, :class => 'required' %>
   </div>
   <div class="field">
-    <%= f.label :addr, "希望送达时间, 给餐厅合理的备餐时间，一般在半个小时以上" %><br />
-    <%= f.datetime_select :require_deliver_time, :default => 30.minutes.from_now %> 
+   <b>希望送达时间</b>(给餐厅合理的备餐时间，一般在半个小时以上)<br />
+    <%#= f.text_field :require_deliver_time %>
+    <%= f.time_select :require_deliver_time, :default => 30.minutes.from_now, :include_seconds => false, :minute_step => 10 %> 
+    <%#= time_select 'order', 'require_deliver_time', {:minute_step => 5}, :include_seconds => false%> 
   </div>
   <div class="field">
-    <%= f.label :user_note, "其他说明" %><br />
+    <b>其他说明</b><br />
     <%= f.text_field :user_note %>
     <p>如果菜品有大份/小份选择，请在这里注明。添加上您的姓氏和称谓会更便于餐厅联系</p>
   </div>

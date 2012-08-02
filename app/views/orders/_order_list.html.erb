@@ -1,4 +1,4 @@
-<table>
+<table border="1">
   <tr>
     <th>编号                 </th>
     <th>餐厅             </th>
@@ -20,7 +20,7 @@
     <td><%= order.phone                %></td>
     <td><%= order.addr                 %></td>
     <td><%= order.require_deliver_time %></td>
-    <td><%= order.user_note            %></td>
+    <td><%= order.user_note.to_s.truncate(60)           %></td>
     <td><%= order.status               %></td>
     <td><%= order.created_at.to_s(:db)          %></td>
     <td><%= link_to '详细', "/home/edit_order?id=#{order.id}" %></td>

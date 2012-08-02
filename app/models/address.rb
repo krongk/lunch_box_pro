@@ -12,12 +12,8 @@ class Address < ActiveRecord::Base
   before_update :translate
 
   def translate
-    puts "translate...................."
     en_addr = Pinyin.t addr
     en_combined_addr = en_addr.gsub(/[^0-9a-z]/i, '')
-    require 'pp'
-    pp self
-
   end
 
   #通过搜索参数获取地址的point, 通过point就可以得到所有附件餐厅
