@@ -1,38 +1,46 @@
 #encoding: utf-8
+require 'open-uri'
 class AddressesController < ApplicationController
   layout 'application2'
   
   def new
     @address = Address.new
+    session[:location_point] = nil
   end
 
   def create
-    #1. check params
-    # ^[\u4E00-\u9FFF]+$     
-    # 匹配简体和繁体     
-    # ^[\u4E00-\u9FA5]+$     
-    # 匹配简体  
-    q = params[:address][:addr]
-    if q.blank? || q !~ /[\u4E00-\u9FFF]{3,}/
-      flash[:error] = "请输入正确的地址"
-      redirect_to new_address_path
-      return
-    end
-    #2. geocoder 地址
-    a = Address.get(q)
-    unless a
-      flash[:error] = "您输入的地址无效，找不到与您地址匹配的任何信息"
-      redirect_to new_address_path
-      return
+    #if has point value redirect to index directly
+    #else find point by addr on table Address/or Geocoder
+    cookies.delete :user_input_addr
+    if params[:address][:latitude] =~ /\d+/ && params[:address][:longitude] =~ /\d+/
+      cookies[:user_input_addr] = { :value => "#{params[:address][:addr]}|#{params[:address][:latitude]},#{params[:address][:longitude]}", :expires => 1.month.from_now } 
+    else
+      #1. check params
+      # ^[\u4E00-\u9FFF]+$     
+      # 匹配简体和繁体     
+      # ^[\u4E00-\u9FA5]+$     
+      # 匹配简体  
+      q = params[:address][:addr]
+      if q.blank? || q !~ /[\u4E00-\u9FFF]{3,}/
+        flash[:error] = "请输入正确的地址"
+        redirect_to new_address_path
+        return
+      end
+      #2. geocoder 地址
+      a = Address.get(q)
+      unless a
+        flash[:error] = "您输入的地址无效，找不到与您地址匹配的任何信息"
+        redirect_to new_address_path
+        return
+      end
+
+      #3.set cookie
+      cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
     end
 
-    #3.set cookie
-    cookies.delete :user_input_addr
-    cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
     #reset addr session
     session[:shop_address_ids] = nil
     session[:location_point] = nil
-    session[:location] = nil
     #reset cart session
     session[:cart] = nil
     #4.store IP-address
@@ -55,4 +63,22 @@ class AddressesController < ApplicationController
     @addresses = Address.where("en_combined_addr like ? OR en_addr like ? OR addr like ?",  "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%").limit(10)
     render json: @addresses.map(&:addr)
   end
+  #render json used for index address map
+  def get_address_by_point
+    cookies.delete :user_input_addr
+    cookies[:user_input_addr] = { :value => "addr|#{params[:lat]},#{params[:lng]}", :expires => 1.month.from_now }
+    redirect_to '/'
+  end
+
+  def get_address_by_name
+    q = params[:addr]
+    #2. geocoder 地址
+    @addr = Address.get(q)
+    respond_to do |format|
+      format.html #show.html
+      format.js
+      format.json { render :json => [@addr.latitude, @addr.longitude] }
+    end
+  end
+
 end

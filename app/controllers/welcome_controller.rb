@@ -15,18 +15,15 @@ class WelcomeController < ApplicationController
     #cookies[:addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
     if cookies[:user_input_addr]
       addr_arr = cookies[:user_input_addr].split('|')
-      @location = addr_arr.shift
       @point = addr_arr.shift.split(',')
     elsif request.remote_ip != '127.0.0.1' && ipa = IpAddress.find_by_ip(request.remote_ip)
       a = ipa.address
       #3.set cookie
       cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
-      @location = a.addr
       @point = [a.latitude, a.longitude]
       #reset addr session
       session[:shop_address_ids] = nil
       session[:location_point] = nil
-      session[:location] = nil
       #reset cart session
       session[:cart] = nil
     else
@@ -63,7 +60,6 @@ class WelcomeController < ApplicationController
     #form map data
     session[:shop_address_ids] ||= @has_out_food_shop_addresses.map(&:id)
     session[:location_point] ||= @point
-    session[:location] ||= @location
     
     respond_to do |format|
       format.html #show.html
@@ -74,7 +70,7 @@ class WelcomeController < ApplicationController
   
   #use for address auto-complete
   def map_data
-    if session[:location].present? && session[:location_point].present? && session[:shop_address_ids].present?
+    if session[:location_point].present? && session[:shop_address_ids].present?
       @shop_addresses = ShopAddress.find(session[:shop_address_ids])
       render json: @shop_addresses.map{|sa| [sa.shop.id, sa.shop.name, sa.latitude, sa.longitude, sa.shop.show_has_out_food, [sa.shop.shop_contact.tel_phone,sa.shop.shop_contact.mobile_phone].compact.join(',')].join('|')}
     else
@@ -94,7 +90,7 @@ class WelcomeController < ApplicationController
   # }
   #{"1207"=>{"3088"=>{:name=>"楹昏荆楦″潡", :price=>nil, :count=>1}}}
   def add_cart
-    if session[:location] && params[:shop_dish_id]
+    if session[:location_point].present?  && params[:shop_dish_id]
       @shop = Shop.find(params[:shop_id])
       @shop_dish = ShopDish.find(params[:shop_dish_id])
       session[:cart] ||= {}

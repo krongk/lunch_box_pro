@@ -53,14 +53,15 @@ RailsOnWeb::Application.routes.draw do
   match "delete_cart" => "welcome#delete_cart", :as => :delete_cart
   match "clear_cart" => "welcome#clear_cart", :as => :clear_cart
   match "find_order" => "orders#find", :as => :find_order
-
+  
   get "home/index"
   get "home/edit_order"
   get "home/update_order"
   get "home/search"
   get "home/location"
   match "update_order" => "home#update_order", :as => :update_order
-  
+  match "get_address_by_point" => "addresses#get_address_by_point"
+  match "get_address_by_name" => "addresses#get_address_by_name"
   match "g" => "addresses#new"
   match "upload" => "resource_items#upload"
 

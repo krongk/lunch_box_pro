@@ -11,8 +11,8 @@
   <meta name="description" content="<%= yield(:meta_description)%>" />
     
   <%= stylesheet_link_tag  "content", "index_style" %>
-  <%= javascript_include_tag "jquery", "jquery-ui", "jquery.sliders", "addresses", "index_script" %>
-
+  <%= javascript_include_tag "jquery", "jquery-ui", "jquery.sliders", "jquery.simplemodal", "addresses", "index_script" %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?libraries=places&sensor=false&language=zh&region=CN"></script>
   <%= csrf_meta_tags %>
   <!--[if lt IE 7]>
     <script src="/assets/iepng.js" type="text/javascript"></script>

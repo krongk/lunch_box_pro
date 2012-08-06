@@ -16,7 +16,90 @@
 <div id="addr_form">
   <%  @address ||= Address.new %>
   <%= form_for(@address, :html =>{:class => ""}) do |f| %>
-      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => session[:location] || '   输入您所在的地址', :class => 'input_search_txt' %>
+      <%#hidden latitude/longitude input used to pop modal map, and user choose correct point%>
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => '   输入您所在的地址', :class => 'input_search_txt' %>
       <%= f.submit '  找外卖  ', :id => 'submit', :class => 'subit'%>
   <% end %>
 </div>
+
+ <!-- modal content -->
+  <div id='confirm'>
+    <div class='header'><span>位置确认</span></div>
+    <div class='message'>
+    <div id ='map_wrapper'></div>
+    </div>
+    <div class='buttons'>
+      <div class='no simplemodal-close'>取消</div><div class='yes'>确定</div>
+    </div>
+  </div>
+  <!-- preload the images -->
+  <div style='display:none'>
+    <img src='/assets/confirm/header.gif' alt='' />
+    <img src='/assets/confirm/button.gif' alt='' />
+  </div>
+
+<script type="text/javascript">
+  var map;  
+  var marker;  
+  var lat = <%= session[:location_point].nil? ? 30.6580500 : session[:location_point][0]%>
+  var lng = <%= session[:location_point].nil? ? 104.0659670 : session[:location_point][-1]%>
+  // var infowindow;  
+  // var geocoder;  
+  // var markersArray = [];  
+  //load map when load html
+  
+  //google.maps.event.addDomListener(window, 'load', initialize_map);
+  
+  //============function list===========================================================================
+  //=============================================initialize map
+  function initialize_map() {
+    //get form addr's point
+    var addr_name = $('#address_addr').val()
+    $.getJSON("/get_address_by_name", {addr: addr_name}, function(data) {
+       $.each(data, function(i, item){
+         if(i==0){ lat = item;};
+         if(i==1){ lng = item;};
+       });
+    });
+    //--create map 
+    var myLatlng = new google.maps.LatLng(lat, lng);
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_wrapper"), myOptions);
+
+    //add marker
+    marker = new google.maps.Marker({
+        position: myLatlng,
+        title: "我在这里"
+    });
+    //To add the marker to the map, call setMap();
+    marker.setMap(map);
+
+    //place marker
+    google.maps.event.addListener(map, 'click', function(event) {  
+      placeMarker(event.latLng);  
+    });  
+    
+  }//end initialize
+
+  //=================================================placeMarker
+  function placeMarker(location) {
+    marker.setMap(null);
+    var clickedLocation = new google.maps.LatLng(location);  
+    marker = new google.maps.Marker({  
+        position: location,
+        map: map  
+    });  
+    map.setCenter(location);  
+
+    //assign point value
+    $('#address_latitude').val(location.lat());
+    $('#address_longitude').val(location.lng());
+  }//end placeMarker
+
+</script>

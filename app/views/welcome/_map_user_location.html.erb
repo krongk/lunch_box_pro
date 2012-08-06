@@ -9,7 +9,7 @@
     }
     var map = new google.maps.Map(document.getElementById("user_location_map_canvas"), myOptions);
 
-    //add marker
+    //add user marker
     var marker = new google.maps.Marker({
         position: myLatlng,
         title:"您所在的区域"
@@ -17,6 +17,14 @@
     //To add the marker to the map, call setMap();
     marker.setMap(map);
 
+    //add shops markers
+    <% @has_out_food_shop_addresses.each_with_index do |sd, index| %>
+      var marker_<%=index%> = new google.maps.Marker({
+        position: new google.maps.LatLng(<%= sd.latitude%>, <%= sd.longitude %>),
+        title: '<%= sd.shop.name %>'
+      })
+      marker_<%=index%>.setMap(map);
+    <% end %>
   }//end initialize
 
   google.maps.event.addDomListener(window, 'load', initialize);
