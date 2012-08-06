@@ -3,7 +3,7 @@
     //--create map 
     var myLatlng = new google.maps.LatLng(<%=session[:location_point][0]%>, <%=session[:location_point][1]%>);
     var myOptions = {
-      zoom: 18,
+      zoom: 17,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
@@ -18,7 +18,7 @@
     marker.setMap(map);
 
     //add shops markers
-    <% @has_out_food_shop_addresses.each_with_index do |sd, index| %>
+    <% (@has_out_food_shop_addresses + @no_out_food_shop_addresses).each_with_index do |sd, index| %>
       var marker_<%=index%> = new google.maps.Marker({
         position: new google.maps.LatLng(<%= sd.latitude%>, <%= sd.longitude %>),
         title: '<%= sd.shop.name %>'

@@ -41,15 +41,10 @@
   </div>
 
 <script type="text/javascript">
-  var map;  
+  var map;
   var marker;  
   var lat = <%= session[:location_point].nil? ? 30.6580500 : session[:location_point][0]%>
   var lng = <%= session[:location_point].nil? ? 104.0659670 : session[:location_point][-1]%>
-  // var infowindow;  
-  // var geocoder;  
-  // var markersArray = [];  
-  //load map when load html
-  
   //google.maps.event.addDomListener(window, 'load', initialize_map);
   
   //============function list===========================================================================
@@ -57,12 +52,14 @@
   function initialize_map() {
     //get form addr's point
     var addr_name = $('#address_addr').val()
-    $.getJSON("/get_address_by_name", {addr: addr_name}, function(data) {
-       $.each(data, function(i, item){
-         if(i==0){ lat = item;};
-         if(i==1){ lng = item;};
-       });
-    });
+    if(addr_name != ''){
+      $.getJSON("/get_address_by_name", {addr: addr_name}, function(data) {
+         $.each(data, function(i, item){
+           if(i==0){ lat = item;};
+           if(i==1){ lng = item;};
+         });
+      });
+    }
     //--create map 
     var myLatlng = new google.maps.LatLng(lat, lng);
     var myOptions = {
@@ -85,6 +82,9 @@
       placeMarker(event.latLng);  
     });  
     
+    //assign point value
+    $('#address_latitude').val(lat);
+    $('#address_longitude').val(lng);
   }//end initialize
 
   //=================================================placeMarker

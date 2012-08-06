@@ -14,12 +14,11 @@ class WelcomeController < ApplicationController
     #1. check if has cookies
     #cookies[:addr] = "#{a.addr}|#{a.latitude},#{a.longitude}"
     if cookies[:user_input_addr]
-      addr_arr = cookies[:user_input_addr].split('|')
-      @point = addr_arr.shift.split(',')
+      @point = cookies[:user_input_addr].split(',')
     elsif request.remote_ip != '127.0.0.1' && ipa = IpAddress.find_by_ip(request.remote_ip)
       a = ipa.address
       #3.set cookie
-      cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
+      cookies[:user_input_addr] = { :value => "#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
       @point = [a.latitude, a.longitude]
       #reset addr session
       session[:shop_address_ids] = nil
@@ -30,6 +29,9 @@ class WelcomeController < ApplicationController
       redirect_to new_address_path
       return
     end
+
+    puts ".........................................."
+    puts @point
 
     #@shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
     @has_out_food_shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 1').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 20)

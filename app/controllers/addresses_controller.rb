@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
     #else find point by addr on table Address/or Geocoder
     cookies.delete :user_input_addr
     if params[:address][:latitude] =~ /\d+/ && params[:address][:longitude] =~ /\d+/
-      cookies[:user_input_addr] = { :value => "#{params[:address][:addr]}|#{params[:address][:latitude]},#{params[:address][:longitude]}", :expires => 1.month.from_now } 
+      cookies[:user_input_addr] = { :value => "#{params[:address][:latitude]},#{params[:address][:longitude]}", :expires => 1.month.from_now } 
     else
       #1. check params
       # ^[\u4E00-\u9FFF]+$     
@@ -35,7 +35,7 @@ class AddressesController < ApplicationController
       end
 
       #3.set cookie
-      cookies[:user_input_addr] = { :value => "#{a.addr}|#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
+      cookies[:user_input_addr] = { :value => "#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
     end
 
     #reset addr session
@@ -65,9 +65,13 @@ class AddressesController < ApplicationController
   end
   #render json used for index address map
   def get_address_by_point
-    cookies.delete :user_input_addr
-    cookies[:user_input_addr] = { :value => "addr|#{params[:lat]},#{params[:lng]}", :expires => 1.month.from_now }
-    redirect_to '/'
+    if params[:lat] =~ /\d+/ && params[:lng] =~ /\d+/
+      cookies.delete :user_input_addr
+      cookies[:user_input_addr] = { :value => "#{params[:lat]},#{params[:lng]}", :expires => 1.month.from_now }
+      redirect_to '/'
+    else
+      redirect_to '/g'
+    end
   end
 
   def get_address_by_name
