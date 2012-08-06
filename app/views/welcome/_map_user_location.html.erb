@@ -12,7 +12,9 @@
     //add user marker
     var marker = new google.maps.Marker({
         position: myLatlng,
-        title:"您所在的区域"
+        title:"您所在的区域",
+        icon: 'http://google-maps-icons.googlecode.com/files/walking-tour.png',
+        draggable: true
     });
     //To add the marker to the map, call setMap();
     marker.setMap(map);

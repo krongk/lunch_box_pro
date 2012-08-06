@@ -45,11 +45,10 @@
   var marker;  
   var lat = <%= session[:location_point].nil? ? 30.6580500 : session[:location_point][0]%>
   var lng = <%= session[:location_point].nil? ? 104.0659670 : session[:location_point][-1]%>
-  //google.maps.event.addDomListener(window, 'load', initialize_map);
   
-  //============function list===========================================================================
-  //=============================================initialize map
-  function initialize_map() {
+  //
+  //google.maps.event.addDomListener(window, 'load', initialize_map);
+  function initialize_point(){
     //get form addr's point
     var addr_name = $('#address_addr').val()
     if(addr_name != ''){
@@ -59,7 +58,12 @@
            if(i==1){ lng = item;};
          });
       });
-    }
+    };
+    setTimeout('initialize_map()', 2000);
+  }
+  //============function list===========================================================================
+  //=============================================initialize map
+  function initialize_map() {
     //--create map 
     var myLatlng = new google.maps.LatLng(lat, lng);
     var myOptions = {
@@ -72,7 +76,9 @@
     //add marker
     marker = new google.maps.Marker({
         position: myLatlng,
-        title: "我在这里"
+        title: "我在这里",
+        icon: 'http://google-maps-icons.googlecode.com/files/walking-tour.png',
+        draggable: true
     });
     //To add the marker to the map, call setMap();
     marker.setMap(map);
@@ -80,8 +86,13 @@
     //place marker
     google.maps.event.addListener(map, 'click', function(event) {  
       placeMarker(event.latLng);  
+    }); 
+    google.maps.event.addListener(map, 'dragend', function(event) {  
+      placeMarker(event.latLng);  
     });  
-    
+    //
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom(map.getZoom());
     //assign point value
     $('#address_latitude').val(lat);
     $('#address_longitude').val(lng);
@@ -93,7 +104,9 @@
     var clickedLocation = new google.maps.LatLng(location);  
     marker = new google.maps.Marker({  
         position: location,
-        map: map  
+        map: map,
+        icon: 'http://google-maps-icons.googlecode.com/files/walking-tour.png',
+        draggable: true
     });  
     map.setCenter(location);  
 
