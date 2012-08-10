@@ -78,7 +78,7 @@ body {
   margin:0 auto; 
 }
 /* HEADER */
-#header { height:600px; }
+#header { height:600px;}
 .headerimg { background-position: center top; background-repeat: no-repeat; width:100%; height:600px; position:absolute; }
 
 /* NAVIGATION */
@@ -86,8 +86,7 @@ body {
   height:110px;
   padding-top:11px;
   position:relative;
-  background-color: #666;
-
+  background: #FFECD9;
 }
 #navigation { 
   height:100px; 
