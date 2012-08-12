@@ -1,6 +1,6 @@
-<% title "乐活外卖.成都" %>
+<% title "乐活.成都， 外卖信息库" %>
 <% meta_keywords "成都外卖, 成都快餐, 网上订餐, 电话订餐, 餐厅,美食, 24小时外卖" %>
-<% meta_description "网上订餐洋盘吧~ 想叫外卖了？就上乐活外卖。1分钟订餐，半小时等待，3000家餐厅，上万道美食，Happy!" %>
+<% meta_description "网上订餐洋盘吧~ 想叫外卖了？就上乐活外卖。1分钟订餐，半小时等待，3000家餐厅，上万道美食，Happy.cd!" %>
 
 <script language = "javascript">
    jQuery(function() {
@@ -19,7 +19,7 @@
       <%#hidden latitude/longitude input used to pop modal map, and user choose correct point%>
       <%= f.hidden_field :latitude %>
       <%= f.hidden_field :longitude %>
-      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => '   输入您所在的地址', :class => 'input_search_txt' %>
+      <%= f.text_field :addr, data: {autocomplete_source: addresses_path}, :value => '   输入您所在的区域，如天府广场', :class => 'input_search_txt' %>
       <%= f.submit '  找外卖  ', :id => 'submit', :class => 'subit'%>
   <% end %>
 </div>

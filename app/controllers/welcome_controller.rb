@@ -20,18 +20,16 @@ class WelcomeController < ApplicationController
       #3.set cookie
       cookies[:user_input_addr] = { :value => "#{a.latitude},#{a.longitude}", :expires => 1.month.from_now } 
       @point = [a.latitude, a.longitude]
-      #reset addr session
-      session[:shop_address_ids] = nil
-      session[:location_point] = nil
-      #reset cart session
-      session[:cart] = nil
     else
       redirect_to new_address_path
       return
     end
 
-    puts ".........................................."
-    puts @point
+    #reset addr session
+    session[:shop_address_ids] = nil
+    session[:location_point] = nil
+    #reset cart session
+    session[:cart] = nil
 
     #@shop_addresses = ShopAddress.near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 6)
     @has_out_food_shop_addresses = ShopAddress.joins(:shop).where('shops.has_out_food = 1').near(@point, 0.2).paginate(:page => params[:page] || 1, :per_page => 20)

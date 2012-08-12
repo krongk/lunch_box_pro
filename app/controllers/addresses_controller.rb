@@ -77,7 +77,7 @@ class AddressesController < ApplicationController
   def get_address_by_name
     q = params[:addr]
     #2. geocoder 地址
-    @addr = Address.get(q) unless q == '' || q == '   输入您所在的地址'
+    @addr = Address.get(q) unless q == '' || q == '   输入您所在的区域，如天府广场'
     respond_to do |format|
       format.html #show.html
       format.js

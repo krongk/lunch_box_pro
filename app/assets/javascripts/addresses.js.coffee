@@ -4,16 +4,20 @@ jQuery ->
   $('#slideshow1').sliders({ delay: 4500, speed: 500,ease: 'easeInBack' })
 
   $('#address_addr').bind 'focus', (event) ->
-    if $('#address_addr').val() == '   输入您所在的地址'
+    if $('#address_addr').val() == '   输入您所在的区域，如天府广场'
       $('#address_addr').val('')
   
+  $('#content_a').bind 'click', (event) ->
+    $('#index2_content').toggle()
+    $("html, body").animate({ scrollTop: $("#footer").offset().top }, 1000);
+
   #
   #see: http://stackoverflow.com/questions/2823227/google-maps-modal-dialog-jquery
   $('#submit').bind 'click', (event) ->
     event.preventDefault()
     initialize_point()
     confirm_address '<br/>红色鼠标代表您当前所在的位置，用鼠标点击修改', () ->
-      window.location.href = 'http://localhost:3000/get_address_by_point?' + 'lat=' + $('#address_latitude').val() + '&lng=' + $('#address_longitude').val()
+      window.location.href = 'http://happy.cd/get_address_by_point?' + 'lat=' + $('#address_latitude').val() + '&lng=' + $('#address_longitude').val()
     false
   confirm_address = (message, callback) ->
     $('#confirm').modal
