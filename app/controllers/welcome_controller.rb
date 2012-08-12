@@ -56,7 +56,11 @@ class WelcomeController < ApplicationController
     # @shop_addresses = ShopAddress.near(@point, 0.5) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 1) if @shop_addresses.size < 5
     # @shop_addresses = ShopAddress.near(@point, 2) if @shop_addresses.size < 5
-    
+    if @has_out_food_shop_addresses.empty? && @no_out_food_shop_addresses.empty?
+      flash[:error] = "您输入的地址无效，找不到与您地址匹配的任何信息"
+      redirect_to new_address_path
+      return
+    end
     #form map data
     session[:shop_address_ids] ||= @has_out_food_shop_addresses.map(&:id)
     session[:location_point] ||= @point
