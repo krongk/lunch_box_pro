@@ -23,7 +23,7 @@
     <%= f.text_field :name, :class => 'required' %>
   </div>
   <div class="field">
-    <%= f.label :phone, "电话：" %><br />
+    <%= f.label :phone, "电话（手机）：" %><br />
     <%= f.text_field :phone, :class => 'required number mobile'%>
   </div>
   <div class="field">
@@ -34,20 +34,30 @@
     <%= f.label :qq %><br />
     <%= f.text_field :qq, :class => "qq" %>
   </div>
-<!--   <div class="field">
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </div>
+
+  <% if params[:t] == 'join' %>
+   <div class="field">
+      <%= f.label :company, '餐厅名称：' %><br />
+      <%= f.text_field :company %>
+    </div>
+    <div class="field">
+      <%= f.label :address, "餐厅地址：" %><br />
+      <%= f.text_field :address %>
+    </div>
+    <%= f.hidden_field :cate, :value => '餐厅加盟' %>
+    <div class="field">
+      <%= f.label :note, "经营范围描述：" %><br />
+      <%= f.text_area :note%>
+    </div>
+  <% end %>
+
+ <!--   
   <div class="field">
-    <%= f.label :address, "地址：" %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :title, "标题：" %><br />
+    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div> -->
   <div class="field">
-    <%= f.label :message, "内容：" %><br />
+    <%= f.label :message, "备注：" %><br />
     <%= f.text_area :message%>
   </div>
 <!--   <div class="field">

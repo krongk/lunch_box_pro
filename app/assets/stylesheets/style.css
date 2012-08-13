@@ -386,3 +386,8 @@
   color: #F00;
   text-decoration: underline;
 }
+.news_summary{
+  font-family: "微软雅黑";
+  font-size: 14px;
+  line-height: 25px;
+}

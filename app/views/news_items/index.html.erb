@@ -9,8 +9,7 @@
     <tr><td colspan="2"><h2 class="news_title"><%=link_to item.title, news_item_path(item)%></h2></td></tr>
     <tr>
       <td>&nbsp;<%= image_tag(item.image_path.blank? ? asset_path("food/#{rand(20)}.jpg") : item.image_path, :width => '200px') %></td>
-      <td><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(300).html_safe %>
-          <br/><strong><%=link_to '>>阅读详情', news_item_path(item), :target => "_blank"%></strong> &nbsp;&nbsp;<%= item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %>
+      <td><div class="news_summary">&nbsp;&nbsp;&nbsp;&nbsp;<%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(180).html_safe %></div><%=link_to "展开>>>", news_item_path(item)%>
       </td>
     </tr>
   </tbody>
