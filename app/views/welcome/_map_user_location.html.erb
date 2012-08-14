@@ -20,7 +20,11 @@
     marker.setMap(map);
 
     //add shops markers
-    <% (@has_out_food_shop_addresses + @no_out_food_shop_addresses).each_with_index do |sd, index| %>
+    <% shop_addresses = []
+       shop_addresses += @has_out_food_shop_addresses unless @has_out_food_shop_addresses.nil? 
+       shop_addresses += @no_out_food_shop_addresses unless @no_out_food_shop_addresses.nil? 
+    %>
+    <% shop_addresses.each_with_index do |sd, index| %>
       var marker_<%=index%> = new google.maps.Marker({
         position: new google.maps.LatLng(<%= sd.latitude%>, <%= sd.longitude %>),
         title: '<%= sd.shop.name %>'

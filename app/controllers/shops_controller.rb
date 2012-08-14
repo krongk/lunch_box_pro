@@ -23,11 +23,13 @@ class ShopsController < InheritedResources::Base
     @shop = Shop.find(params[:id])
 
     #"0"=>{"dish_id"=>"571", "dish_name"=>"回锅肉", "price"=>"15", "is_discount"=>"0", "discount_value"=>"", "is_hot"=>"0", "_destroy"=>"false", "id"=>"23995"},
-    params[:shop][:shop_dishes_attributes].each_pair do |k, dish_value|
-      unless d = Dish.find_by_name(dish_value[:dish_name])
-        d = Dish.create(:name => dish_value[:dish_name], :en_name => Pinyin.t(dish_value[:dish_name]))
+    if params[:shop][:shop_dishes_attributes]
+      params[:shop][:shop_dishes_attributes].each_pair do |k, dish_value|
+        unless d = Dish.find_by_name(dish_value[:dish_name])
+          d = Dish.create(:name => dish_value[:dish_name], :en_name => Pinyin.t(dish_value[:dish_name]))
+        end
+        params[:shop][:shop_dishes_attributes][k][:dish_id] = d.id
       end
-      params[:shop][:shop_dishes_attributes][k][:dish_id] = d.id
     end
 
     respond_to do |format|
