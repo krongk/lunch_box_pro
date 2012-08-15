@@ -1,0 +1,63 @@
+<h1>Listing shop_versions</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Contacter name</th>
+    <th>Tel phone</th>
+    <th>Mobile phone</th>
+    <th>Email</th>
+    <th>Qq</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Shop note</th>
+    <th>Biz time</th>
+    <th>Photo url</th>
+    <th>Has out food</th>
+    <th>Has out people</th>
+    <th>Start price</th>
+    <th>Outer time</th>
+    <th>District</th>
+    <th>Addr</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Is checked</th>
+    <th>Is merged</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_versions.each do |shop_version| %>
+  <tr>
+    <td><%= shop_version.shop %></td>
+    <td><%= shop_version.contacter_name %></td>
+    <td><%= shop_version.tel_phone %></td>
+    <td><%= shop_version.mobile_phone %></td>
+    <td><%= shop_version.email %></td>
+    <td><%= shop_version.qq %></td>
+    <td><%= shop_version.name %></td>
+    <td><%= shop_version.description %></td>
+    <td><%= shop_version.shop_note %></td>
+    <td><%= shop_version.biz_time %></td>
+    <td><%= shop_version.photo_url %></td>
+    <td><%= shop_version.has_out_food %></td>
+    <td><%= shop_version.has_out_people %></td>
+    <td><%= shop_version.start_price %></td>
+    <td><%= shop_version.outer_time %></td>
+    <td><%= shop_version.district %></td>
+    <td><%= shop_version.addr %></td>
+    <td><%= shop_version.latitude %></td>
+    <td><%= shop_version.longitude %></td>
+    <td><%= shop_version.is_checked %></td>
+    <td><%= shop_version.is_merged %></td>
+    <td><%= link_to 'Show', shop_version %></td>
+    <td><%= link_to 'Edit', edit_shop_version_path(shop_version) %></td>
+    <td><%= link_to 'Destroy', shop_version, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop version', new_shop_version_path %>

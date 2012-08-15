@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @shop_dish_version.shop %>
+</p>
+
+<p>
+  <b>Dish:</b>
+  <%= @shop_dish_version.dish %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @shop_dish_version.price %>
+</p>
+
+<p>
+  <b>Is hot:</b>
+  <%= @shop_dish_version.is_hot %>
+</p>
+
+<p>
+  <b>Is discount:</b>
+  <%= @shop_dish_version.is_discount %>
+</p>
+
+<p>
+  <b>Discount value:</b>
+  <%= @shop_dish_version.discount_value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @shop_dish_version.description %>
+</p>
+
+<p>
+  <b>Is merged:</b>
+  <%= @shop_dish_version.is_merged %>
+</p>
+
+
+<%= link_to 'Edit', edit_shop_dish_version_path(@shop_dish_version) %> |
+<%= link_to 'Back', shop_dish_versions_path %>

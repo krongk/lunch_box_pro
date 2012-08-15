@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shop: 
+  contacter_name: MyString
+  tel_phone: MyString
+  mobile_phone: MyString
+  email: MyString
+  qq: MyString
+  name: MyString
+  description: MyText
+  shop_note: MyText
+  biz_time: MyString
+  photo_url: MyString
+  has_out_food: false
+  has_out_people: false
+  start_price: MyString
+  outer_time: MyString
+  district: 
+  addr: MyString
+  latitude: 9.99
+  longitude: 9.99
+  is_checked: false
+  is_merged: false
+
+two:
+  shop: 
+  contacter_name: MyString
+  tel_phone: MyString
+  mobile_phone: MyString
+  email: MyString
+  qq: MyString
+  name: MyString
+  description: MyText
+  shop_note: MyText
+  biz_time: MyString
+  photo_url: MyString
+  has_out_food: false
+  has_out_people: false
+  start_price: MyString
+  outer_time: MyString
+  district: 
+  addr: MyString
+  latitude: 9.99
+  longitude: 9.99
+  is_checked: false
+  is_merged: false

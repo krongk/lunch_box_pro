@@ -1,0 +1,20 @@
+---
+zh-CN:
+  shop_dish_versions:
+    index:
+      title: Shop dish versions
+    show:
+      title: Shop dish version
+    edit:
+      title: Editing Shop dish version
+    new:
+      title: New Shop dish version
+  flash:
+    shop_dish_versions:
+      create:
+        notice: ! '%{resource_name} was successfully created.'
+      update:
+        notice: ! '%{resource_name} was successfully updated.'
+      destroy:
+        notice: ! '%{resource_name} was successfully deleted.'
+        alert: ! '%{resource_name} could not be deleted.'

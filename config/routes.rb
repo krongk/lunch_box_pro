@@ -1,4 +1,8 @@
 RailsOnWeb::Application.routes.draw do
+  resources :shop_dish_versions
+
+  resources :shop_versions
+
   resources :order_details
 
   resources :orders

@@ -1,0 +1,33 @@
+#encoding: utf-8
+#rember to change active_record: to activerecord:
+zh-CN:
+  activerecord:
+    models:
+      shop_version: 餐厅版本
+    attributes:
+      shop_version:
+        shop: 餐厅
+        contacter_name: 联系人
+        tel_phone: 电话
+        mobile_phone: 手机
+        email: Email
+        qq: QQ
+        name: 餐厅名
+        description: 餐厅描述
+        shop_note: 店长备注
+        biz_time: 营业时间
+        photo_url: 图片地址
+        has_out_food: 是否提供外卖
+        has_out_people: 是否有外送人员
+        start_price: 起送价
+        outer_time: 外卖时间
+        district: 区
+        addr: 地址
+        latitude: Latitude
+        longitude: Longitude
+        is_checked: 是否审核
+        is_merged: 是否合并
+    errors:
+      shop_version: !!null 
+  helpers:
+    shop_version: !!null 

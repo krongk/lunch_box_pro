@@ -1,0 +1,19 @@
+---
+en:
+  active_record:
+    models:
+      shop_dish_version: Shop dish version
+    attributes:
+      shop_dish_version:
+        shop: Shop
+        dish: Dish
+        price: Price
+        is_hot: Is hot
+        is_discount: Is discount
+        discount_value: Discount value
+        description: Description
+        is_merged: Is merged
+    errors:
+      shop_dish_version: !!null 
+  helpers:
+    shop_dish_version: !!null 

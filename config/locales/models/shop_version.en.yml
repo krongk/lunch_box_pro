@@ -1,0 +1,32 @@
+---
+en:
+  active_record:
+    models:
+      shop_version: Shop version
+    attributes:
+      shop_version:
+        shop: Shop
+        contacter_name: Contacter name
+        tel_phone: Tel phone
+        mobile_phone: Mobile phone
+        email: Email
+        qq: Qq
+        name: Name
+        description: Description
+        shop_note: Shop note
+        biz_time: Biz time
+        photo_url: Photo url
+        has_out_food: Has out food
+        has_out_people: Has out people
+        start_price: Start price
+        outer_time: Outer time
+        district: District
+        addr: Addr
+        latitude: Latitude
+        longitude: Longitude
+        is_checked: Is checked
+        is_merged: Is merged
+    errors:
+      shop_version: !!null 
+  helpers:
+    shop_version: !!null 

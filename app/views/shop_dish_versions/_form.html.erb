@@ -1,0 +1,49 @@
+<%= form_for(@shop_dish_version) do |f| %>
+  <% if @shop_dish_version.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop_dish_version.errors.count, "error") %> prohibited this shop_dish_version from being saved:</h2>
+
+      <ul>
+      <% @shop_dish_version.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.text_field :shop %>
+  </div>
+  <div class="field">
+    <%= f.label :dish %><br />
+    <%= f.text_field :dish %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :is_hot %><br />
+    <%= f.check_box :is_hot %>
+  </div>
+  <div class="field">
+    <%= f.label :is_discount %><br />
+    <%= f.check_box :is_discount %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_value %><br />
+    <%= f.text_field :discount_value %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :is_merged %><br />
+    <%= f.check_box :is_merged %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

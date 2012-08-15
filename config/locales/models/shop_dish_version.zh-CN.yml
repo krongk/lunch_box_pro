@@ -1,0 +1,20 @@
+#encoding: utf-8
+#rember to change active_record: to activerecord:
+zh-CN:
+  activerecord:
+    models:
+      shop_dish_version: 餐厅菜单版本
+    attributes:
+      shop_dish_version:
+        shop: 餐厅
+        dish: 菜单
+        price: 价格
+        is_hot: 是否推荐
+        is_discount: 是否打折
+        discount_value: 打折后价格
+        description: 菜品描述
+        is_merged: 是否合并
+    errors:
+      shop_dish_version: !!null 
+  helpers:
+    shop_dish_version: !!null 
