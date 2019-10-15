@@ -10,7 +10,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '~>1.0.19'
-gem 'devise', '1.5.0'
+gem 'devise', '2.2.8'
 
 #==other
 #debug: ActiveAdmin undefined local variable or method `per', so must down will_paginate '3.0.2' to '3.0.pre2'
